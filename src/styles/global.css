@@ -1,0 +1,505 @@
+@import "tailwindcss";
+
+/* =========================================
+   DESIGN TOKENS
+========================================= */
+
+@theme inline {
+  /* COLORS */
+
+  --color-charcoal: #11110f;
+  --color-charcoal-soft: #191916;
+
+  --color-ivory: #f4f0e7;
+  --color-ivory-muted: #d8d2c6;
+
+  --color-gold: #b79b62;
+  --color-gold-light: #c9b27e;
+
+  --color-border: rgba(244, 240, 231, 0.14);
+
+  /* TYPOGRAPHY */
+
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
+
+  /* SPACING */
+
+  --spacing-section: 8rem;
+}
+
+/* =========================================
+   RESET
+========================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  background: #11110f;
+}
+
+body {
+  margin: 0;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background: #11110f;
+
+  color: #f4f0e7;
+
+  font-family:
+    var(--font-body),
+    Arial,
+    sans-serif;
+
+  font-synthesis: none;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  font-family:
+    var(--font-display),
+    Georgia,
+    serif;
+
+  font-weight: 500;
+}
+
+p {
+  margin: 0;
+
+  line-height: 1.8;
+}
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  padding: 0;
+
+  border: 0;
+}
+
+img,
+video {
+  display: block;
+
+  max-width: 100%;
+}
+
+/* =========================================
+   SELECTION
+========================================= */
+
+::selection {
+  background: #b79b62;
+
+  color: #11110f;
+}
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #11110f;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+
+  background: #34332e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b79b62;
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container-luxury {
+  width: min(
+    calc(100% - 3rem),
+    1400px
+  );
+
+  margin-inline: auto;
+}
+
+/* =========================================
+   SECTION
+========================================= */
+
+.section-padding {
+  padding-block:
+    clamp(
+      6rem,
+      10vw,
+      10rem
+    );
+}
+
+/* =========================================
+   GOLD LABEL
+========================================= */
+
+.gold-label {
+  color: #b79b62;
+
+  font-size: 0.7rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.25em;
+
+  text-transform: uppercase;
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+#site-header {
+  border-bottom:
+    1px solid transparent;
+
+  background:
+    transparent;
+
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    backdrop-filter 0.4s ease;
+}
+
+/* SCROLLED */
+
+#site-header[data-scrolled="true"] {
+  border-color:
+    rgba(244, 240, 231, 0.08);
+
+  background:
+    rgba(17, 17, 15, 0.82);
+
+  backdrop-filter:
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
+}
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+#mobile-menu {
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+/* CLOSED */
+
+#mobile-menu[data-open="false"] {
+  pointer-events: none;
+
+  visibility: hidden;
+
+  opacity: 0;
+}
+
+/* OPEN */
+
+#mobile-menu[data-open="true"] {
+  pointer-events: auto;
+
+  visibility: visible;
+
+  opacity: 1;
+}
+
+/* =========================================
+   MOBILE DRAWER
+========================================= */
+
+#mobile-menu-drawer {
+  transform: translateX(100%);
+
+  transition:
+    transform 0.55s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+
+  will-change: transform;
+}
+
+#mobile-menu[data-open="true"] #mobile-menu-drawer {
+  transform: translateX(0);
+}
+
+/* =========================================
+   HERO ENTRANCE
+========================================= */
+
+.hero-reveal {
+  opacity: 0;
+
+  transform:
+    translateY(30px);
+
+  animation:
+    heroReveal
+    1s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+/* DELAYS */
+
+.hero-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.hero-delay-2 {
+  animation-delay: 0.25s;
+}
+
+.hero-delay-3 {
+  animation-delay: 0.35s;
+}
+
+.hero-delay-4 {
+  animation-delay: 0.5s;
+}
+
+.hero-delay-5 {
+  animation-delay: 0.65s;
+}
+
+.hero-delay-6 {
+  animation-delay: 0.8s;
+}
+
+/* KEYFRAME */
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+/* =========================================
+   SCROLL INDICATOR
+========================================= */
+
+.scroll-line {
+  transform-origin: top;
+
+  animation:
+    scrollLine
+    2s
+    ease-in-out
+    infinite;
+}
+
+@keyframes scrollLine {
+  0% {
+    opacity: 0;
+
+    transform:
+      scaleY(0);
+  }
+
+  40% {
+    opacity: 1;
+
+    transform:
+      scaleY(1);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scaleY(1);
+  }
+}
+
+/* =========================================
+   VERTICAL TEXT
+========================================= */
+
+.vertical-text {
+  writing-mode:
+    vertical-rl;
+
+  transform:
+    rotate(180deg);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (
+  min-width: 768px
+) and (
+  max-width: 1279px
+) {
+  .container-luxury {
+    width:
+      min(
+        calc(100% - 4rem),
+        1400px
+      );
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (
+  max-width: 767px
+) {
+  .container-luxury {
+    width:
+      calc(100% - 2rem);
+  }
+
+  .section-padding {
+    padding-block:
+      5rem;
+  }
+}
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (
+  max-width: 380px
+) {
+  .container-luxury {
+    width:
+      calc(100% - 1.5rem);
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior:
+      auto !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+}
+
+/* =========================================
+   ABOUT REVEAL
+========================================= */
+
+.about-reveal {
+  opacity: 0;
+
+  transform:
+    translateY(40px);
+
+  transition:
+    opacity 0.9s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    transform 0.9s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+}
+
+.about-reveal.is-visible {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}

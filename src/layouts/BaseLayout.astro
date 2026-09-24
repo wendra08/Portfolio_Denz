@@ -1,0 +1,40 @@
+---
+import "../styles/global.css";
+import { Font } from "astro:assets";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Kang Denz — Professional Wedding MC",
+  description = "Muhamad Denny Hidayat, S.Pd — Professional Wedding MC, Wedding Planner, Photography Management, and Private MC Mentor.",
+} = Astro.props;
+---
+
+<!doctype html>
+
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+
+    <meta name="description" content={description} />
+
+    <meta name="theme-color" content="#11110f" />
+
+    <title>{title}</title>
+
+    <Font cssVariable="--font-display" preload />
+    <Font cssVariable="--font-body" />
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>
