@@ -614,3 +614,129 @@ video {
   visibility: hidden;
   opacity: 0;
 }
+
+/* =========================================
+   PORTFOLIO REVEAL
+========================================= */
+
+.portfolio-reveal {
+  opacity: 0;
+
+  transform:
+    translateY(40px);
+
+  transition:
+    opacity 0.9s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    transform 0.9s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+}
+
+.portfolio-reveal.is-visible {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+/* =========================================
+   PORTFOLIO IMAGE
+========================================= */
+
+.portfolio-image {
+  transition:
+    transform 1.2s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+.group:hover .portfolio-image {
+  transform:
+    scale(1.035);
+}
+
+/* =========================================
+   WEDDING ECOSYSTEM REVEAL
+========================================= */
+
+.ecosystem-reveal {
+  opacity: 0;
+
+  transform:
+    translateY(40px);
+
+  transition:
+    opacity 0.9s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    transform 0.9s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+}
+
+.ecosystem-reveal.is-visible {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+/* =========================================
+   ECOSYSTEM ITEM
+========================================= */
+
+.ecosystem-item::after {
+  position: absolute;
+
+  right: 0;
+  bottom: -1px;
+  left: 0;
+
+  height: 1px;
+
+  background: #b79b62;
+
+  content: "";
+
+  transform:
+    scaleX(0);
+
+  transform-origin:
+    left;
+
+  transition:
+    transform 0.6s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+.ecosystem-item:hover::after {
+  transform:
+    scaleX(1);
+}

@@ -187,7 +187,7 @@ const moments = [
 
     <div
       id="selected-moments"
-      class="showreel-reveal scroll-mt-28 pt-16 md:pt-20"
+      class="showreel-reveal scroll-mt-32 pt-20 md:pt-24"
     >
       <div
         class="grid gap-7 border-b border-white/10 pb-10 md:grid-cols-[0.65fr_1.35fr] md:items-end"
@@ -219,12 +219,12 @@ const moments = [
     ====================================== -->
 
     <div
-      class="mt-10 grid gap-10 md:grid-cols-3"
+      class="mt-10 grid gap-12 md:grid-cols-3 md:gap-8 lg:gap-10"
     >
       {
         moments.map((moment) => (
           <article
-            class="showreel-reveal group"
+            class="showreel-reveal group mx-auto w-full max-w-[340px] md:max-w-none"
           >
             <button
               type="button"
@@ -240,7 +240,7 @@ const moments = [
                 <!-- VIDEO PREVIEW -->
 
                 <video
-                  class="showreel-preview h-full w-full object-cover"
+                  class="showreel-preview h-full w-full bg-black object-contain md:object-cover"
                   muted
                   playsinline
                   preload="metadata"

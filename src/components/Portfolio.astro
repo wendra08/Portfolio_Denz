@@ -1,0 +1,358 @@
+---
+const projects = [
+  {
+    number: "01",
+    couple: "Nama Pasangan",
+    type: "Wedding Reception",
+    location: "Balikpapan",
+    year: "2026",
+    image: "/images/portfolio/wedding-01.jpeg",
+    category: "Wedding MC",
+  },
+  {
+    number: "02",
+    couple: "Nama Pasangan",
+    type: "Akad & Reception",
+    location: "Balikpapan",
+    year: "2026",
+    image: "/images/portfolio/wedding-02.jpeg",
+    category: "Wedding MC",
+  },
+  {
+    number: "03",
+    couple: "Nama Pasangan",
+    type: "Wedding Celebration",
+    location: "Balikpapan",
+    year: "2026",
+    image: "/images/portfolio/wedding-03.jpeg",
+    category: "Wedding MC",
+  },
+];
+---
+
+<section
+  id="portfolio"
+  class="relative overflow-hidden bg-ivory text-charcoal"
+>
+  <!-- =====================================
+       HEADER
+  ====================================== -->
+
+  <div
+    class="container-luxury pt-20 pb-14 md:pt-28 md:pb-20 lg:pt-32"
+  >
+    <div
+      class="portfolio-reveal flex items-center gap-4"
+    >
+      <span class="h-px w-10 bg-gold"></span>
+
+      <p class="gold-label">
+        Selected Portfolio
+      </p>
+    </div>
+
+    <div
+      class="mt-8 grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-end lg:gap-16"
+    >
+      <div class="portfolio-reveal">
+        <h2
+          class="max-w-5xl font-serif text-[clamp(3.5rem,7vw,7rem)] leading-[0.86] tracking-[-0.05em]"
+        >
+          Moments I've had the
+
+          <span class="text-gold">
+            privilege to host.
+          </span>
+        </h2>
+      </div>
+
+      <div class="portfolio-reveal">
+        <p
+          class="max-w-md text-sm leading-7 text-charcoal/60 md:text-base md:leading-8"
+        >
+          Setiap wedding memiliki cerita, suasana,
+          dan karakter yang berbeda. Berikut beberapa
+          momen pilihan dari perjalanan Kang Denz
+          sebagai Wedding MC.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================
+       PROJECT LIST
+  ====================================== -->
+
+  <div class="container-luxury">
+    {
+      projects.map((project, index) => (
+        <article
+          class:list={[
+            "portfolio-reveal grid gap-8 border-t border-charcoal/10 py-12 md:py-16 lg:items-center lg:gap-16 lg:py-20",
+            index % 2 === 0
+              ? "lg:grid-cols-[1.25fr_0.75fr]"
+              : "lg:grid-cols-[0.75fr_1.25fr]"
+          ]}
+        >
+          <!-- IMAGE -->
+
+          <div
+            class:list={[
+              "group relative overflow-hidden bg-charcoal",
+              index % 2 !== 0 && "lg:order-2"
+            ]}
+          >
+            <div
+              class="relative aspect-[4/5] overflow-hidden sm:aspect-[16/11] lg:aspect-[4/3]"
+            >
+              <img
+                src={project.image}
+                alt={`${project.couple} — ${project.type}`}
+                class="portfolio-image h-full w-full object-cover"
+                loading="lazy"
+              />
+
+              <!-- OVERLAYS -->
+
+              <div
+                class="absolute inset-0 bg-black/5 transition-colors duration-500 group-hover:bg-black/15"
+                aria-hidden="true"
+              ></div>
+
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"
+                aria-hidden="true"
+              ></div>
+
+              <!-- NUMBER -->
+
+              <div
+                class="absolute top-5 left-5"
+              >
+                <span
+                  class="text-[8px] font-semibold tracking-[0.22em] text-white/60"
+                >
+                  {project.number}
+                </span>
+              </div>
+
+              <!-- IMAGE LABEL -->
+
+              <div
+                class="absolute right-5 bottom-5 left-5 flex items-end justify-between border-t border-white/20 pt-4"
+              >
+                <div>
+                  <p
+                    class="text-[7px] font-semibold tracking-[0.22em] text-gold uppercase"
+                  >
+                    {project.category}
+                  </p>
+
+                  <p
+                    class="mt-1 font-serif text-xl text-white md:text-2xl"
+                  >
+                    Selected Story
+                  </p>
+                </div>
+
+                <span
+                  class="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-sm text-white transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal"
+                  aria-hidden="true"
+                >
+                  ↗
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- INFO -->
+
+          <div
+            class:list={[
+              index % 2 !== 0 && "lg:order-1"
+            ]}
+          >
+            <p
+              class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+            >
+              Wedding Story {project.number}
+            </p>
+
+            <h3
+              class="mt-5 font-serif text-[clamp(2.8rem,5vw,5rem)] leading-[0.9] tracking-[-0.04em]"
+            >
+              {project.couple}
+            </h3>
+
+            <p
+              class="mt-5 font-serif text-2xl text-charcoal/75 md:text-3xl"
+            >
+              {project.type}
+            </p>
+
+            <!-- META -->
+
+            <div
+              class="mt-8 grid grid-cols-2 gap-6 border-t border-charcoal/10 pt-6"
+            >
+              <div>
+                <p
+                  class="text-[7px] font-semibold tracking-[0.2em] text-charcoal/35 uppercase"
+                >
+                  Location
+                </p>
+
+                <p
+                  class="mt-2 text-sm text-charcoal/70"
+                >
+                  {project.location}
+                </p>
+              </div>
+
+              <div>
+                <p
+                  class="text-[7px] font-semibold tracking-[0.2em] text-charcoal/35 uppercase"
+                >
+                  Year
+                </p>
+
+                <p
+                  class="mt-2 text-sm text-charcoal/70"
+                >
+                  {project.year}
+                </p>
+              </div>
+            </div>
+
+            <p
+              class="mt-8 max-w-lg text-sm leading-7 text-charcoal/55 md:text-base md:leading-8"
+            >
+              Sebuah wedding dengan karakter dan suasana
+              tersendiri, dibawakan dengan pendekatan yang
+              menyesuaikan alur acara, pasangan, dan tamu
+              yang hadir.
+            </p>
+
+            <!-- TEMP LINK -->
+
+            <button
+              type="button"
+              class="group mt-8 inline-flex items-center gap-5 text-[8px] font-bold tracking-[0.22em] text-charcoal uppercase"
+            >
+              View Wedding Story
+
+              <span
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-charcoal/15 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ivory"
+              >
+                →
+              </span>
+            </button>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+
+  <!-- =====================================
+       PORTFOLIO CTA
+  ====================================== -->
+
+  <div
+    class="container-luxury border-t border-charcoal/10 py-14 md:py-20"
+  >
+    <div
+      class="portfolio-reveal flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
+    >
+      <div>
+        <p
+          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        >
+          More Stories
+        </p>
+
+        <p
+          class="mt-3 max-w-xl font-serif text-3xl leading-tight md:text-4xl"
+        >
+          Every wedding deserves
+          its own story.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="group inline-flex w-fit items-center gap-6 border border-charcoal/20 px-7 py-4 text-[9px] font-bold tracking-[0.2em] text-charcoal uppercase transition-all duration-300 hover:border-gold hover:bg-gold hover:text-ivory"
+      >
+        View All Portfolio
+
+        <span
+          class="transition-transform duration-300 group-hover:translate-x-1"
+        >
+          →
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initializePortfolioReveal() {
+    const elements =
+      document.querySelectorAll<HTMLElement>(
+        ".portfolio-reveal"
+      );
+
+    if (
+      !(
+        "IntersectionObserver" in
+        window
+      )
+    ) {
+      elements.forEach((element) => {
+        element.classList.add(
+          "is-visible"
+        );
+      });
+
+      return;
+    }
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            if (
+              entry.target instanceof HTMLElement
+            ) {
+              entry.target.classList.add(
+                "is-visible"
+              );
+            }
+
+            observer.unobserve(
+              entry.target
+            );
+          });
+        },
+        {
+          threshold: 0.08,
+          rootMargin:
+            "0px 0px -40px 0px",
+        }
+      );
+
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
+  }
+
+  initializePortfolioReveal();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializePortfolioReveal
+  );
+</script>
