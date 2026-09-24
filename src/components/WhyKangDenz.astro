@@ -1,0 +1,270 @@
+---
+const reasons = [
+  {
+    number: "01",
+    title: "Experience",
+    description:
+      "Berpengalaman sebagai MC sejak 2017 melalui berbagai acara, dengan fokus utama pada lamaran dan wedding.",
+  },
+  {
+    number: "02",
+    title: "Wedding Understanding",
+    description:
+      "Memahami wedding dari berbagai sisi — MC, wedding planning, koordinasi vendor, hingga photography management.",
+  },
+  {
+    number: "03",
+    title: "Communication",
+    description:
+      "Penyampaian yang jelas, natural, komunikatif, dan tetap menyesuaikan karakter acara serta audiens.",
+  },
+  {
+    number: "04",
+    title: "Guest Engagement",
+    description:
+      "Membangun interaksi dengan tamu tanpa kehilangan kenyamanan, kesopanan, dan elegansi acara.",
+  },
+  {
+    number: "05",
+    title: "Adaptability",
+    description:
+      "Mampu beradaptasi ketika rundown, situasi, atau kondisi acara berubah secara langsung di lapangan.",
+  },
+  {
+    number: "06",
+    title: "Professional Preparation",
+    description:
+      "Mengutamakan rundown, briefing, technical meeting, dan koordinasi agar pembawaan acara lebih terarah.",
+  },
+];
+---
+
+<section
+  id="why-kang-denz"
+  class="relative overflow-hidden bg-ivory text-charcoal"
+>
+  <div
+    class="container-luxury py-20 md:py-24 lg:py-28"
+  >
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <div
+      class="why-reveal border-b border-charcoal/10 pb-12 md:pb-16"
+    >
+
+      <!-- LABEL -->
+
+      <div
+        class="flex items-center gap-4"
+      >
+        <span
+          class="h-px w-10 bg-gold"
+        ></span>
+
+        <p class="gold-label">
+          Why Kang Denz
+        </p>
+      </div>
+
+      <!-- HEADLINE -->
+
+      <div
+        class="mt-8 grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-end lg:gap-16"
+      >
+
+        <h2
+          class="max-w-5xl font-serif text-[clamp(3.3rem,6vw,6.5rem)] leading-[0.88] tracking-[-0.045em]"
+        >
+          More than
+          <span class="text-gold">
+            experience.
+          </span>
+
+          <span class="block">
+            It's about understanding
+            people and moments.
+          </span>
+        </h2>
+
+        <p
+          class="max-w-md text-sm leading-7 text-charcoal/60 md:text-base md:leading-8"
+        >
+          Wedding membutuhkan lebih dari seseorang yang mampu
+          berbicara. Seorang MC perlu memahami suasana, pasangan,
+          tamu, rundown, serta momen yang sedang berlangsung.
+        </p>
+
+      </div>
+    </div>
+
+    <!-- =====================================
+         REASONS
+    ====================================== -->
+
+    <div
+      class="mt-4 grid md:grid-cols-2"
+    >
+      {
+        reasons.map((reason, index) => (
+          <article
+            class:list={[
+              "why-card why-reveal group relative border-b border-charcoal/10 py-9 md:py-12",
+              index % 2 === 0
+                ? "md:border-r md:pr-10 lg:pr-14"
+                : "md:pl-10 lg:pl-14"
+            ]}
+          >
+
+            <!-- NUMBER -->
+
+            <div
+              class="flex items-center justify-between"
+            >
+              <p
+                class="text-[8px] font-semibold tracking-[0.22em] text-gold"
+              >
+                {reason.number}
+              </p>
+
+              <span
+                class="flex h-9 w-9 items-center justify-center rounded-full border border-charcoal/10 text-xs text-charcoal/30 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ivory"
+                aria-hidden="true"
+              >
+                +
+              </span>
+            </div>
+
+            <!-- TITLE -->
+
+            <h3
+              class="mt-8 max-w-lg font-serif text-[clamp(2.2rem,3.4vw,3.8rem)] leading-[0.95] tracking-[-0.035em] transition-colors duration-300 group-hover:text-gold"
+            >
+              {reason.title}
+            </h3>
+
+            <!-- DESCRIPTION -->
+
+            <p
+              class="mt-5 max-w-xl text-sm leading-7 text-charcoal/60 md:text-base md:leading-8"
+            >
+              {reason.description}
+            </p>
+
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- =====================================
+         APPROACH
+    ====================================== -->
+
+    <div
+      class="why-reveal mt-20 grid gap-10 border-t border-charcoal/10 pt-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20"
+    >
+
+      <div>
+        <p
+          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        >
+          The Approach
+        </p>
+
+        <h3
+          class="mt-5 max-w-lg font-serif text-[clamp(2.7rem,4vw,4.5rem)] leading-[0.95] tracking-[-0.035em]"
+        >
+          Prepared before.
+          <span class="block text-gold">
+            Present in the moment.
+          </span>
+        </h3>
+      </div>
+
+      <div
+        class="flex items-end"
+      >
+        <div
+          class="border-l border-gold pl-6 md:pl-8"
+        >
+          <p
+            class="max-w-2xl font-serif text-2xl leading-snug text-charcoal/80 md:text-3xl lg:text-4xl"
+          >
+            “The best MC does not become the center of the wedding.
+            The wedding itself should remain the center.”
+          </p>
+
+          <p
+            class="mt-5 text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+          >
+            Kang Denz
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initializeWhyReveal() {
+    const elements =
+      document.querySelectorAll(
+        ".why-reveal"
+      );
+
+    if (
+      !(
+        "IntersectionObserver" in window
+      )
+    ) {
+      elements.forEach((element) => {
+        element.classList.add(
+          "is-visible"
+        );
+      });
+
+      return;
+    }
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach(
+            (entry) => {
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              entry.target.classList.add(
+                "is-visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+            }
+          );
+        },
+        {
+          threshold: 0.08,
+          rootMargin:
+            "0px 0px -40px 0px",
+        }
+      );
+
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
+  }
+
+  initializeWhyReveal();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeWhyReveal
+  );
+</script>

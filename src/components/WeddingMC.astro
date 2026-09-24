@@ -1,0 +1,402 @@
+---
+const services = [
+  {
+    number: "01",
+    title: "MC Lamaran",
+    description:
+      "Membawakan acara lamaran dengan suasana yang hangat, elegan, dan komunikatif.",
+  },
+  {
+    number: "02",
+    title: "MC Akad",
+    description:
+      "Menjaga suasana akad tetap khidmat, tertib, nyaman, dan berjalan sesuai alur.",
+  },
+  {
+    number: "03",
+    title: "MC Resepsi",
+    description:
+      "Mengatur alur acara, transisi, komunikasi dengan tamu, serta menjaga energi resepsi.",
+  },
+  {
+    number: "04",
+    title: "MC Wedding",
+    description:
+      "Membawakan berbagai konsep wedding dengan pendekatan yang menyesuaikan karakter pasangan dan acara.",
+  },
+  {
+    number: "05",
+    title: "MC Event",
+    description:
+      "Tersedia berdasarkan request dan kesesuaian konsep, kebutuhan, serta karakter acara.",
+    meta: "By Request",
+  },
+];
+---
+
+<section
+  id="wedding-mc"
+  class="relative overflow-hidden bg-charcoal text-ivory"
+>
+  <!-- =====================================
+       DECORATIVE BACKGROUND
+  ====================================== -->
+
+  <div
+    class="pointer-events-none absolute top-0 right-0 h-[700px] w-[700px] translate-x-1/3 -translate-y-1/4 rounded-full bg-gold/[0.04] blur-[160px]"
+    aria-hidden="true"
+  ></div>
+
+  <!-- =====================================
+       INTRO
+  ====================================== -->
+
+  <div
+    class="container-luxury pt-20 pb-16 md:pt-28 md:pb-20 lg:pt-32"
+  >
+    <div
+      class="wedding-reveal flex items-center gap-4"
+    >
+      <span class="h-px w-10 bg-gold"></span>
+
+      <p class="gold-label">
+        Wedding MC
+      </p>
+    </div>
+
+    <div
+      class="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-20"
+    >
+      <!-- HEADLINE -->
+
+      <div class="wedding-reveal">
+        <h2
+          class="max-w-5xl font-serif text-[clamp(3.3rem,7vw,7.5rem)] leading-[0.84] tracking-[-0.05em]"
+        >
+          Every wedding
+
+          <span class="block text-gold">
+            has its own story.
+          </span>
+        </h2>
+      </div>
+
+      <!-- SECONDARY -->
+
+      <div
+        class="wedding-reveal lg:pb-2"
+      >
+        <p
+          class="max-w-lg font-serif text-[clamp(2rem,3.2vw,3.6rem)] leading-[1.02] tracking-[-0.03em] text-ivory-muted"
+        >
+          My job is to help you tell it.
+        </p>
+
+        <p
+          class="mt-6 max-w-md text-sm leading-7 text-white/50 md:text-base md:leading-8"
+        >
+          Setiap wedding memiliki karakter, suasana,
+          dan cerita yang berbeda. Karena itu,
+          pembawaan acara tidak seharusnya terasa
+          sama untuk setiap pasangan.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================
+       FEATURE IMAGE
+  ====================================== -->
+
+  <div
+    class="container-luxury"
+  >
+    <div
+      class="wedding-reveal relative overflow-hidden border border-white/10"
+    >
+      <div
+        class="relative aspect-[4/5] overflow-hidden sm:aspect-[16/10] lg:aspect-[16/8]"
+      >
+        <img
+          src="/images/wedding-mc-kang-denz.png"
+          alt="Kang Denz saat membawakan acara wedding"
+          class="h-full w-full object-cover object-center transition-transform duration-[1200ms] hover:scale-[1.025]"
+          loading="lazy"
+        />
+
+        <!-- IMAGE OVERLAYS -->
+
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/5 to-transparent"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent"
+          aria-hidden="true"
+        ></div>
+
+        <!-- IMAGE COPY -->
+
+        <div
+          class="absolute right-0 bottom-0 left-0 p-6 md:p-10 lg:p-12"
+        >
+          <div
+            class="flex flex-col gap-6 border-t border-white/20 pt-5 md:flex-row md:items-end md:justify-between"
+          >
+            <div>
+              <p
+                class="text-[8px] font-semibold tracking-[0.28em] text-gold uppercase"
+              >
+                On Stage
+              </p>
+
+              <p
+                class="mt-2 max-w-xl font-serif text-2xl leading-tight md:text-4xl"
+              >
+                Reading the room.
+                Keeping the flow.
+                Understanding the moment.
+              </p>
+            </div>
+
+            <p
+              class="text-[8px] tracking-[0.24em] text-white/50 uppercase"
+            >
+              Wedding MC · Since 2017
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================
+       SERVICES
+  ====================================== -->
+
+  <div
+    class="container-luxury pt-20 pb-24 md:pt-28 md:pb-32 lg:pb-40"
+  >
+    <!-- TITLE -->
+
+    <div
+      class="wedding-reveal grid gap-8 border-b border-white/10 pb-10 lg:grid-cols-[0.6fr_1.4fr]"
+    >
+      <p
+        class="text-[9px] font-semibold tracking-[0.25em] text-gold uppercase"
+      >
+        Services
+      </p>
+
+      <h3
+        class="max-w-4xl font-serif text-[clamp(2.8rem,5vw,5.5rem)] leading-[0.92] tracking-[-0.04em]"
+      >
+        For every part of
+        <span class="text-gold">
+          your wedding day.
+        </span>
+      </h3>
+    </div>
+
+    <!-- SERVICE LIST -->
+
+    <div>
+      {
+        services.map((service) => (
+          <article
+            class="wedding-service wedding-reveal group grid gap-4 border-b border-white/10 py-7 md:grid-cols-[80px_0.75fr_1.25fr] md:items-center md:gap-8 md:py-9"
+          >
+            <!-- NUMBER -->
+
+            <p
+              class="text-[8px] font-semibold tracking-[0.2em] text-white/30 transition-colors duration-300 group-hover:text-gold"
+            >
+              {service.number}
+            </p>
+
+            <!-- TITLE -->
+
+            <div>
+              <div
+                class="flex flex-wrap items-center gap-3"
+              >
+                <h4
+                  class="font-serif text-3xl tracking-[-0.025em] transition-colors duration-300 group-hover:text-gold md:text-4xl lg:text-5xl"
+                >
+                  {service.title}
+                </h4>
+
+                {
+                  service.meta && (
+                    <span
+                      class="rounded-full border border-gold/40 px-3 py-1 text-[7px] font-semibold tracking-[0.2em] text-gold uppercase"
+                    >
+                      {service.meta}
+                    </span>
+                  )
+                }
+              </div>
+            </div>
+
+            <!-- DESCRIPTION -->
+
+            <div
+              class="md:flex md:items-center md:justify-between md:gap-8"
+            >
+              <p
+                class="max-w-xl text-sm leading-7 text-white/50 md:text-base md:leading-8"
+              >
+                {service.description}
+              </p>
+
+              <span
+                class="mt-4 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-sm text-white/40 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal md:mt-0"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- =====================================
+         EVENT NOTE
+    ====================================== -->
+
+    <div
+      class="wedding-reveal mt-12 grid gap-7 border border-white/10 p-6 md:grid-cols-[0.65fr_1.35fr] md:p-10 lg:p-12"
+    >
+      <div>
+        <p
+          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        >
+          Event — By Request
+        </p>
+      </div>
+
+      <div>
+        <p
+          class="max-w-3xl font-serif text-2xl leading-snug text-ivory-muted md:text-3xl"
+        >
+          Setiap request event akan dipelajari
+          terlebih dahulu untuk memastikan konsep
+          acara sesuai dengan kebutuhan dan gaya
+          pembawaan Kang Denz.
+        </p>
+      </div>
+    </div>
+
+    <!-- =====================================
+         CTA
+    ====================================== -->
+    <div
+        class="wedding-reveal mt-16 border-t border-white/10 pt-10 md:mt-20 md:pt-12"
+    >
+    <div class="max-w-2xl">
+
+        <p
+        class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        >
+        Planning Your Wedding?
+        </p>
+
+        <p
+        class="mt-4 font-serif text-[clamp(2.5rem,4vw,4.5rem)] leading-[0.95] tracking-[-0.035em]"
+        >
+        Let's talk about
+        <span class="text-gold">
+            your moment.
+        </span>
+        </p>
+
+        <p
+        class="mt-5 max-w-lg text-sm leading-7 text-white/45 md:text-base"
+        >
+        Ceritakan konsep, tanggal, dan kebutuhan wedding kamu.
+        Setiap acara akan dipelajari terlebih dahulu agar
+        pembawaannya sesuai dengan karakter dan suasana yang diinginkan.
+        </p>
+
+        <a
+        href="#booking"
+        class="group mt-8 inline-flex items-center gap-6 bg-gold px-8 py-4 text-[9px] font-bold tracking-[0.2em] text-charcoal uppercase transition-colors duration-300 hover:bg-gold-light"
+        >
+        Book Wedding MC
+
+        <span
+            class="transition-transform duration-300 group-hover:translate-x-1"
+        >
+            →
+        </span>
+        </a>
+
+    </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initializeWeddingReveal() {
+    const elements =
+      document.querySelectorAll(
+        ".wedding-reveal"
+      );
+
+    if (
+      !(
+        "IntersectionObserver" in window
+      )
+    ) {
+      elements.forEach((element) => {
+        element.classList.add(
+          "is-visible"
+        );
+      });
+
+      return;
+    }
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach(
+            (entry) => {
+              if (
+                !entry.isIntersecting
+              ) {
+                return;
+              }
+
+              entry.target.classList.add(
+                "is-visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+            }
+          );
+        },
+        {
+          threshold: 0.1,
+          rootMargin:
+            "0px 0px -40px 0px",
+        }
+      );
+
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
+  }
+
+  initializeWeddingReveal();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeWeddingReveal
+  );
+</script>

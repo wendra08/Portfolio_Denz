@@ -503,3 +503,114 @@ video {
   transform:
     translateY(0);
 }
+
+/* =========================================
+   WEDDING MC REVEAL
+========================================= */
+
+.wedding-reveal {
+  opacity: 0;
+
+  transform:
+    translateY(40px);
+
+  transition:
+    opacity 0.9s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    transform 0.9s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+}
+
+.wedding-reveal.is-visible {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+/* =========================================
+   WEDDING SERVICE
+========================================= */
+
+.wedding-service {
+  position: relative;
+}
+
+.wedding-service::before {
+  position: absolute;
+
+  bottom: -1px;
+  left: 0;
+
+  width: 0;
+  height: 1px;
+
+  background: #b79b62;
+
+  content: "";
+
+  transition:
+    width 0.6s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+.wedding-service:hover::before {
+  width: 100%;
+}
+/* =========================================
+   SHOWREEL REVEAL
+========================================= */
+
+.showreel-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.showreel-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   SHOWREEL MODAL
+========================================= */
+
+#showreel-modal {
+  pointer-events: none;
+  visibility: hidden;
+
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+#showreel-modal[data-open="true"] {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+}
+
+#showreel-modal[data-open="false"] {
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
