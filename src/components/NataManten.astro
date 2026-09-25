@@ -1,0 +1,459 @@
+---
+const services = [
+  {
+    number: "01",
+    title: "Wedding Planning",
+  },
+  {
+    number: "02",
+    title: "Wedding Coordination",
+  },
+  {
+    number: "03",
+    title: "Wedding Day Management",
+  },
+  {
+    number: "04",
+    title: "Vendor Coordination",
+  },
+  {
+    number: "05",
+    title: "Rundown & Timeline",
+  },
+  {
+    number: "06",
+    title: "Custom Wedding Package",
+  },
+];
+
+const behindScenes = [
+  {
+    image: "/images/nata-manten/nata-bts-01.jpeg",
+    title: "Technical Meeting",
+    number: "01",
+  },
+  {
+    image: "/images/nata-manten/nata-bts-02.jpeg",
+    title: "Vendor Coordination",
+    number: "02",
+  },
+  {
+    image: "/images/nata-manten/nata-bts-03.jpeg",
+    title: "Wedding Day",
+    number: "03",
+  },
+];
+---
+
+<section
+  id="nata-manten"
+  class="relative overflow-hidden bg-ivory text-charcoal"
+>
+  <!-- =====================================
+       HEADER
+  ====================================== -->
+
+  <div
+    class="container-luxury pt-20 pb-14 md:pt-28 md:pb-20 lg:pt-32"
+  >
+    <div
+      class="nata-reveal flex items-center gap-4"
+    >
+      <span class="h-px w-10 bg-gold"></span>
+
+      <p class="gold-label">
+        Nata Manten
+      </p>
+    </div>
+
+    <div
+      class="mt-8 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-20"
+    >
+      <!-- HEADLINE -->
+
+      <div class="nata-reveal">
+        <p
+          class="text-[9px] font-semibold tracking-[0.22em] text-charcoal/35 uppercase"
+        >
+          Wedding Planner & Wedding Coordination
+        </p>
+
+        <h2
+          class="mt-5 max-w-5xl font-serif text-[clamp(3.5rem,7vw,7rem)] leading-[0.86] tracking-[-0.05em]"
+        >
+          Behind every beautiful wedding
+
+          <span class="text-gold">
+            is a thoughtful plan.
+          </span>
+        </h2>
+      </div>
+
+      <!-- DESCRIPTION -->
+
+      <div class="nata-reveal">
+        <p
+          class="max-w-md text-sm leading-7 text-charcoal/60 md:text-base md:leading-8"
+        >
+          Nata Manten membantu pasangan mempersiapkan,
+          mengatur, dan mengkoordinasikan berbagai
+          kebutuhan pernikahan agar perjalanan menuju
+          hari bahagia menjadi lebih terarah dan nyaman.
+        </p>
+
+        <!-- OWNER -->
+
+        <div
+          class="mt-8 border-t border-charcoal/10 pt-6"
+        >
+          <p
+            class="text-[8px] font-semibold tracking-[0.22em] text-gold uppercase"
+          >
+            Owner / Founder
+          </p>
+
+          <p
+            class="mt-2 font-serif text-3xl"
+          >
+            Kang Denz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================
+       MAIN IMAGE
+  ====================================== -->
+
+  <div class="container-luxury">
+    <div
+      class="nata-reveal group relative overflow-hidden"
+    >
+      <div
+        class="relative aspect-[4/5] overflow-hidden bg-charcoal sm:aspect-[16/10] lg:aspect-[16/7]"
+      >
+        <img
+          src="/images/nata-manten/nata-main.jpeg"
+          alt="Nata Manten Wedding Planner"
+          class="nata-main-image h-full w-full object-cover"
+          loading="lazy"
+        />
+
+        <div
+          class="absolute inset-0 bg-black/15"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
+          aria-hidden="true"
+        ></div>
+
+        <!-- IMAGE TEXT -->
+
+        <div
+          class="absolute right-0 bottom-0 left-0 p-6 md:p-10 lg:p-12"
+        >
+          <div
+            class="flex flex-col gap-6 border-t border-white/25 pt-5 md:flex-row md:items-end md:justify-between"
+          >
+            <div>
+              <p
+                class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+              >
+                Nata Manten
+              </p>
+
+              <p
+                class="mt-2 max-w-2xl font-serif text-2xl leading-tight text-white md:text-4xl lg:text-5xl"
+              >
+                Planning the details.
+                Protecting the moment.
+              </p>
+            </div>
+
+            <p
+              class="text-[8px] tracking-[0.22em] text-white/50 uppercase"
+            >
+              Wedding Planning · Coordination
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================
+       SERVICES
+  ====================================== -->
+
+  <div
+    class="container-luxury py-20 md:py-28 lg:py-32"
+  >
+    <div
+      class="nata-reveal grid gap-8 border-b border-charcoal/10 pb-10 lg:grid-cols-[0.55fr_1.45fr]"
+    >
+      <p
+        class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+      >
+        What We Do
+      </p>
+
+      <h3
+        class="max-w-4xl font-serif text-[clamp(2.8rem,5vw,5.5rem)] leading-[0.92] tracking-[-0.04em]"
+      >
+        From planning
+
+        <span class="text-gold">
+          to wedding day.
+        </span>
+      </h3>
+    </div>
+
+    <!-- SERVICE GRID -->
+
+    <div
+      class="mt-4 grid md:grid-cols-2"
+    >
+      {
+        services.map((service, index) => (
+          <article
+            class:list={[
+              "nata-service nata-reveal group relative border-b border-charcoal/10 py-8 md:py-10",
+              index % 2 === 0
+                ? "md:border-r md:pr-10 lg:pr-14"
+                : "md:pl-10 lg:pl-14"
+            ]}
+          >
+            <div
+              class="flex items-start justify-between gap-6"
+            >
+              <div>
+                <p
+                  class="text-[8px] font-semibold tracking-[0.2em] text-gold"
+                >
+                  {service.number}
+                </p>
+
+                <h4
+                  class="mt-5 max-w-lg font-serif text-[clamp(2rem,3vw,3.5rem)] leading-[0.95] tracking-[-0.03em] transition-colors duration-300 group-hover:text-gold"
+                >
+                  {service.title}
+                </h4>
+              </div>
+
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-charcoal/10 text-sm text-charcoal/30 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ivory"
+              >
+                +
+              </span>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- =====================================
+         BEHIND THE SCENES
+    ====================================== -->
+
+    <div
+      class="nata-reveal mt-20 border-t border-charcoal/10 pt-14 md:mt-28 md:pt-20"
+    >
+      <div
+        class="grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:items-end"
+      >
+        <div>
+          <p
+            class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+          >
+            Behind The Scene
+          </p>
+        </div>
+
+        <div>
+          <h3
+            class="max-w-4xl font-serif text-[clamp(3rem,5.5vw,6rem)] leading-[0.9] tracking-[-0.04em]"
+          >
+            Before guests arrive,
+
+            <span class="text-gold">
+              the work has already begun.
+            </span>
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================
+         BTS GALLERY
+    ====================================== -->
+
+    <div
+      class="mt-12 grid gap-6 md:grid-cols-3"
+    >
+      {
+        behindScenes.map((item) => (
+          <article
+            class="nata-reveal group"
+          >
+            <div
+              class="relative aspect-[4/5] overflow-hidden bg-charcoal"
+            >
+              <img
+                src={item.image}
+                alt={`Nata Manten ${item.title}`}
+                class="nata-bts-image h-full w-full object-cover"
+                loading="lazy"
+              />
+
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10"
+                aria-hidden="true"
+              ></div>
+
+              <!-- NUMBER -->
+
+              <p
+                class="absolute top-5 left-5 text-[8px] font-semibold tracking-[0.2em] text-white/60"
+              >
+                {item.number}
+              </p>
+
+              <!-- TITLE -->
+
+              <div
+                class="absolute right-5 bottom-5 left-5 border-t border-white/20 pt-4"
+              >
+                <p
+                  class="font-serif text-2xl text-white md:text-3xl"
+                >
+                  {item.title}
+                </p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- =====================================
+         TAGLINE / CTA
+    ====================================== -->
+
+    <div
+      class="nata-reveal mt-20 grid gap-10 border-t border-charcoal/10 pt-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-20"
+    >
+      <div>
+        <p
+          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        >
+          Nata Manten
+        </p>
+
+        <p
+          class="mt-5 max-w-4xl font-serif text-[clamp(2.8rem,5vw,5.5rem)] leading-[0.95] tracking-[-0.04em]"
+        >
+          “A beautiful wedding
+
+          <span class="text-gold">
+            doesn't happen by accident.
+          </span>”
+        </p>
+      </div>
+
+      <div>
+        <p
+          class="max-w-md text-sm leading-7 text-charcoal/55 md:text-base"
+        >
+          Setiap detail dipersiapkan agar pasangan
+          dapat lebih menikmati perjalanan menuju
+          hari pernikahan mereka.
+        </p>
+
+        <a
+          href="#booking"
+          class="group mt-8 inline-flex min-w-[260px] items-center justify-center gap-4 bg-[#11110f] px-8 py-4 text-[9px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:bg-[#b79b62]"
+        >
+          <span
+            style="color: #f4f0e7;"
+            class="transition-colors duration-300 group-hover:text-[#11110f]"
+          >
+            Talk With Nata Manten
+          </span>
+
+          <span
+            style="color: #f4f0e7;"
+            class="transition-all duration-300 group-hover:translate-x-1 group-hover:text-[#11110f]"
+          >
+            →
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initializeNataManten() {
+    const elements =
+      document.querySelectorAll<HTMLElement>(
+        ".nata-reveal"
+      );
+
+    if (
+      !(
+        "IntersectionObserver" in window
+      )
+    ) {
+      elements.forEach((element) => {
+        element.classList.add(
+          "is-visible"
+        );
+      });
+
+      return;
+    }
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            if (
+              entry.target instanceof HTMLElement
+            ) {
+              entry.target.classList.add(
+                "is-visible"
+              );
+            }
+
+            observer.unobserve(
+              entry.target
+            );
+          });
+        },
+        {
+          threshold: 0.08,
+          rootMargin:
+            "0px 0px -40px 0px",
+        }
+      );
+
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
+  }
+
+  initializeNataManten();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeNataManten
+  );
+</script>
