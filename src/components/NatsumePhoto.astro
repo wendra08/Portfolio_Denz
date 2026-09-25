@@ -1,0 +1,454 @@
+---
+const services = [
+  "Wedding Photography",
+  "Prewedding",
+  "Studio Photography",
+  "Family Photography",
+  "Portrait",
+  "Event Documentation",
+];
+
+const gallery = [
+  {
+    number: "01",
+    image: "/images/natsume/natsume-01.jpeg",
+    title: "Wedding",
+    subtitle: "Photography",
+  },
+  {
+    number: "02",
+    image: "/images/natsume/natsume-02.jpeg",
+    title: "Prewedding",
+    subtitle: "Stories",
+  },
+  {
+    number: "03",
+    image: "/images/natsume/natsume-03.jpeg",
+    title: "Portrait",
+    subtitle: "Studio",
+  },
+  {
+    number: "04",
+    image: "/images/natsume/natsume-04.jpeg",
+    title: "Moments",
+    subtitle: "Documentation",
+  },
+];
+---
+
+<section
+  id="natsume"
+  class="relative overflow-hidden bg-charcoal text-ivory"
+>
+  <!-- BACKGROUND GLOW -->
+
+  <div
+    class="pointer-events-none absolute top-0 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-gold/[0.03] blur-[180px]"
+    aria-hidden="true"
+  ></div>
+
+  <!-- =====================================
+       HEADER
+  ====================================== -->
+
+  <div
+    class="container-luxury pt-20 pb-14 md:pt-28 md:pb-20 lg:pt-32"
+  >
+    <div
+      class="natsume-reveal flex items-center gap-4"
+    >
+      <span class="h-px w-10 bg-gold"></span>
+
+      <p class="gold-label">
+        Natsume Photo Studio
+      </p>
+    </div>
+
+    <div
+      class="mt-8 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-20"
+    >
+      <!-- TITLE -->
+
+      <div class="natsume-reveal">
+        <p
+          class="text-[9px] font-semibold tracking-[0.22em] text-white/30 uppercase"
+        >
+          Photography · Studio · Wedding
+        </p>
+
+        <h2
+          class="mt-5 max-w-5xl font-serif text-[clamp(3.5rem,7vw,7rem)] leading-[0.86] tracking-[-0.05em]"
+        >
+          Moments pass.
+
+          <span class="text-gold">
+            Memories remain.
+          </span>
+        </h2>
+      </div>
+
+      <!-- INFO -->
+
+      <div class="natsume-reveal">
+        <p
+          class="max-w-md text-sm leading-7 text-white/45 md:text-base md:leading-8"
+        >
+          Natsume Photo Studio menyediakan kebutuhan
+          photography dan studio untuk wedding, prewedding,
+          family, portrait, serta berbagai kebutuhan
+          dokumentasi lainnya.
+        </p>
+
+        <div
+          class="mt-8 border-t border-white/10 pt-6"
+        >
+          <p
+            class="text-[8px] font-semibold tracking-[0.22em] text-gold uppercase"
+          >
+            Manager
+          </p>
+
+          <p
+            class="mt-2 font-serif text-3xl"
+          >
+            Kang Denz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================
+       MAIN IMAGE
+  ====================================== -->
+
+  <div class="container-luxury">
+    <div
+      class="natsume-reveal group relative overflow-hidden border border-white/10"
+    >
+      <div
+        class="relative aspect-[4/5] overflow-hidden sm:aspect-[16/10] lg:aspect-[16/7]"
+      >
+        <img
+          src="/images/natsume/natsume-main.jpeg"
+          alt="Natsume Photo Studio Wedding Photography"
+          class="natsume-main-image h-full w-full object-cover"
+          loading="lazy"
+        />
+
+        <div
+          class="absolute inset-0 bg-black/10"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/10"
+          aria-hidden="true"
+        ></div>
+
+        <!-- COPY -->
+
+        <div
+          class="absolute right-0 bottom-0 left-0 p-6 md:p-10 lg:p-12"
+        >
+          <div
+            class="flex flex-col gap-6 border-t border-white/20 pt-5 md:flex-row md:items-end md:justify-between"
+          >
+            <div>
+              <p
+                class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+              >
+                Natsume Photo Studio
+              </p>
+
+              <p
+                class="mt-2 max-w-2xl font-serif text-2xl leading-tight text-white md:text-4xl lg:text-5xl"
+              >
+                Capturing stories
+                beyond the moment.
+              </p>
+            </div>
+
+            <p
+              class="text-[8px] tracking-[0.22em] text-white/45 uppercase"
+            >
+              Photography · Studio
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================
+       SERVICES
+  ====================================== -->
+
+  <div
+    class="container-luxury pt-20 md:pt-28"
+  >
+    <div
+      class="natsume-reveal grid gap-8 border-b border-white/10 pb-10 lg:grid-cols-[0.55fr_1.45fr]"
+    >
+      <p
+        class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+      >
+        Photography Services
+      </p>
+
+      <h3
+        class="max-w-4xl font-serif text-[clamp(2.8rem,5vw,5.5rem)] leading-[0.92] tracking-[-0.04em]"
+      >
+        Stories deserve to be
+
+        <span class="text-gold">
+          remembered beautifully.
+        </span>
+      </h3>
+    </div>
+
+    <!-- SERVICE LIST -->
+
+    <div>
+      {
+        services.map((service, index) => (
+          <div
+            class="natsume-service natsume-reveal group relative grid grid-cols-[50px_1fr_auto] items-center gap-4 border-b border-white/10 py-7 md:grid-cols-[80px_1fr_auto] md:py-9"
+          >
+            <p
+              class="text-[8px] font-semibold tracking-[0.2em] text-white/25 transition-colors duration-300 group-hover:text-gold"
+            >
+              {String(index + 1).padStart(2, "0")}
+            </p>
+
+            <h4
+              class="font-serif text-2xl tracking-[-0.025em] transition-colors duration-300 group-hover:text-gold md:text-4xl lg:text-5xl"
+            >
+              {service}
+            </h4>
+
+            <span
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-xs text-white/30 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal md:h-10 md:w-10"
+              aria-hidden="true"
+            >
+              +
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- =====================================
+       GALLERY
+  ====================================== -->
+
+  <div
+    class="container-luxury py-20 md:py-28 lg:py-32"
+  >
+    <!-- GALLERY HEADER -->
+
+    <div
+      class="natsume-reveal grid gap-8 md:grid-cols-[0.65fr_1.35fr] md:items-end"
+    >
+      <div>
+        <p
+          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        >
+          Selected Frames
+        </p>
+      </div>
+
+      <div>
+        <h3
+          class="max-w-4xl font-serif text-[clamp(3rem,5.5vw,6rem)] leading-[0.9] tracking-[-0.04em]"
+        >
+          Photography is not only
+
+          <span class="text-gold">
+            about taking pictures.
+          </span>
+        </h3>
+      </div>
+    </div>
+
+    <!-- EDITORIAL GALLERY -->
+
+    <div
+      class="mt-12 grid gap-5 md:h-[680px] md:grid-cols-12 md:grid-rows-2 lg:h-[760px]"
+    >
+      {
+        gallery.map((item, index) => (
+          <article
+            class:list={[
+              "natsume-reveal group relative overflow-hidden bg-black",
+              index === 0 &&
+                "md:col-span-7 md:row-span-2",
+              index === 1 &&
+                "md:col-span-5",
+              index === 2 &&
+                "md:col-span-3",
+              index === 3 &&
+                "md:col-span-2"
+            ]}
+          >
+            <div
+              class="relative aspect-[4/5] h-full overflow-hidden md:aspect-auto"
+            >
+              <img
+                src={item.image}
+                alt={`Natsume Photo ${item.title}`}
+                class="natsume-gallery-image h-full w-full object-cover"
+                loading="lazy"
+              />
+
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/5"
+                aria-hidden="true"
+              ></div>
+
+              <p
+                class="absolute top-5 left-5 text-[8px] tracking-[0.2em] text-white/50"
+              >
+                {item.number}
+              </p>
+
+              <div
+                class="absolute right-5 bottom-5 left-5 border-t border-white/20 pt-4"
+              >
+                <p
+                  class="text-[7px] font-semibold tracking-[0.22em] text-gold uppercase"
+                >
+                  {item.subtitle}
+                </p>
+
+                <p
+                  class="mt-1 font-serif text-2xl text-white md:text-3xl"
+                >
+                  {item.title}
+                </p>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- =====================================
+         CLOSING
+    ====================================== -->
+
+    <div
+      class="natsume-reveal mt-20 grid gap-10 border-t border-white/10 pt-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-20"
+    >
+      <div>
+        <p
+          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        >
+          Natsume Photo Studio
+        </p>
+
+        <p
+          class="mt-5 max-w-4xl font-serif text-[clamp(2.8rem,5vw,5.5rem)] leading-[0.95] tracking-[-0.04em]"
+        >
+          Moments become memories.
+
+          <span class="text-gold">
+            Memories deserve to last.
+          </span>
+        </p>
+      </div>
+
+      <div>
+        <p
+          class="max-w-md text-sm leading-7 text-white/45 md:text-base"
+        >
+          Photography tidak hanya menyimpan apa yang
+          terlihat, tetapi juga membantu menjaga cerita
+          dan perasaan dari sebuah momen.
+        </p>
+
+        <a
+          href="#booking"
+          class="group mt-8 inline-flex items-center justify-center gap-4 bg-gold px-8 py-4 text-[9px] font-bold tracking-[0.2em] uppercase transition-colors duration-300 hover:bg-gold-light"
+        >
+          <span
+            style="color: #11110f;"
+          >
+            Visit Natsume
+          </span>
+
+          <span
+            style="color: #11110f;"
+            class="transition-transform duration-300 group-hover:translate-x-1"
+          >
+            →
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initializeNatsumePhoto() {
+    const elements =
+      document.querySelectorAll<HTMLElement>(
+        ".natsume-reveal"
+      );
+
+    if (
+      !(
+        "IntersectionObserver" in window
+      )
+    ) {
+      elements.forEach((element) => {
+        element.classList.add(
+          "is-visible"
+        );
+      });
+
+      return;
+    }
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            if (
+              entry.target instanceof HTMLElement
+            ) {
+              entry.target.classList.add(
+                "is-visible"
+              );
+            }
+
+            observer.unobserve(
+              entry.target
+            );
+          });
+        },
+        {
+          threshold: 0.08,
+          rootMargin:
+            "0px 0px -40px 0px",
+        }
+      );
+
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
+  }
+
+  initializeNatsumePhoto();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeNatsumePhoto
+  );
+</script>
