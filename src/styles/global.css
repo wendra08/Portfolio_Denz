@@ -1019,3 +1019,80 @@ video {
   box-shadow:
     0 0 0 8px rgba(183, 155, 98, 0.08);
 }
+
+/* =========================================
+   TESTIMONIAL REVEAL
+========================================= */
+
+.testimonial-reveal {
+  opacity: 0;
+
+  transform: translateY(40px);
+
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.testimonial-reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* =========================================
+   TESTIMONIAL FILTER
+========================================= */
+
+.testimonial-filter {
+  color: rgba(17, 17, 15, 0.5);
+}
+
+.testimonial-filter:hover {
+  border-color: #b79b62;
+
+  color: #11110f;
+}
+
+.testimonial-filter[data-active="true"] {
+  border-color: #11110f;
+
+  background: #11110f;
+
+  color: #f4f0e7;
+}
+
+/* =========================================
+   TESTIMONIAL CARD
+========================================= */
+
+.testimonial-card {
+  opacity: 1;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.4s ease;
+}
+
+.testimonial-card:hover {
+  background: #e8e1d5;
+
+  transform: translateY(-4px);
+}
+
+.testimonial-card[hidden] {
+  display: none;
+}
+
+/* =========================================
+   MOBILE FILTER SCROLLBAR
+========================================= */
+
+#testimonials [aria-label="Filter testimonial"] {
+  scrollbar-width: none;
+}
+
+#testimonials [aria-label="Filter testimonial"]::-webkit-scrollbar {
+  display: none;
+}

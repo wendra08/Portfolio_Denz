@@ -1,0 +1,398 @@
+---
+const testimonials = [
+  {
+    id: 1,
+    category: "wedding",
+    categoryLabel: "Wedding MC",
+    quote:
+      "Masukkan testimonial asli dari pasangan yang menggunakan jasa Wedding MC Kang Denz.",
+    name: "Nama Pasangan",
+    detail: "Wedding Reception",
+    video: "",
+  },
+  {
+    id: 2,
+    category: "nata",
+    categoryLabel: "Nata Manten",
+    quote:
+      "Masukkan testimonial asli dari pasangan yang menggunakan layanan Nata Manten.",
+    name: "Nama Pasangan",
+    detail: "Wedding Planning",
+    video: "",
+  },
+  {
+    id: 3,
+    category: "natsume",
+    categoryLabel: "Natsume Photo",
+    quote:
+      "Masukkan testimonial asli dari client photography Natsume Photo Studio.",
+    name: "Nama Client",
+    detail: "Photography",
+    video: "",
+  },
+  {
+    id: 4,
+    category: "class",
+    categoryLabel: "MC Class",
+    quote:
+      "Masukkan testimonial asli dari peserta Private MC Mentoring Kang Denz.",
+    name: "Nama Peserta",
+    detail: "Private MC Mentoring",
+    video: "",
+  },
+];
+
+const filters = [
+  {
+    value: "all",
+    label: "All",
+  },
+  {
+    value: "wedding",
+    label: "Wedding MC",
+  },
+  {
+    value: "nata",
+    label: "Nata Manten",
+  },
+  {
+    value: "natsume",
+    label: "Natsume Photo",
+  },
+  {
+    value: "class",
+    label: "MC Class",
+  },
+];
+---
+
+<section
+  id="testimonials"
+  class="relative overflow-hidden bg-ivory text-charcoal"
+>
+  <div
+    class="container-luxury py-20 md:py-28 lg:py-32"
+  >
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <div
+      class="testimonial-reveal border-b border-charcoal/10 pb-12 md:pb-16"
+    >
+      <div class="flex items-center gap-4">
+        <span class="h-px w-10 bg-gold"></span>
+
+        <p class="gold-label">
+          Testimonials
+        </p>
+      </div>
+
+      <div
+        class="mt-8 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-20"
+      >
+        <div>
+          <h2
+            class="max-w-5xl font-serif text-[clamp(3.8rem,7vw,7.5rem)] leading-[0.84] tracking-[-0.05em]"
+          >
+            What&nbsp;<span class="text-gold">they say.</span>
+          </h2>
+        </div>
+
+        <div>
+          <p
+            class="max-w-md text-sm leading-7 text-charcoal/55 md:text-base md:leading-8"
+          >
+            Setiap acara memiliki cerita yang berbeda.
+            Beberapa di antaranya meninggalkan kata-kata
+            yang menjadi bagian dari perjalanan Kang Denz.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================
+         FILTER
+    ====================================== -->
+
+    <div
+      class="testimonial-reveal mt-10 flex gap-3 overflow-x-auto pb-3"
+      aria-label="Filter testimonial"
+    >
+      {
+        filters.map((filter, index) => (
+          <button
+            type="button"
+            class="testimonial-filter shrink-0 rounded-full border border-charcoal/15 px-5 py-3 text-[8px] font-bold tracking-[0.18em] uppercase transition-all duration-300"
+            data-filter={filter.value}
+            data-active={index === 0 ? "true" : "false"}
+          >
+            {filter.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- =====================================
+         TESTIMONIAL CARDS
+    ====================================== -->
+
+    <div
+      id="testimonial-grid"
+      class="mt-12 grid gap-5 md:grid-cols-2"
+    >
+      {
+        testimonials.map((testimonial, index) => (
+          <article
+            class:list={[
+              "testimonial-card testimonial-reveal group relative overflow-hidden border border-charcoal/10 bg-[#eee9df] p-7 md:p-9 lg:p-10",
+              index === 0 && "md:col-span-2"
+            ]}
+            data-category={testimonial.category}
+          >
+            <div
+              class:list={[
+                testimonial.video
+                  ? "grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
+                  : ""
+              ]}
+            >
+              <!-- OPTIONAL VIDEO -->
+
+              {
+                testimonial.video && (
+                  <div
+                    class="relative aspect-[9/16] max-h-[600px] overflow-hidden bg-charcoal"
+                  >
+                    <video
+                      src={testimonial.video}
+                      controls
+                      playsinline
+                      preload="metadata"
+                      class="h-full w-full object-cover"
+                    />
+                  </div>
+                )
+              }
+
+              <!-- TESTIMONIAL CONTENT -->
+
+              <div
+                class="flex h-full min-h-[330px] flex-col justify-between"
+              >
+                <div>
+                  <div
+                    class="flex items-start justify-between gap-6"
+                  >
+                    <p
+                      class="text-[8px] font-semibold tracking-[0.22em] text-gold uppercase"
+                    >
+                      {testimonial.categoryLabel}
+                    </p>
+
+                    <p
+                      class="font-serif text-5xl leading-none text-gold/25 md:text-6xl"
+                      aria-hidden="true"
+                    >
+                      “
+                    </p>
+                  </div>
+
+                  <blockquote
+                    class="mt-8 max-w-4xl font-serif text-[clamp(2rem,3.3vw,3.7rem)] leading-[1.02] tracking-[-0.035em]"
+                  >
+                    {testimonial.quote}
+                  </blockquote>
+                </div>
+
+                <div
+                  class="mt-12 flex items-end justify-between gap-6 border-t border-charcoal/10 pt-6"
+                >
+                  <div>
+                    <p
+                      class="font-serif text-xl md:text-2xl"
+                    >
+                      {testimonial.name}
+                    </p>
+
+                    <p
+                      class="mt-1 text-[8px] font-semibold tracking-[0.18em] text-charcoal/35 uppercase"
+                    >
+                      {testimonial.detail}
+                    </p>
+                  </div>
+
+                  <p
+                    class="text-[8px] font-semibold tracking-[0.18em] text-charcoal/20"
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- =====================================
+         VIDEO TESTIMONIAL NOTE
+    ====================================== -->
+
+    <div
+      class="testimonial-reveal mt-16 grid gap-8 border-t border-charcoal/10 pt-10 md:grid-cols-[0.6fr_1.4fr] md:items-start"
+    >
+      <p
+        class="text-[8px] font-semibold tracking-[0.22em] text-gold uppercase"
+      >
+        Real Stories
+      </p>
+
+      <p
+        class="max-w-3xl font-serif text-[clamp(2.2rem,4vw,4.5rem)] leading-[0.96] tracking-[-0.035em]"
+      >
+        The best stories are told&nbsp;<span class="text-gold">
+          by the people who lived them.
+        </span>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initializeTestimonials() {
+    const section =
+      document.querySelector<HTMLElement>(
+        "#testimonials"
+      );
+
+    if (!section) {
+      return;
+    }
+
+    if (section.dataset.initialized === "true") {
+      return;
+    }
+
+    section.dataset.initialized = "true";
+
+    const revealElements =
+      section.querySelectorAll<HTMLElement>(
+        ".testimonial-reveal"
+      );
+
+    if ("IntersectionObserver" in window) {
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              if (
+                entry.target instanceof HTMLElement
+              ) {
+                entry.target.classList.add(
+                  "is-visible"
+                );
+              }
+
+              observer.unobserve(
+                entry.target
+              );
+            });
+          },
+          {
+            threshold: 0.08,
+            rootMargin:
+              "0px 0px -40px 0px",
+          }
+        );
+
+      revealElements.forEach(
+        (element) => {
+          observer.observe(element);
+        }
+      );
+    } else {
+      revealElements.forEach(
+        (element) => {
+          element.classList.add(
+            "is-visible"
+          );
+        }
+      );
+    }
+
+    const filterButtons =
+      section.querySelectorAll<HTMLButtonElement>(
+        ".testimonial-filter"
+      );
+
+    const cards =
+      section.querySelectorAll<HTMLElement>(
+        ".testimonial-card"
+      );
+
+    filterButtons.forEach((button) => {
+      button.addEventListener(
+        "click",
+        () => {
+          const selected =
+            button.dataset.filter ?? "all";
+
+          filterButtons.forEach(
+            (filterButton) => {
+              filterButton.dataset.active =
+                filterButton === button
+                  ? "true"
+                  : "false";
+            }
+          );
+
+          cards.forEach((card) => {
+            const category =
+              card.dataset.category;
+
+            const shouldShow =
+              selected === "all" ||
+              category === selected;
+
+            if (shouldShow) {
+              card.hidden = false;
+
+              requestAnimationFrame(
+                () => {
+                  card.classList.add(
+                    "testimonial-visible"
+                  );
+                }
+              );
+            } else {
+              card.classList.remove(
+                "testimonial-visible"
+              );
+
+              card.hidden = true;
+            }
+          });
+        }
+      );
+    });
+
+    cards.forEach((card) => {
+      card.classList.add(
+        "testimonial-visible"
+      );
+    });
+  }
+
+  initializeTestimonials();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeTestimonials
+  );
+</script>
