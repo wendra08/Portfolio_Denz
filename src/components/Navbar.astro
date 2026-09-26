@@ -2,27 +2,27 @@
 const navItems = [
   {
     label: "About",
-    href: "#about",
+    href: "/#about",
   },
   {
     label: "Wedding MC",
-    href: "#wedding-mc",
+    href: "/#wedding-mc",
   },
   {
     label: "Portfolio",
-    href: "#portfolio",
+    href: "/#portfolio",
   },
   {
     label: "Nata Manten",
-    href: "#nata-manten",
+    href: "/#nata-manten",
   },
   {
     label: "Natsume",
-    href: "#natsume",
+    href: "/#natsume",
   },
   {
     label: "MC Class",
-    href: "#mc-class",
+    href: "/#mc-class",
   },
 ];
 ---
@@ -45,7 +45,7 @@ const navItems = [
     ==================================== -->
 
     <a
-      href="#home"
+      href="/"
       class="flex flex-col"
       aria-label="Kang Denz Home"
     >
@@ -74,7 +74,7 @@ const navItems = [
         navItems.map((item) => (
           <a
             href={item.href}
-            class="nav-link text-[9px] font-semibold tracking-[0.16em] text-white/70 uppercase transition-colors duration-300 hover:text-gold"
+            class="nav-link text-[9px] font-semibold tracking-[0.16em] text-ivory/80 uppercase transition-colors duration-300 hover:text-gold"
           >
             {item.label}
           </a>

@@ -1,0 +1,305 @@
+---
+import { getCollection } from "astro:content";
+
+const allPosts =
+  await getCollection("journal");
+
+const posts = allPosts
+  .filter((post) => !post.data.draft)
+  .sort(
+    (a, b) =>
+      b.data.publishedAt.getTime() -
+      a.data.publishedAt.getTime()
+  )
+  .slice(0, 3);
+
+const formatter =
+  new Intl.DateTimeFormat("id-ID", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+---
+
+<section
+  id="journal"
+  class="relative overflow-hidden bg-ivory text-charcoal"
+>
+  <div
+    class="container-luxury py-20 md:py-28 lg:py-32"
+  >
+    <!-- HEADER -->
+
+    <div
+      class="journal-reveal border-b border-charcoal/10 pb-14 md:pb-20"
+    >
+      <div
+        class="flex items-center gap-4"
+      >
+        <span
+          class="h-px w-10 bg-gold"
+        ></span>
+
+        <p class="gold-label">
+          Journal
+        </p>
+      </div>
+
+      <div
+        class="mt-8 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-20"
+      >
+        <div>
+          <h2
+            class="max-w-5xl font-serif text-[clamp(3.8rem,7vw,7.5rem)] leading-[0.84] tracking-[-0.05em]"
+          >
+            Stories.
+
+            <span class="text-gold">
+              Experience.
+            </span>
+
+            <span class="block">
+              Perspective.
+            </span>
+          </h2>
+        </div>
+
+        <div>
+          <p
+            class="max-w-md text-sm leading-7 text-charcoal/55 md:text-base md:leading-8"
+          >
+            Cerita dari wedding, pengalaman
+            sebagai MC, behind the scenes,
+            hingga insight untuk pasangan dan
+            calon MC.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTICLES -->
+
+    <div
+      class="mt-12 grid gap-10 md:grid-cols-3 md:gap-6 lg:gap-8"
+    >
+      {
+        posts.map((post, index) => (
+          <article
+            class="journal-card journal-reveal group"
+          >
+            <a
+              href={`/journal/${post.id}`}
+              class="block"
+            >
+              <!-- IMAGE -->
+
+              <div
+                class:list={[
+                  "relative overflow-hidden bg-charcoal",
+                  index === 0
+                    ? "aspect-[4/5]"
+                    : "aspect-[4/5]"
+                ]}
+              >
+                <img
+                  src={post.data.cover}
+                  alt={post.data.title}
+                  class="journal-image h-full w-full object-cover"
+                  loading="lazy"
+                />
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/5"
+                  aria-hidden="true"
+                ></div>
+
+                <div
+                  class="absolute top-5 left-5"
+                >
+                  <p
+                    class="text-[7px] font-bold tracking-[0.2em] text-white/65 uppercase"
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                </div>
+
+                <div
+                  class="absolute right-5 bottom-5 left-5"
+                >
+                  <p
+                    class="text-[7px] font-bold tracking-[0.2em] text-gold uppercase"
+                  >
+                    {post.data.category}
+                  </p>
+                </div>
+              </div>
+
+              <!-- CONTENT -->
+
+              <div
+                class="border-b border-charcoal/10 py-6"
+              >
+                <div
+                  class="flex items-center gap-3 text-[7px] font-semibold tracking-[0.14em] text-charcoal/35 uppercase"
+                >
+                  <span>
+                    {formatter.format(
+                      post.data.publishedAt
+                    )}
+                  </span>
+
+                  {
+                    post.data.readTime && (
+                      <>
+                        <span>•</span>
+
+                        <span>
+                          {post.data.readTime}
+                        </span>
+                      </>
+                    )
+                  }
+                </div>
+
+                <h3
+                  class="mt-4 font-serif text-[clamp(2rem,2.6vw,3.2rem)] leading-[0.98] tracking-[-0.035em] transition-colors duration-300 group-hover:text-gold"
+                >
+                  {post.data.title}
+                </h3>
+
+                <p
+                  class="mt-5 text-sm leading-7 text-charcoal/50"
+                >
+                  {post.data.excerpt}
+                </p>
+
+                <div
+                  class="mt-6 flex items-center gap-4"
+                >
+                  <span
+                    class="text-[8px] font-bold tracking-[0.18em] text-charcoal uppercase transition-colors duration-300 group-hover:text-gold"
+                  >
+                    Read Story
+                  </span>
+
+                  <span
+                    class="transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- VIEW ALL -->
+
+    <div
+      class="journal-reveal mt-14 flex justify-start md:justify-end"
+    >
+      <a
+        href="/journal"
+        class="group inline-flex items-center justify-center gap-4 bg-[#11110f] px-8 py-4 text-[9px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:bg-[#b79b62]"
+      >
+        <span
+          style="color: #f4f0e7;"
+          class="group-hover:text-[#11110f]"
+        >
+          Explore Journal
+        </span>
+
+        <span
+          style="color: #f4f0e7;"
+          class="transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#11110f]"
+        >
+          →
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initializeJournal() {
+    const section =
+      document.querySelector<HTMLElement>(
+        "#journal"
+      );
+
+    if (!section) {
+      return;
+    }
+
+    if (
+      section.dataset.initialized ===
+      "true"
+    ) {
+      return;
+    }
+
+    section.dataset.initialized =
+      "true";
+
+    const elements =
+      section.querySelectorAll<HTMLElement>(
+        ".journal-reveal"
+      );
+
+    if (
+      !(
+        "IntersectionObserver" in window
+      )
+    ) {
+      elements.forEach((element) => {
+        element.classList.add(
+          "is-visible"
+        );
+      });
+
+      return;
+    }
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            if (
+              entry.target instanceof
+              HTMLElement
+            ) {
+              entry.target.classList.add(
+                "is-visible"
+              );
+            }
+
+            observer.unobserve(
+              entry.target
+            );
+          });
+        },
+        {
+          threshold: 0.08,
+          rootMargin:
+            "0px 0px -40px 0px",
+        }
+      );
+
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
+  }
+
+  initializeJournal();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeJournal
+  );
+</script>
