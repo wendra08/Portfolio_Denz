@@ -890,3 +890,65 @@ video {
 .natsume-service:hover::after {
   transform: scaleX(1);
 }
+
+/* =========================================
+   MC CLASS REVEAL
+========================================= */
+
+.mcclass-reveal {
+  opacity: 0;
+
+  transform: translateY(40px);
+
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mcclass-reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* =========================================
+   MC CLASS MAIN IMAGE
+========================================= */
+
+.mcclass-main-image {
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .mcclass-main-image {
+  transform: scale(1.03);
+}
+
+/* =========================================
+   MC CLASS ITEM
+========================================= */
+
+.mcclass-item::after {
+  position: absolute;
+
+  right: 0;
+  bottom: -1px;
+  left: 0;
+
+  height: 1px;
+
+  background: #b79b62;
+
+  content: "";
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mcclass-item:hover::after {
+  transform: scaleX(1);
+}
