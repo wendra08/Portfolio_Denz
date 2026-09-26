@@ -1096,3 +1096,166 @@ video {
 #testimonials [aria-label="Filter testimonial"]::-webkit-scrollbar {
   display: none;
 }
+
+/* =========================================
+   SOCIAL MEDIA
+========================================= */
+
+
+/* =========================================
+   REVEAL
+========================================= */
+
+.social-reveal {
+  opacity: 0;
+
+  transform: translateY(40px);
+
+  transition:
+    opacity 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.social-reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   SOCIAL BRAND
+========================================= */
+
+.social-brand::after {
+  position: absolute;
+
+  right: 0;
+  bottom: -1px;
+  left: 0;
+
+  height: 1px;
+
+  background: #b79b62;
+
+  content: "";
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition:
+    transform 0.7s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.social-brand:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* =========================================
+   ACTIVE SOCIAL LINK
+========================================= */
+
+.social-link-active {
+  position: relative;
+}
+
+.social-link-active::before {
+  position: absolute;
+
+  right: 0;
+  bottom: -1px;
+  left: 0;
+
+  height: 1px;
+
+  background:
+    rgba(183, 155, 98, 0.7);
+
+  content: "";
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition:
+    transform 0.5s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.social-link-active:hover::before {
+  transform: scaleX(1);
+}
+
+
+/* =========================================
+   DISABLED SOCIAL LINKS
+========================================= */
+
+.social-link-disabled {
+  cursor: default;
+
+  user-select: none;
+}
+
+
+/* =========================================
+   SOCIAL ICON
+========================================= */
+
+.social-icon {
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.social-link-active:hover
+.social-icon {
+  transform: scale(1.05);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+  .social-brand {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .social-link-active,
+  .social-link-disabled {
+    min-height: 72px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .social-reveal,
+  .social-brand::after,
+  .social-link-active::before,
+  .social-icon {
+    transition: none;
+  }
+
+  .social-reveal {
+    opacity: 1;
+
+    transform: none;
+  }
+}

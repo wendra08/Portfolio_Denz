@@ -1,0 +1,510 @@
+---
+const kangDenzWhatsapp =
+  "https://wa.me/6281313216466?text=Assalamualaikum%20wr.%20wb.%20Kang%20Denz%2C%20saya%20ingin%20bertanya%20mengenai%20layanan%20Kang%20Denz%20dan%20ingin%20mendapatkan%20informasi%20lebih%20lanjut.%20Terima%20kasih.";
+
+const brands = [
+  {
+    number: "01",
+    name: "Kang Denz",
+    role: "Professional Wedding MC",
+    description:
+      "Follow the journey, behind the scenes, wedding moments, and stories from the stage.",
+
+    socials: [
+      {
+        name: "Instagram",
+        handle: "Instagram Kang Denz",
+        url: "",
+      },
+
+      {
+        name: "TikTok",
+        handle: "TikTok Kang Denz",
+        url: "",
+      },
+
+      {
+        name: "Facebook",
+        handle: "Facebook Kang Denz",
+        url: "",
+      },
+
+      {
+        name: "WhatsApp",
+        handle: "+62 813-1321-6466",
+        url: kangDenzWhatsapp,
+      },
+    ],
+  },
+
+  {
+    number: "02",
+    name: "Nata Manten",
+    role: "Wedding Planner & Coordination",
+    description:
+      "Follow wedding planning, preparation, coordination, and stories behind every celebration.",
+
+    socials: [
+      {
+        name: "Instagram",
+        handle: "Instagram Nata Manten",
+        url: "",
+      },
+
+      {
+        name: "TikTok",
+        handle: "TikTok Nata Manten",
+        url: "",
+      },
+
+      {
+        name: "WhatsApp",
+        handle: "Contact coming soon",
+        url: "",
+      },
+    ],
+  },
+
+  {
+    number: "03",
+    name: "Natsume Photo Studio",
+    role: "Photography · Studio · Wedding",
+    description:
+      "Discover wedding stories, portraits, studio sessions, and moments captured through Natsume.",
+
+    socials: [
+      {
+        name: "Instagram",
+        handle: "Instagram Natsume Photo",
+        url: "",
+      },
+
+      {
+        name: "TikTok",
+        handle: "TikTok Natsume Photo",
+        url: "",
+      },
+
+      {
+        name: "Facebook",
+        handle: "Facebook Natsume Photo",
+        url: "",
+      },
+
+      {
+        name: "WhatsApp",
+        handle: "Contact coming soon",
+        url: "",
+      },
+    ],
+  },
+];
+
+function getSocialCode(name: string) {
+  switch (name) {
+    case "Instagram":
+      return "IG";
+
+    case "TikTok":
+      return "TT";
+
+    case "Facebook":
+      return "FB";
+
+    case "WhatsApp":
+      return "WA";
+
+    default:
+      return "↗";
+  }
+}
+---
+
+<section
+  id="social"
+  class="relative overflow-hidden bg-charcoal text-ivory"
+>
+  <!-- =====================================
+       DECORATIVE BACKGROUND
+  ====================================== -->
+
+  <div
+    class="pointer-events-none absolute -top-52 right-[-200px] h-[650px] w-[650px] rounded-full bg-gold/[0.04] blur-[170px]"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="pointer-events-none absolute -bottom-72 left-[-250px] h-[700px] w-[700px] rounded-full bg-gold/[0.025] blur-[190px]"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="container-luxury py-20 md:py-28 lg:py-32"
+  >
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <div
+      class="social-reveal border-b border-white/10 pb-14 md:pb-20"
+    >
+      <div
+        class="flex items-center gap-4"
+      >
+        <span
+          class="h-px w-10 bg-gold"
+        ></span>
+
+        <p class="gold-label">
+          Social Media
+        </p>
+      </div>
+
+      <div
+        class="mt-8 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-20"
+      >
+        <!-- HEADLINE -->
+
+        <div>
+          <h2
+            class="max-w-5xl font-serif text-[clamp(3.8rem,7vw,7.5rem)] leading-[0.84] tracking-[-0.05em]"
+          >
+            Follow&nbsp;<span class="text-gold">the journey.</span>
+          </h2>
+        </div>
+
+        <!-- DESCRIPTION -->
+
+        <div>
+          <p
+            class="max-w-md text-sm leading-7 text-white/45 md:text-base md:leading-8"
+          >
+            Stories don't only happen on the stage.
+            Follow the journey, preparation, moments,
+            and work behind every celebration.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================
+         BRAND LIST
+    ====================================== -->
+
+    <div
+      class="mt-10"
+    >
+      {
+        brands.map((brand) => (
+          <article
+            class="social-brand social-reveal group relative border-b border-white/10 py-10 md:py-12 lg:py-14"
+          >
+            <div
+              class="grid gap-10 lg:grid-cols-[80px_0.75fr_1.25fr] lg:gap-12"
+            >
+              <!-- =====================================
+                   NUMBER
+              ====================================== -->
+
+              <div>
+                <p
+                  class="font-serif text-xl text-white/25 transition-colors duration-300 group-hover:text-gold md:text-2xl"
+                >
+                  {brand.number}
+                </p>
+              </div>
+
+              <!-- =====================================
+                   BRAND INFO
+              ====================================== -->
+
+              <div>
+                <p
+                  class="text-[8px] font-semibold tracking-[0.22em] text-gold uppercase"
+                >
+                  {brand.role}
+                </p>
+
+                <h3
+                  class="mt-3 max-w-md font-serif text-[clamp(2.6rem,4vw,4.8rem)] leading-[0.92] tracking-[-0.04em]"
+                >
+                  {brand.name}
+                </h3>
+
+                <p
+                  class="mt-6 max-w-sm text-sm leading-7 text-white/40"
+                >
+                  {brand.description}
+                </p>
+              </div>
+
+              <!-- =====================================
+                   SOCIAL LINKS
+              ====================================== -->
+
+              <div
+                class="lg:border-l lg:border-white/10 lg:pl-10 xl:pl-14"
+              >
+                {
+                  brand.socials.map((social) =>
+                    social.url ? (
+                      <a
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-link social-link-active group/link flex items-center justify-between gap-6 border-b border-white/10 py-5 first:pt-0 last:border-b-0 lg:py-6"
+                        aria-label={`${social.name} ${brand.name}`}
+                      >
+                        <div class="flex min-w-0 items-center gap-5">
+                          <span
+                            class="social-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 text-[9px] font-bold tracking-[0.06em] text-white/55 transition-all duration-300 group-hover/link:border-gold group-hover/link:bg-gold group-hover/link:text-charcoal"
+                          >
+                            {getSocialCode(social.name)}
+                          </span>
+
+                          <div class="min-w-0">
+                            <p
+                              class="font-serif text-xl transition-colors duration-300 group-hover/link:text-gold md:text-2xl"
+                            >
+                              {social.name}
+                            </p>
+
+                            <p
+                              class="mt-1 truncate text-[8px] tracking-[0.14em] text-white/30"
+                            >
+                              {social.handle}
+                            </p>
+                          </div>
+                        </div>
+
+                        <span
+                          class="shrink-0 text-xl text-white/25 transition-all duration-300 group-hover/link:translate-x-1 group-hover/link:text-gold"
+                          aria-hidden="true"
+                        >
+                          ↗
+                        </span>
+                      </a>
+                    ) : (
+                      <div
+                        class="social-link-disabled flex items-center justify-between gap-6 border-b border-white/10 py-5 first:pt-0 last:border-b-0 lg:py-6"
+                        aria-disabled="true"
+                      >
+                        <div class="flex min-w-0 items-center gap-5">
+                          <span
+                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-[9px] font-bold tracking-[0.06em] text-white/25"
+                          >
+                            {getSocialCode(social.name)}
+                          </span>
+
+                          <div class="min-w-0">
+                            <p
+                              class="font-serif text-xl text-white/45 md:text-2xl"
+                            >
+                              {social.name}
+                            </p>
+
+                            <p
+                              class="mt-1 truncate text-[8px] tracking-[0.14em] text-white/20"
+                            >
+                              {social.handle}
+                            </p>
+                          </div>
+                        </div>
+
+                        <span
+                          class="shrink-0 text-[7px] font-semibold tracking-[0.18em] text-white/20 uppercase"
+                        >
+                          Soon
+                        </span>
+                      </div>
+                    )
+                  )
+                }
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- =====================================
+         WHATSAPP QUICK CTA
+    ====================================== -->
+
+    <div
+      class="social-reveal mt-16 grid gap-10 border-t border-white/10 pt-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-20"
+    >
+      <!-- COPY -->
+
+      <div>
+        <p
+          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        >
+          Let's Talk
+        </p>
+
+        <p
+          class="mt-5 max-w-4xl font-serif text-[clamp(2.8rem,5vw,5.5rem)] leading-[0.94] tracking-[-0.04em]"
+        >
+          Have a wedding&nbsp;<span class="text-gold">in mind?</span>
+        </p>
+      </div>
+
+      <!-- CTA -->
+
+      <div>
+        <p
+          class="max-w-md text-sm leading-7 text-white/45 md:text-base"
+        >
+          Ceritakan rencana acara, tanggal, lokasi,
+          dan kebutuhanmu. Hubungi Kang Denz langsung
+          melalui WhatsApp.
+        </p>
+
+        <a
+          href={kangDenzWhatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group mt-8 inline-flex items-center justify-center gap-4 bg-gold px-8 py-4 text-[9px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:bg-gold-light"
+          aria-label="Chat Kang Denz melalui WhatsApp"
+        >
+          <span
+            style="color: #11110f;"
+          >
+            Chat Kang Denz
+          </span>
+
+          <span
+            style="color: #11110f;"
+            class="transition-transform duration-300 group-hover:translate-x-1"
+          >
+            →
+          </span>
+        </a>
+
+        <p
+          class="mt-4 text-[8px] tracking-[0.15em] text-white/25"
+        >
+          +62 813-1321-6466
+        </p>
+      </div>
+    </div>
+
+    <!-- =====================================
+         CLOSING
+    ====================================== -->
+
+    <div
+      class="social-reveal mt-20 grid gap-8 border-t border-white/10 pt-12 lg:grid-cols-[0.55fr_1.45fr] lg:items-end"
+    >
+      <div>
+        <p
+          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        >
+          Stay Connected
+        </p>
+      </div>
+
+      <div>
+        <p
+          class="max-w-4xl font-serif text-[clamp(2.7rem,5vw,5.5rem)] leading-[0.94] tracking-[-0.04em]"
+        >
+          The event may end.&nbsp;<span class="text-gold">The story continues.</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initializeSocialMedia() {
+    const section =
+      document.querySelector<HTMLElement>(
+        "#social"
+      );
+
+    if (!section) {
+      return;
+    }
+
+    if (
+      section.dataset.initialized ===
+      "true"
+    ) {
+      return;
+    }
+
+    section.dataset.initialized =
+      "true";
+
+    const revealElements =
+      section.querySelectorAll<HTMLElement>(
+        ".social-reveal"
+      );
+
+    if (
+      "IntersectionObserver" in
+      window
+    ) {
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach(
+              (entry) => {
+                if (
+                  !entry.isIntersecting
+                ) {
+                  return;
+                }
+
+                if (
+                  entry.target instanceof
+                  HTMLElement
+                ) {
+                  entry.target.classList.add(
+                    "is-visible"
+                  );
+                }
+
+                observer.unobserve(
+                  entry.target
+                );
+              }
+            );
+          },
+          {
+            threshold: 0.08,
+
+            rootMargin:
+              "0px 0px -40px 0px",
+          }
+        );
+
+      revealElements.forEach(
+        (element) => {
+          observer.observe(
+            element
+          );
+        }
+      );
+
+      return;
+    }
+
+    revealElements.forEach(
+      (element) => {
+        element.classList.add(
+          "is-visible"
+        );
+      }
+    );
+  }
+
+  initializeSocialMedia();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeSocialMedia
+  );
+</script>
