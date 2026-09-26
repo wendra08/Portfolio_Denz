@@ -1,0 +1,266 @@
+---
+const journey = [
+  {
+    year: "2017",
+    title: "Started MC Journey",
+    subtitle: "The Beginning",
+    description:
+      "Memulai perjalanan sebagai MC dan membangun pengalaman melalui berbagai jenis acara.",
+  },
+  {
+    year: "2017+",
+    title: "Wedding MC",
+    subtitle: "Growing Through Experience",
+    description:
+      "Fokus berkembang pada lamaran, akad, resepsi, dan berbagai kebutuhan wedding.",
+  },
+  {
+    year: "Next Chapter",
+    title: "Nata Manten",
+    subtitle: "Wedding Planning",
+    description:
+      "Pengalaman di dunia wedding berkembang dari atas panggung menuju perencanaan dan koordinasi acara.",
+  },
+  {
+    year: "Growing",
+    title: "Natsume Photo Studio",
+    subtitle: "Photography Management",
+    description:
+      "Memperluas pemahaman wedding melalui sisi photography, dokumentasi, studio, dan pengelolaan layanan.",
+  },
+  {
+    year: "Sharing",
+    title: "Kang Denz MC Class",
+    subtitle: "Experience Into Knowledge",
+    description:
+      "Membagikan pengalaman lapangan melalui private mentoring untuk calon MC.",
+  },
+  {
+    year: "Today",
+    title: "A Complete Wedding Ecosystem",
+    subtitle: "Building The Journey",
+    description:
+      "Menghubungkan MC, wedding planning, photography, dan mentoring dalam satu perjalanan profesional.",
+  },
+];
+---
+
+<section
+  id="journey"
+  class="relative overflow-hidden bg-charcoal text-ivory"
+>
+  <!-- DECORATIVE GLOW -->
+
+  <div
+    class="pointer-events-none absolute top-1/2 right-0 h-[700px] w-[700px] translate-x-1/3 -translate-y-1/2 rounded-full bg-gold/[0.035] blur-[170px]"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="container-luxury py-20 md:py-28 lg:py-32"
+  >
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <div
+      class="journey-reveal border-b border-white/10 pb-14 md:pb-20"
+    >
+      <div class="flex items-center gap-4">
+        <span class="h-px w-10 bg-gold"></span>
+
+        <p class="gold-label">
+          Professional Journey
+        </p>
+      </div>
+
+      <div
+        class="mt-8 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-20"
+      >
+        <div>
+          <h2
+            class="max-w-5xl font-serif text-[clamp(3.5rem,7vw,7rem)] leading-[0.86] tracking-[-0.05em]"
+          >
+            One journey.&nbsp;<span class="text-gold">Many perspectives.</span>
+          </h2>
+        </div>
+
+        <div>
+          <p
+            class="max-w-md text-sm leading-7 text-white/45 md:text-base md:leading-8"
+          >
+            Perjalanan profesional Kang Denz berkembang
+            dari seorang MC menjadi seseorang yang memahami
+            wedding melalui berbagai sisi yang saling terhubung.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================
+         TIMELINE
+    ====================================== -->
+
+    <div
+      class="relative mt-16 md:mt-20"
+    >
+      <!-- MAIN LINE -->
+
+      <div
+        class="journey-line absolute top-0 bottom-0 left-[7px] w-px bg-white/10 md:left-[118px]"
+        aria-hidden="true"
+      ></div>
+
+      <div class="space-y-0">
+        {
+          journey.map((item, index) => (
+            <article
+              class="journey-item journey-reveal group relative grid gap-5 border-b border-white/10 py-10 pl-10 md:grid-cols-[90px_40px_0.8fr_1.2fr] md:items-start md:gap-6 md:pl-0 md:py-12"
+            >
+              <!-- YEAR -->
+
+              <div>
+                <p
+                  class:list={[
+                    "font-serif text-xl transition-colors duration-300 md:text-2xl",
+                    index === journey.length - 1
+                      ? "text-gold"
+                      : "text-white/45"
+                  ]}
+                >
+                  {item.year}
+                </p>
+              </div>
+
+              <!-- DOT -->
+
+              <div
+                class="absolute left-0 top-12 md:static md:flex md:justify-center"
+              >
+                <span
+                  class:list={[
+                    "journey-dot relative z-10 block h-[15px] w-[15px] rounded-full border transition-all duration-500",
+                    index === journey.length - 1
+                      ? "border-gold bg-gold"
+                      : "border-white/30 bg-charcoal group-hover:border-gold group-hover:bg-gold"
+                  ]}
+                ></span>
+              </div>
+
+              <!-- TITLE -->
+
+              <div>
+                <p
+                  class="text-[8px] font-semibold tracking-[0.22em] text-gold uppercase"
+                >
+                  {item.subtitle}
+                </p>
+
+                <h3
+                  class="mt-3 font-serif text-[clamp(2.2rem,3.5vw,4rem)] leading-[0.95] tracking-[-0.035em] transition-colors duration-300 group-hover:text-gold"
+                >
+                  {item.title}
+                </h3>
+              </div>
+
+              <!-- DESCRIPTION -->
+
+              <div>
+                <p
+                  class="max-w-xl text-sm leading-7 text-white/45 md:text-base md:leading-8"
+                >
+                  {item.description}
+                </p>
+
+                <p
+                  class="mt-5 text-[8px] font-semibold tracking-[0.2em] text-white/20 uppercase transition-colors duration-300 group-hover:text-gold"
+                >
+                  {String(index + 1).padStart(2, "0")}
+                  / {String(journey.length).padStart(2, "0")}
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- =====================================
+         TODAY
+    ====================================== -->
+
+    <div
+      class="journey-reveal mt-16 grid gap-10 border-t border-white/10 pt-12 md:mt-20 lg:grid-cols-[0.65fr_1.35fr] lg:items-end lg:gap-20"
+    >
+      <div>
+        <p
+          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        >
+          Today
+        </p>
+      </div>
+
+      <div>
+        <p
+          class="max-w-5xl font-serif text-[clamp(2.8rem,5vw,5.5rem)] leading-[0.95] tracking-[-0.04em] text-ivory-muted"
+        >
+          Building experience into&nbsp;<span class="text-gold">a complete wedding ecosystem.</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initializeJourney() {
+    const elements =
+      document.querySelectorAll<HTMLElement>(
+        ".journey-reveal"
+      );
+
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) => {
+        element.classList.add("is-visible");
+      });
+
+      return;
+    }
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            if (
+              entry.target instanceof HTMLElement
+            ) {
+              entry.target.classList.add(
+                "is-visible"
+              );
+            }
+
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.08,
+          rootMargin: "0px 0px -40px 0px",
+        }
+      );
+
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
+  }
+
+  initializeJourney();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeJourney
+  );
+</script>

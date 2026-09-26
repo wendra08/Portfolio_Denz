@@ -952,3 +952,70 @@ video {
 .mcclass-item:hover::after {
   transform: scaleX(1);
 }
+
+/* =========================================
+   PROFESSIONAL JOURNEY REVEAL
+========================================= */
+
+.journey-reveal {
+  opacity: 0;
+
+  transform: translateY(40px);
+
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.journey-reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* =========================================
+   JOURNEY ITEM
+========================================= */
+
+.journey-item {
+  position: relative;
+}
+
+.journey-item::after {
+  position: absolute;
+
+  right: 0;
+  bottom: -1px;
+  left: 0;
+
+  height: 1px;
+
+  background: #b79b62;
+
+  content: "";
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.journey-item:hover::after {
+  transform: scaleX(1);
+}
+
+/* =========================================
+   JOURNEY DOT
+========================================= */
+
+.journey-dot {
+  box-shadow:
+    0 0 0 0 rgba(183, 155, 98, 0);
+}
+
+.journey-item:hover .journey-dot {
+  box-shadow:
+    0 0 0 8px rgba(183, 155, 98, 0.08);
+}
