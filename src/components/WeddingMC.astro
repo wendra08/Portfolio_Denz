@@ -1,4 +1,5 @@
 ---
+import Photo from "./Photo.astro";
 const services = [
   {
     number: "01",
@@ -71,7 +72,7 @@ const services = [
 
       <div class="wedding-reveal">
         <h2
-          class="max-w-5xl font-serif text-[clamp(3.3rem,7vw,7.5rem)] leading-[0.84] tracking-[-0.05em]"
+          class="max-w-5xl font-serif text-[clamp(2.75rem,7vw,7.5rem)] leading-[0.84] tracking-[-0.05em]"
         >
           Every wedding <span class="block text-gold">has its own story.</span>
         </h2>
@@ -113,8 +114,10 @@ const services = [
       <div
         class="relative aspect-[4/5] overflow-hidden sm:aspect-[16/10] lg:aspect-[16/8]"
       >
-        <img
-          src="/images/wedding-mc-kang-denz.png"
+        <Photo
+          src="/images/wedding-mc-kang-denz.webp"
+          srcset="/images/wedding-mc-kang-denz-800.webp 800w, /images/wedding-mc-kang-denz.webp 1536w"
+          sizes="(max-width: 800px) 100vw, 1400px"
           alt="Kang Denz saat membawakan acara wedding"
           class="h-full w-full object-cover object-center transition-transform duration-[1200ms] hover:scale-[1.025]"
           loading="lazy"
@@ -142,7 +145,7 @@ const services = [
           >
             <div>
               <p
-                class="text-[8px] font-semibold tracking-[0.28em] text-gold uppercase"
+                class="text-[10px] font-semibold tracking-[0.28em] text-gold uppercase"
               >
                 On Stage
               </p>
@@ -157,7 +160,7 @@ const services = [
             </div>
 
             <p
-              class="text-[8px] tracking-[0.24em] text-white/50 uppercase"
+              class="text-[10px] tracking-[0.24em] text-white/50 uppercase"
             >
               Wedding MC · Since 2017
             </p>
@@ -180,7 +183,7 @@ const services = [
       class="wedding-reveal grid gap-8 border-b border-white/10 pb-10 lg:grid-cols-[0.6fr_1.4fr]"
     >
       <p
-        class="text-[9px] font-semibold tracking-[0.25em] text-gold uppercase"
+        class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
       >
         Services
       </p>
@@ -203,7 +206,7 @@ const services = [
             <!-- NUMBER -->
 
             <p
-              class="text-[8px] font-semibold tracking-[0.2em] text-white/30 transition-colors duration-300 group-hover:text-gold"
+              class="text-[10px] font-semibold tracking-[0.2em] text-white/60 transition-colors duration-300 group-hover:text-gold"
             >
               {service.number}
             </p>
@@ -223,7 +226,7 @@ const services = [
                 {
                   service.meta && (
                     <span
-                      class="rounded-full border border-gold/40 px-3 py-1 text-[7px] font-semibold tracking-[0.2em] text-gold uppercase"
+                      class="rounded-full border border-gold/40 px-3 py-1 text-[10px] font-semibold tracking-[0.2em] text-gold uppercase"
                     >
                       {service.meta}
                     </span>
@@ -244,7 +247,7 @@ const services = [
               </p>
 
               <span
-                class="mt-4 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-sm text-white/40 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal md:mt-0"
+                class="mt-4 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-sm text-white/60 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal md:mt-0"
                 aria-hidden="true"
               >
                 ↗
@@ -264,7 +267,7 @@ const services = [
     >
       <div>
         <p
-          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+          class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
         >
           Event — By Request
         </p>
@@ -291,7 +294,7 @@ const services = [
     <div class="max-w-2xl">
 
         <p
-        class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
         >
         Planning Your Wedding?
         </p>
@@ -303,7 +306,7 @@ const services = [
         </p>
 
         <p
-        class="mt-5 max-w-lg text-sm leading-7 text-white/45 md:text-base"
+        class="mt-5 max-w-lg text-sm leading-7 text-white/60 md:text-base"
         >
         Ceritakan konsep, tanggal, dan kebutuhan wedding kamu.
         Setiap acara akan dipelajari terlebih dahulu agar
@@ -312,7 +315,7 @@ const services = [
 
         <a
         href="#booking"
-        class="group mt-8 inline-flex items-center gap-6 bg-gold px-8 py-4 text-[9px] font-bold tracking-[0.2em] text-charcoal uppercase transition-colors duration-300 hover:bg-gold-light"
+        class="group mt-8 inline-flex items-center gap-6 bg-gold px-8 py-4 text-[10px] font-bold tracking-[0.2em] text-charcoal uppercase transition-colors duration-300 hover:bg-gold-light"
         >
         Book Wedding MC <span
             class="transition-transform duration-300 group-hover:translate-x-1"

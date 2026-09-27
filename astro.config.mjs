@@ -4,10 +4,14 @@ import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 import react from '@astrojs/react';
+import { loadEnv } from 'vite';
+
+const siteUrl = process.env.SITE_URL || loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), 'SITE_').SITE_URL;
 
 
 // https://astro.build/config
 export default defineConfig({
+  site: siteUrl || undefined,
   integrations: [react()],
 
   vite: {

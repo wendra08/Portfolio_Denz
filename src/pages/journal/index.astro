@@ -1,6 +1,8 @@
 ---
+import Photo from "../../components/Photo.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
 
 import { getCollection } from "astro:content";
 
@@ -38,7 +40,7 @@ const formatter =
 >
   <Navbar />
 
-  <main
+  <main id="main-content" tabindex="-1"
     class="min-h-screen bg-ivory text-charcoal"
   >
     <!-- HERO -->
@@ -60,7 +62,7 @@ const formatter =
 
           <a
             href="/"
-            class="inline-flex items-center gap-2 text-[8px] font-bold tracking-[0.18em] text-charcoal/60 uppercase transition-colors duration-300 hover:text-gold"
+            class="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.18em] text-charcoal/60 uppercase transition-colors duration-300 hover:text-gold"
           >
             <span aria-hidden="true">←</span>
             Back To Home
@@ -68,13 +70,13 @@ const formatter =
         </div>
 
         <h1
-          class="mt-8 max-w-6xl font-serif text-[clamp(4rem,9vw,9rem)] leading-[0.82] tracking-[-0.055em]"
+          class="mt-8 max-w-6xl font-serif text-[clamp(2.75rem,9vw,9rem)] leading-[0.82] tracking-[-0.055em]"
         >
-          Stories worth&nbsp;<span class="text-gold">sharing.</span>
+          Stories worth{" "}<span class="text-gold">sharing.</span>
         </h1>
 
         <p
-          class="mt-9 max-w-xl text-sm leading-7 text-charcoal/55 md:text-base md:leading-8"
+          class="mt-9 max-w-xl text-sm leading-7 text-charcoal/70 md:text-base md:leading-8"
         >
           Cerita dari wedding, pengalaman
           sebagai MC, behind the scenes,
@@ -98,8 +100,9 @@ const formatter =
               (category, index) => (
                 <button
                   type="button"
-                  class="journal-category shrink-0 rounded-full border border-charcoal/15 px-5 py-3 text-[8px] font-bold tracking-[0.17em] uppercase transition-all duration-300"
+                  class="journal-category shrink-0 rounded-full border border-charcoal/15 px-5 py-3 text-[10px] font-bold tracking-[0.17em] uppercase transition-all duration-300"
                   data-category={category}
+                  aria-pressed={index === 0}
                   data-active={
                     index === 0
                       ? "true"
@@ -133,7 +136,7 @@ const formatter =
                   <div
                     class="relative aspect-[4/5] overflow-hidden bg-charcoal"
                   >
-                    <img
+                    <Photo
                       src={post.data.cover}
                       alt={post.data.title}
                       class="journal-image h-full w-full object-cover"
@@ -145,7 +148,7 @@ const formatter =
                     ></div>
 
                     <p
-                      class="absolute bottom-5 left-5 text-[7px] font-bold tracking-[0.2em] text-gold uppercase"
+                      class="absolute bottom-5 left-5 text-[10px] font-bold tracking-[0.2em] text-gold uppercase"
                     >
                       {post.data.category}
                     </p>
@@ -155,7 +158,7 @@ const formatter =
                     class="border-b border-charcoal/10 py-6"
                   >
                     <p
-                      class="text-[7px] font-semibold tracking-[0.15em] text-charcoal/35 uppercase"
+                      class="text-[10px] font-semibold tracking-[0.15em] text-charcoal/70 uppercase"
                     >
                       {
                         formatter.format(
@@ -172,7 +175,7 @@ const formatter =
                     </h2>
 
                     <p
-                      class="mt-5 text-sm leading-7 text-charcoal/50"
+                      class="mt-5 text-sm leading-7 text-charcoal/70"
                     >
                       {post.data.excerpt}
                     </p>
@@ -185,6 +188,7 @@ const formatter =
       </div>
     </section>
   </main>
+  <Footer />
 </BaseLayout>
 
 <script>
@@ -209,6 +213,7 @@ const formatter =
 
           buttons.forEach(
             (currentButton) => {
+              currentButton.setAttribute("aria-pressed", String(currentButton === button));
               currentButton.dataset.active =
                 currentButton === button
                   ? "true"

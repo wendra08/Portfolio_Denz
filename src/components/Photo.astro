@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import imageSizes from "../data/image-sizes.json";
+
+interface Props extends HTMLAttributes<"img"> {
+  src: string;
+  alt: string;
+}
+const { src, alt, loading = "lazy", decoding = "async", ...attributes } = Astro.props;
+const size = imageSizes[src as keyof typeof imageSizes];
+---
+<img src={src} alt={alt} {...size} loading={loading} decoding={decoding} {...attributes} />

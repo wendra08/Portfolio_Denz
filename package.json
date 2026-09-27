@@ -9,6 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "assets:prepare": "node scripts/prepare-assets.mjs",
+    "audit:build": "python scripts/audit-build.py",
     "astro": "astro"
   },
   "dependencies": {

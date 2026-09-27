@@ -1,4 +1,5 @@
 ---
+import Photo from "./Photo.astro";
 const moments = [
   {
     number: "01",
@@ -57,7 +58,7 @@ const moments = [
         </div>
 
         <p
-          class="mt-6 max-w-xs text-sm leading-7 text-white/45"
+          class="mt-6 max-w-xs text-sm leading-7 text-white/60"
         >
           Selected moments from wedding ceremonies,
           receptions, entrances, and live interactions.
@@ -66,7 +67,7 @@ const moments = [
 
       <div>
         <h2
-          class="max-w-5xl font-serif text-[clamp(3.5rem,7vw,7.5rem)] leading-[0.85] tracking-[-0.05em]"
+          class="max-w-5xl font-serif text-[clamp(2.75rem,7vw,7.5rem)] leading-[0.85] tracking-[-0.05em]"
         >
           Watch Kang Denz <span class="block text-gold">in action.</span>
         </h2>
@@ -86,7 +87,7 @@ const moments = [
         <div
           class="relative aspect-[4/3] overflow-hidden sm:aspect-[16/10] lg:aspect-[16/7]"
         >
-          <img
+          <Photo
             src="/images/showreel-cover.jpeg"
             alt="Kang Denz Wedding MC showreel"
             class="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.025]"
@@ -120,7 +121,7 @@ const moments = [
             >
               <div>
                 <p
-                  class="text-[8px] font-semibold tracking-[0.28em] text-gold uppercase"
+                  class="text-[10px] font-semibold tracking-[0.28em] text-gold uppercase"
                 >
                   Wedding Stories
                 </p>
@@ -135,7 +136,7 @@ const moments = [
 
               <a
                 href="#selected-moments"
-                class="group inline-flex w-fit items-center gap-4 text-[8px] font-semibold tracking-[0.22em] text-white/60 uppercase transition-colors duration-300 hover:text-gold"
+                class="group inline-flex w-fit items-center gap-4 text-[10px] font-semibold tracking-[0.22em] text-white/60 uppercase transition-colors duration-300 hover:text-gold"
               >
                 Watch Selected Moments <span
                   class="transition-transform duration-300 group-hover:translate-y-1"
@@ -158,7 +159,7 @@ const moments = [
       class="showreel-reveal mt-14 grid gap-8 border-b border-white/10 pb-14 md:mt-20 md:pb-20 lg:grid-cols-[0.45fr_1.55fr]"
     >
       <p
-        class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
       >
         The Philosophy
       </p>
@@ -183,7 +184,7 @@ const moments = [
       >
         <div>
           <p
-            class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+            class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
           >
             Selected Moments
           </p>
@@ -228,7 +229,8 @@ const moments = [
                   class="showreel-preview h-full w-full bg-black object-contain md:object-cover"
                   muted
                   playsinline
-                  preload="metadata"
+                  preload="none"
+                  poster="/images/showreel-cover.jpeg"
                 >
                   <source
                     src={moment.video}
@@ -254,7 +256,7 @@ const moments = [
                   class="absolute top-5 left-5"
                 >
                   <p
-                    class="text-[8px] font-semibold tracking-[0.22em] text-white/55"
+                    class="text-[10px] font-semibold tracking-[0.22em] text-white/55"
                   >
                     {moment.number}
                   </p>
@@ -281,7 +283,7 @@ const moments = [
                     class="border-t border-white/20 pt-4"
                   >
                     <p
-                      class="text-[7px] font-semibold tracking-[0.22em] text-gold uppercase"
+                      class="text-[10px] font-semibold tracking-[0.22em] text-gold uppercase"
                     >
                       {moment.subtitle}
                     </p>
@@ -297,7 +299,7 @@ const moments = [
             </button>
 
             <p
-              class="mt-5 text-sm leading-7 text-white/45"
+              class="mt-5 text-sm leading-7 text-white/60"
             >
               {moment.description}
             </p>
@@ -313,12 +315,13 @@ const moments = [
      VIDEO MODAL
 ====================================== -->
 
-<div
+<dialog
   id="showreel-modal"
   data-open="false"
   class="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 p-4 opacity-0 backdrop-blur-xl md:p-8"
   role="dialog"
   aria-modal="true"
+  aria-labelledby="showreel-modal-title"
   aria-hidden="true"
 >
   <!-- CLOSE -->
@@ -350,7 +353,7 @@ const moments = [
           class="h-full w-full object-contain"
           controls
           playsinline
-          preload="metadata"
+          preload="none"
         ></video>
       </div>
     </div>
@@ -359,7 +362,7 @@ const moments = [
 
     <div class="pb-5 md:pb-0">
       <p
-        class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
       >
         Selected Moment
       </p>
@@ -373,7 +376,7 @@ const moments = [
 
       <p
         id="showreel-modal-subtitle"
-        class="mt-3 text-[9px] font-semibold tracking-[0.22em] text-white/35 uppercase"
+        class="mt-3 text-[10px] font-semibold tracking-[0.22em] text-white/60 uppercase"
       >
         Sacred Moments
       </p>
@@ -391,7 +394,7 @@ const moments = [
       </p>
 
       <p
-        class="mt-6 max-w-md text-sm leading-7 text-white/45"
+        class="mt-6 max-w-md text-sm leading-7 text-white/60"
       >
         Setiap wedding memiliki suasana yang berbeda.
         Pembawaan Kang Denz menyesuaikan momentum,
@@ -399,7 +402,7 @@ const moments = [
       </p>
     </div>
   </div>
-</div>
+</dialog>
 
 <script>
   function setupShowreel() {
@@ -408,7 +411,7 @@ const moments = [
     ========================================= */
 
     const modal =
-      document.querySelector<HTMLElement>(
+      document.querySelector<HTMLDialogElement>(
         "#showreel-modal"
       );
 
@@ -484,6 +487,9 @@ const moments = [
         subtitle;
 
       safeModal.dataset.open = "true";
+      safeModal.showModal();
+      safeCloseButton.focus();
+      cards.forEach((card) => card.querySelector<HTMLVideoElement>("video")?.pause());
 
       safeModal.setAttribute(
         "aria-hidden",
@@ -510,6 +516,7 @@ const moments = [
     ========================================= */
 
     function closeModal() {
+      safeModal.close();
       safeModal.dataset.open = "false";
 
       safeModal.setAttribute(
@@ -547,7 +554,7 @@ const moments = [
       card.addEventListener(
         "mouseenter",
         () => {
-          if (!preview) {
+          if (!preview || !window.matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)").matches) {
             return;
           }
 
@@ -611,6 +618,11 @@ const moments = [
       "click",
       closeModal
     );
+
+    safeModal.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      closeModal();
+    });
 
     /* ========================================
        CLICK OUTSIDE MODAL

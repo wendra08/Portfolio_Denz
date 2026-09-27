@@ -6,11 +6,18 @@
        BACKGROUND IMAGE
   ========================================= -->
 
-  <div
-    class="hero-background absolute inset-0 scale-[1.02] bg-cover"
-    style="background-image: url('/images/hero-kang-denz.png');"
-    aria-hidden="true"
-  ></div>
+  <img
+    class="hero-background absolute inset-0 h-full w-full scale-[1.02] object-cover"
+    src="/images/hero-kang-denz.webp"
+    srcset="/images/hero-kang-denz-800.webp 800w, /images/hero-kang-denz.webp 1672w"
+    sizes="100vw"
+    width="1672"
+    height="941"
+    alt=""
+    fetchpriority="high"
+    loading="eager"
+    decoding="async"
+  />
 
   <!-- MOBILE DARK OVERLAY -->
 
@@ -59,7 +66,7 @@
         ></span>
 
         <p
-          class="text-[8px] font-semibold tracking-[0.28em] text-gold uppercase sm:text-[9px] md:text-xs"
+          class="text-[10px] font-semibold tracking-[0.28em] text-gold uppercase sm:text-[10px] md:text-xs"
         >
           Professional Wedding MC
         </p>
@@ -68,7 +75,7 @@
       <!-- NAME -->
 
       <p
-        class="hero-reveal hero-delay-2 mt-4 text-[8px] tracking-[0.28em] text-ivory-muted uppercase sm:text-[9px] md:mt-8 md:text-xs md:tracking-[0.35em]"
+        class="hero-reveal hero-delay-2 mt-4 text-[10px] tracking-[0.28em] text-ivory-muted uppercase sm:text-[10px] md:mt-8 md:text-xs md:tracking-[0.35em]"
       >
         Muhamad Denny Hidayat, S.Pd
       </p>
@@ -100,7 +107,7 @@
       <!-- SERVICES -->
 
       <div
-        class="hero-reveal hero-delay-5 mt-5 flex max-w-[340px] flex-wrap gap-x-3 gap-y-1 text-[9px] leading-5 tracking-[0.03em] text-ivory-muted sm:max-w-md md:mt-7 md:max-w-2xl md:text-sm"
+        class="hero-reveal hero-delay-5 mt-5 flex max-w-[340px] flex-wrap gap-x-3 gap-y-1 text-[10px] leading-5 tracking-[0.03em] text-ivory-muted sm:max-w-md md:mt-7 md:max-w-2xl md:text-sm"
       >
         <span>Wedding MC</span>
         <span class="text-gold">•</span>
@@ -121,7 +128,7 @@
       >
         <a
           href="#booking"
-          class="group inline-flex min-h-12 items-center justify-center gap-4 bg-gold px-6 py-3 text-[9px] font-bold tracking-[0.19em] text-charcoal uppercase transition-all duration-500 hover:bg-gold-light md:min-h-0 md:px-10 md:py-4 md:text-[10px]"
+          class="group inline-flex min-h-12 items-center justify-center gap-4 bg-gold px-6 py-3 text-[10px] font-bold tracking-[0.19em] text-charcoal uppercase transition-all duration-500 hover:bg-gold-light md:min-h-0 md:px-10 md:py-4 md:text-[10px]"
         >
           Book Kang Denz <span
             class="transition-transform duration-300 group-hover:translate-x-1"
@@ -132,7 +139,7 @@
 
         <a
           href="#portfolio"
-          class="group inline-flex min-h-12 items-center justify-center gap-4 border border-white/20 px-6 py-3 text-[9px] font-semibold tracking-[0.19em] text-ivory uppercase transition-all duration-500 hover:border-gold hover:text-gold md:min-h-0 md:px-10 md:py-4 md:text-[10px]"
+          class="group inline-flex min-h-12 items-center justify-center gap-4 border border-white/20 px-6 py-3 text-[10px] font-semibold tracking-[0.19em] text-ivory uppercase transition-all duration-500 hover:border-gold hover:text-gold md:min-h-0 md:px-10 md:py-4 md:text-[10px]"
         >
           View Portfolio <span
             class="transition-transform duration-300 group-hover:translate-x-1"
@@ -153,7 +160,7 @@
     class="absolute top-1/2 right-8 z-10 hidden -translate-y-1/2 xl:block"
   >
     <p
-      class="vertical-text text-[9px] tracking-[0.35em] text-white/40 uppercase"
+      class="vertical-text text-[10px] tracking-[0.35em] text-white/60 uppercase"
     >
       Wedding MC · Since 2017
     </p>
@@ -169,7 +176,7 @@
     aria-label="Scroll to About section"
   >
     <span
-      class="text-[8px] tracking-[0.35em] text-white/40 uppercase"
+      class="text-[10px] tracking-[0.35em] text-white/60 uppercase"
     >
       Scroll
     </span>
@@ -183,18 +190,18 @@
 
 <style>
   .hero-background {
-    background-position: 67% center;
+    object-position: 67% center;
   }
 
   @media (min-width: 640px) {
     .hero-background {
-      background-position: 65% center;
+      object-position: 65% center;
     }
   }
 
   @media (min-width: 1024px) {
     .hero-background {
-      background-position: center;
+      object-position: center;
     }
   }
 </style>

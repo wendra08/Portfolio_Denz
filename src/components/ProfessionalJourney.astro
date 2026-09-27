@@ -79,15 +79,15 @@ const journey = [
       >
         <div>
           <h2
-            class="max-w-5xl font-serif text-[clamp(3.5rem,7vw,7rem)] leading-[0.86] tracking-[-0.05em]"
+            class="max-w-5xl font-serif text-[clamp(2.75rem,7vw,7rem)] leading-[0.86] tracking-[-0.05em]"
           >
-            One journey.&nbsp;<span class="text-gold">Many perspectives.</span>
+            One journey.{" "}<span class="text-gold">Many perspectives.</span>
           </h2>
         </div>
 
         <div>
           <p
-            class="max-w-md text-sm leading-7 text-white/45 md:text-base md:leading-8"
+            class="max-w-md text-sm leading-7 text-white/60 md:text-base md:leading-8"
           >
             Perjalanan profesional Kang Denz berkembang
             dari seorang MC menjadi seseorang yang memahami
@@ -125,7 +125,7 @@ const journey = [
                     "font-serif text-xl transition-colors duration-300 md:text-2xl",
                     index === journey.length - 1
                       ? "text-gold"
-                      : "text-white/45"
+                      : "text-white/60"
                   ]}
                 >
                   {item.year}
@@ -151,7 +151,7 @@ const journey = [
 
               <div>
                 <p
-                  class="text-[8px] font-semibold tracking-[0.22em] text-gold uppercase"
+                  class="text-[10px] font-semibold tracking-[0.22em] text-gold uppercase"
                 >
                   {item.subtitle}
                 </p>
@@ -167,13 +167,13 @@ const journey = [
 
               <div>
                 <p
-                  class="max-w-xl text-sm leading-7 text-white/45 md:text-base md:leading-8"
+                  class="max-w-xl text-sm leading-7 text-white/60 md:text-base md:leading-8"
                 >
                   {item.description}
                 </p>
 
                 <p
-                  class="mt-5 text-[8px] font-semibold tracking-[0.2em] text-white/20 uppercase transition-colors duration-300 group-hover:text-gold"
+                  class="mt-5 text-[10px] font-semibold tracking-[0.2em] text-white/60 uppercase transition-colors duration-300 group-hover:text-gold"
                 >
                   {String(index + 1).padStart(2, "0")}
                   / {String(journey.length).padStart(2, "0")}
@@ -194,7 +194,7 @@ const journey = [
     >
       <div>
         <p
-          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+          class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
         >
           Today
         </p>
@@ -204,7 +204,7 @@ const journey = [
         <p
           class="max-w-5xl font-serif text-[clamp(2.8rem,5vw,5.5rem)] leading-[0.95] tracking-[-0.04em] text-ivory-muted"
         >
-          Building experience into&nbsp;<span class="text-gold">a complete wedding ecosystem.</span>
+          Building experience into{" "}<span class="text-gold">a complete wedding ecosystem.</span>
         </p>
       </div>
     </div>

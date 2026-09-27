@@ -1,4 +1,5 @@
 ---
+import Photo from "./Photo.astro";
 import { getCollection } from "astro:content";
 
 const allPosts =
@@ -50,14 +51,12 @@ const formatter =
       >
         <div>
           <h2
-            class="max-w-5xl font-serif text-[clamp(3.8rem,7vw,7.5rem)] leading-[0.84] tracking-[-0.05em]"
+            class="max-w-5xl font-serif text-[clamp(2.75rem,7vw,7.5rem)] leading-[0.84] tracking-[-0.05em]"
           >
-            Stories.
-
+            Stories.{" "}
             <span class="text-gold">
               Experience.
-            </span>
-
+            </span>{" "}
             <span class="block">
               Perspective.
             </span>
@@ -66,7 +65,7 @@ const formatter =
 
         <div>
           <p
-            class="max-w-md text-sm leading-7 text-charcoal/55 md:text-base md:leading-8"
+            class="max-w-md text-sm leading-7 text-charcoal/70 md:text-base md:leading-8"
           >
             Cerita dari wedding, pengalaman
             sebagai MC, behind the scenes,
@@ -101,7 +100,7 @@ const formatter =
                     : "aspect-[4/5]"
                 ]}
               >
-                <img
+                <Photo
                   src={post.data.cover}
                   alt={post.data.title}
                   class="journal-image h-full w-full object-cover"
@@ -117,7 +116,7 @@ const formatter =
                   class="absolute top-5 left-5"
                 >
                   <p
-                    class="text-[7px] font-bold tracking-[0.2em] text-white/65 uppercase"
+                    class="text-[10px] font-bold tracking-[0.2em] text-white/65 uppercase"
                   >
                     {String(index + 1).padStart(2, "0")}
                   </p>
@@ -127,7 +126,7 @@ const formatter =
                   class="absolute right-5 bottom-5 left-5"
                 >
                   <p
-                    class="text-[7px] font-bold tracking-[0.2em] text-gold uppercase"
+                    class="text-[10px] font-bold tracking-[0.2em] text-gold uppercase"
                   >
                     {post.data.category}
                   </p>
@@ -140,7 +139,7 @@ const formatter =
                 class="border-b border-charcoal/10 py-6"
               >
                 <div
-                  class="flex items-center gap-3 text-[7px] font-semibold tracking-[0.14em] text-charcoal/35 uppercase"
+                  class="flex items-center gap-3 text-[10px] font-semibold tracking-[0.14em] text-charcoal/70 uppercase"
                 >
                   <span>
                     {formatter.format(
@@ -168,7 +167,7 @@ const formatter =
                 </h3>
 
                 <p
-                  class="mt-5 text-sm leading-7 text-charcoal/50"
+                  class="mt-5 text-sm leading-7 text-charcoal/70"
                 >
                   {post.data.excerpt}
                 </p>
@@ -177,7 +176,7 @@ const formatter =
                   class="mt-6 flex items-center gap-4"
                 >
                   <span
-                    class="text-[8px] font-bold tracking-[0.18em] text-charcoal uppercase transition-colors duration-300 group-hover:text-gold"
+                    class="text-[10px] font-bold tracking-[0.18em] text-charcoal uppercase transition-colors duration-300 group-hover:text-gold"
                   >
                     Read Story
                   </span>
@@ -202,7 +201,7 @@ const formatter =
     >
       <a
         href="/journal"
-        class="group inline-flex items-center justify-center gap-4 bg-[#11110f] px-8 py-4 text-[9px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:bg-[#b79b62]"
+        class="group inline-flex items-center justify-center gap-4 bg-[#11110f] px-8 py-4 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:bg-[#b79b62]"
       >
         <span
           style="color: #f4f0e7;"

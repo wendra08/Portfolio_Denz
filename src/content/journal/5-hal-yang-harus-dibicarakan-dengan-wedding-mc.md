@@ -3,7 +3,7 @@ title: "5 Hal yang Harus Dibicarakan dengan Wedding MC Sebelum Hari H"
 excerpt: "Persiapan yang baik membantu MC memahami konsep acara, karakter pasangan, rundown, dan momen penting yang ingin dibangun."
 category: "Wedding Tips"
 publishedAt: 2026-09-26
-cover: "/images/wedding-mc-kang-denz.png"
+cover: "/images/wedding-mc-kang-denz.webp"
 featured: true
 draft: false
 readTime: "4 Min Read"

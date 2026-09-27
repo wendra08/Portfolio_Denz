@@ -3,7 +3,7 @@ title: "A Wedding Story Beyond The Stage"
 excerpt: "Setiap wedding memiliki cerita yang berbeda. Tidak hanya tentang rundown, tetapi juga tentang keluarga, suasana, dan momen yang tidak selalu bisa direncanakan."
 category: "Wedding Stories"
 publishedAt: 2026-09-23
-cover: "/images/portfolio/wedding-01.png"
+cover: "/images/portfolio/wedding-01.jpeg"
 featured: false
 draft: false
 readTime: "4 Min Read"

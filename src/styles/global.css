@@ -32,6 +32,7 @@
    RESET
 ========================================= */
 
+@layer base {
 *,
 *::before,
 *::after {
@@ -121,6 +122,43 @@ video {
 
   max-width: 100%;
 }
+}
+
+/* Keep anchor destinations below the fixed navigation. */
+html {
+  scroll-padding-top: 7rem;
+}
+
+:focus-visible {
+  outline: 2px solid #b79b62;
+  outline-offset: 5px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.75rem 1rem;
+  background: #f4f0e7;
+  color: #11110f;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.booking-service:has(input:focus-visible) {
+  outline: 2px solid #b79b62;
+  outline-offset: 4px;
+}
+
+/* Allow grid children and long copy to shrink on narrow screens. */
+main .grid > * {
+  min-width: 0;
+}
+
 
 /* =========================================
    SELECTION
@@ -483,6 +521,12 @@ video {
     transition-duration:
       0.01ms !important;
   }
+
+  [class*="-reveal"] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
 }
 
 /* =========================================
@@ -610,6 +654,12 @@ video {
 ========================================= */
 
 #showreel-modal {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  border: 0;
   pointer-events: none;
   visibility: hidden;
 
@@ -1545,7 +1595,7 @@ span {
   font-family:
     var(--font-body);
 
-  font-size: 0.45rem;
+  font-size: 0.6875rem;
 
   font-weight: 700;
 
@@ -1554,7 +1604,7 @@ span {
   text-transform: uppercase;
 
   color:
-    rgba(244, 240, 231, 0.38);
+    rgba(244, 240, 231, 0.65);
 }
 
 
@@ -2002,4 +2052,123 @@ span {
   .contact-primary::before {
     display: none;
   }
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer-heading {
+  font-family:
+    var(--font-body);
+
+  font-size: 0.6875rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+
+  color: #b79b62;
+}
+
+
+/* =========================================
+   FOOTER LINKS
+========================================= */
+
+.footer-link {
+  position: relative;
+
+  display: inline-block;
+
+  font-family:
+    var(--font-body);
+
+  font-size: 0.82rem;
+
+  line-height: 1.5;
+
+  color:
+    rgba(244, 240, 231, 0.65);
+
+  transition:
+    color 0.3s ease;
+}
+
+.footer-link::after {
+  position: absolute;
+
+  right: 0;
+  bottom: -3px;
+  left: 0;
+
+  height: 1px;
+
+  background:
+    #b79b62;
+
+  content: "";
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition:
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-link:hover {
+  color: #f4f0e7;
+}
+
+.footer-link:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.footer-brand {
+  transition:
+    opacity 0.3s ease;
+}
+
+.footer-brand:hover {
+  opacity: 0.85;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+  .footer-link {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .footer-link,
+  .footer-link::after,
+  .footer-brand {
+    transition: none;
+  }
+}
+
+#showreel-modal:not([open]) {
+  display: none;
 }

@@ -33,7 +33,7 @@ const navItems = [
 
 <header
   id="site-header"
-  data-scrolled="false"
+  data-scrolled={Astro.url.pathname === "/" ? "false" : "true"}
   class="fixed top-0 left-0 z-[120] w-full"
 >
   <div
@@ -56,7 +56,7 @@ const navItems = [
       </span>
 
       <span
-        class="mt-1 text-[7px] font-semibold tracking-[0.27em] text-gold uppercase md:text-[8px]"
+        class="mt-1 text-[10px] font-semibold tracking-[0.27em] text-gold uppercase md:text-[10px]"
       >
         Professional Wedding MC
       </span>
@@ -74,7 +74,7 @@ const navItems = [
         navItems.map((item) => (
           <a
             href={item.href}
-            class="nav-link text-[9px] font-semibold tracking-[0.16em] text-ivory/80 uppercase transition-colors duration-300 hover:text-gold"
+            class="nav-link text-[10px] font-semibold tracking-[0.16em] text-ivory/80 uppercase transition-colors duration-300 hover:text-gold"
           >
             {item.label}
           </a>
@@ -87,8 +87,8 @@ const navItems = [
     ==================================== -->
 
     <a
-      href="#booking"
-      class="hidden border border-gold/70 px-6 py-3 text-[9px] font-bold tracking-[0.2em] text-gold uppercase transition-all duration-300 hover:bg-gold hover:text-charcoal xl:inline-flex"
+      href="/#booking"
+      class="hidden border border-gold/70 px-6 py-3 text-[10px] font-bold tracking-[0.2em] text-gold uppercase transition-all duration-300 hover:bg-gold hover:text-charcoal xl:inline-flex"
     >
       Book Now
     </a>
@@ -100,7 +100,7 @@ const navItems = [
     <button
       id="mobile-menu-button"
       type="button"
-      class="flex h-10 w-10 flex-col items-center justify-center gap-[5px] xl:hidden"
+      class="flex h-12 w-12 flex-col items-center justify-center gap-[5px] xl:hidden"
       aria-label="Open navigation menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -163,7 +163,7 @@ const navItems = [
       <!-- LABEL -->
 
       <p
-        class="text-[8px] font-semibold tracking-[0.3em] text-gold uppercase"
+        class="text-[10px] font-semibold tracking-[0.3em] text-gold uppercase"
       >
         Navigation
       </p>
@@ -182,7 +182,7 @@ const navItems = [
               class="group flex items-center border-b border-white/10 py-4 text-ivory transition-colors duration-300 hover:text-gold"
             >
               <span
-                class="mr-5 font-sans text-[8px] tracking-[0.15em] text-white/30"
+                class="mr-5 font-sans text-[10px] tracking-[0.15em] text-white/60"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -204,9 +204,9 @@ const navItems = [
         <!-- CTA -->
 
         <a
-          href="#booking"
+          href="/#booking"
           data-mobile-link
-          class="group flex w-full items-center justify-between bg-gold px-6 py-5 text-[9px] font-bold tracking-[0.2em] text-charcoal uppercase transition-colors duration-300 hover:bg-gold-light"
+          class="group flex w-full items-center justify-between bg-gold px-6 py-5 text-[10px] font-bold tracking-[0.2em] text-charcoal uppercase transition-colors duration-300 hover:bg-gold-light"
         >
           <span>
             Book Kang Denz
@@ -222,7 +222,7 @@ const navItems = [
         <!-- META -->
 
         <div
-          class="mt-6 flex items-center justify-between gap-4 text-[7px] tracking-[0.15em] text-white/30 uppercase"
+          class="mt-6 flex items-center justify-between gap-4 text-[10px] tracking-[0.15em] text-white/60 uppercase"
         >
           <span>
             Professional Wedding MC
@@ -292,12 +292,22 @@ const navItems = [
       "[data-mobile-link]"
     );
 
+    const pageContent = document.querySelector<HTMLElement>("main");
+    const footer = document.querySelector<HTMLElement>("footer");
+
     /* =====================================
        SET MOBILE MENU STATE
     ====================================== */
 
     function setMenuState(open: boolean) {
       menuElement.dataset.open = String(open);
+      if (pageContent) pageContent.inert = open;
+      if (footer) footer.inert = open;
+      if (open) {
+        requestAnimationFrame(() => (mobileLinks[0] as HTMLElement | undefined)?.focus());
+      } else {
+        menuButton.focus();
+      }
 
       menuButton.setAttribute(
         "aria-expanded",
@@ -379,6 +389,13 @@ const navItems = [
     document.addEventListener(
       "keydown",
       (event) => {
+        if (event.key === "Tab" && menuElement.dataset.open === "true") {
+          const focusable = [menuButton, ...Array.from(mobileLinks)] as HTMLElement[];
+          const current = focusable.indexOf(document.activeElement as HTMLElement);
+          const next = (current + (event.shiftKey ? -1 : 1) + focusable.length) % focusable.length;
+          event.preventDefault();
+          focusable[next].focus();
+        }
         if (
           event.key === "Escape" &&
           menuElement.dataset.open === "true"
@@ -414,7 +431,7 @@ const navItems = [
       }
 
       header.dataset.scrolled = String(
-        window.scrollY > 40
+        window.scrollY > 40 || window.location.pathname !== "/"
       );
     }
 

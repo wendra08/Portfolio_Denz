@@ -1,4 +1,5 @@
 ---
+import Photo from "./Photo.astro";
 const services = [
   "Wedding Photography",
   "Prewedding",
@@ -71,13 +72,13 @@ const gallery = [
 
       <div class="natsume-reveal">
         <p
-          class="text-[9px] font-semibold tracking-[0.22em] text-white/30 uppercase"
+          class="text-[10px] font-semibold tracking-[0.22em] text-white/60 uppercase"
         >
           Photography · Studio · Wedding
         </p>
 
         <h2
-          class="mt-5 max-w-5xl font-serif text-[clamp(3.5rem,7vw,7rem)] leading-[0.86] tracking-[-0.05em]"
+          class="mt-5 max-w-5xl font-serif text-[clamp(2.75rem,7vw,7rem)] leading-[0.86] tracking-[-0.05em]"
         >
           Moments pass. <span class="text-gold">
             Memories remain.
@@ -89,7 +90,7 @@ const gallery = [
 
       <div class="natsume-reveal">
         <p
-          class="max-w-md text-sm leading-7 text-white/45 md:text-base md:leading-8"
+          class="max-w-md text-sm leading-7 text-white/60 md:text-base md:leading-8"
         >
           Natsume Photo Studio menyediakan kebutuhan
           photography dan studio untuk wedding, prewedding,
@@ -101,7 +102,7 @@ const gallery = [
           class="mt-8 border-t border-white/10 pt-6"
         >
           <p
-            class="text-[8px] font-semibold tracking-[0.22em] text-gold uppercase"
+            class="text-[10px] font-semibold tracking-[0.22em] text-gold uppercase"
           >
             Manager
           </p>
@@ -127,7 +128,7 @@ const gallery = [
       <div
         class="relative aspect-[4/5] overflow-hidden sm:aspect-[16/10] lg:aspect-[16/7]"
       >
-        <img
+        <Photo
           src="/images/natsume/natsume-main.jpeg"
           alt="Natsume Photo Studio Wedding Photography"
           class="natsume-main-image h-full w-full object-cover"
@@ -154,7 +155,7 @@ const gallery = [
           >
             <div>
               <p
-                class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+                class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
               >
                 Natsume Photo Studio
               </p>
@@ -168,7 +169,7 @@ const gallery = [
             </div>
 
             <p
-              class="text-[8px] tracking-[0.22em] text-white/45 uppercase"
+              class="text-[10px] tracking-[0.22em] text-white/60 uppercase"
             >
               Photography · Studio
             </p>
@@ -189,7 +190,7 @@ const gallery = [
       class="natsume-reveal grid gap-8 border-b border-white/10 pb-10 lg:grid-cols-[0.55fr_1.45fr]"
     >
       <p
-        class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
       >
         Photography Services
       </p>
@@ -212,7 +213,7 @@ const gallery = [
             class="natsume-service natsume-reveal group relative grid grid-cols-[50px_1fr_auto] items-center gap-4 border-b border-white/10 py-7 md:grid-cols-[80px_1fr_auto] md:py-9"
           >
             <p
-              class="text-[8px] font-semibold tracking-[0.2em] text-white/25 transition-colors duration-300 group-hover:text-gold"
+              class="text-[10px] font-semibold tracking-[0.2em] text-white/60 transition-colors duration-300 group-hover:text-gold"
             >
               {String(index + 1).padStart(2, "0")}
             </p>
@@ -224,7 +225,7 @@ const gallery = [
             </h4>
 
             <span
-              class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-xs text-white/30 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal md:h-10 md:w-10"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-xs text-white/60 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal md:h-10 md:w-10"
               aria-hidden="true"
             >
               +
@@ -249,7 +250,7 @@ const gallery = [
     >
       <div>
         <p
-          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+          class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
         >
           Selected Frames
         </p>
@@ -289,7 +290,7 @@ const gallery = [
             <div
               class="relative aspect-[4/5] h-full overflow-hidden md:aspect-auto"
             >
-              <img
+              <Photo
                 src={item.image}
                 alt={`Natsume Photo ${item.title}`}
                 class="natsume-gallery-image h-full w-full object-cover"
@@ -302,7 +303,7 @@ const gallery = [
               ></div>
 
               <p
-                class="absolute top-5 left-5 text-[8px] tracking-[0.2em] text-white/50"
+                class="absolute top-5 left-5 text-[10px] tracking-[0.2em] text-white/50"
               >
                 {item.number}
               </p>
@@ -311,7 +312,7 @@ const gallery = [
                 class="absolute right-5 bottom-5 left-5 border-t border-white/20 pt-4"
               >
                 <p
-                  class="text-[7px] font-semibold tracking-[0.22em] text-gold uppercase"
+                  class="text-[10px] font-semibold tracking-[0.22em] text-gold uppercase"
                 >
                   {item.subtitle}
                 </p>
@@ -337,7 +338,7 @@ const gallery = [
     >
       <div>
         <p
-          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+          class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
         >
           Natsume Photo Studio
         </p>
@@ -353,7 +354,7 @@ const gallery = [
 
       <div>
         <p
-          class="max-w-md text-sm leading-7 text-white/45 md:text-base"
+          class="max-w-md text-sm leading-7 text-white/60 md:text-base"
         >
           Photography tidak hanya menyimpan apa yang
           terlihat, tetapi juga membantu menjaga cerita
@@ -362,7 +363,7 @@ const gallery = [
 
         <a
           href="#booking"
-          class="group mt-8 inline-flex items-center justify-center gap-4 bg-gold px-8 py-4 text-[9px] font-bold tracking-[0.2em] uppercase transition-colors duration-300 hover:bg-gold-light"
+          class="group mt-8 inline-flex items-center justify-center gap-4 bg-gold px-8 py-4 text-[10px] font-bold tracking-[0.2em] uppercase transition-colors duration-300 hover:bg-gold-light"
         >
           <span
             style="color: #11110f;"

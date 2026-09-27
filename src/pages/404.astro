@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Halaman Tidak Ditemukan — Kang Denz" description="Halaman yang kamu cari tidak ditemukan. Kembali ke beranda atau hubungi Kang Denz untuk membicarakan rencana acaramu." noindex>
+  <Navbar />
+  <main id="main-content" tabindex="-1" class="bg-charcoal text-ivory">
+    <section class="container-luxury flex min-h-[75svh] flex-col items-start justify-center pt-36 pb-20 md:pt-44 md:pb-28">
+      <p class="gold-label">404 · Halaman tidak ditemukan</p>
+      <h1 class="mt-8 max-w-4xl font-serif text-[clamp(2.75rem,7vw,7rem)] leading-[0.95] tracking-[-0.04em]">Mari kembali ke{" "}<span class="text-gold">cerita utama.</span></h1>
+      <p class="mt-8 max-w-lg text-base leading-7 text-ivory-muted">Halaman ini mungkin sudah dipindahkan atau alamatnya kurang tepat. Kamu bisa kembali ke beranda atau langsung membicarakan rencana acaramu.</p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="/" class="inline-flex min-h-12 items-center justify-center bg-gold px-7 py-3 text-sm font-semibold text-charcoal hover:bg-gold-light">Kembali ke beranda</a>
+        <a href="/#booking" class="inline-flex min-h-12 items-center justify-center border border-gold/50 px-7 py-3 text-sm text-gold hover:border-gold">Rencanakan acara</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

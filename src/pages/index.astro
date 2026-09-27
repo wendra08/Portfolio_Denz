@@ -19,6 +19,7 @@ import JournalPreview from "../components/JournalPreview.astro";
 import Booking from "../components/Booking.astro";
 import FAQ from "../components/FAQ.astro";
 import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <BaseLayout
@@ -27,7 +28,7 @@ import Contact from "../components/Contact.astro";
 >
   <Navbar />
 
-<main>
+<main id="main-content" tabindex="-1">
 
   <Hero />
 
@@ -64,5 +65,7 @@ import Contact from "../components/Contact.astro";
   <Contact />
 
 </main>
+
+  <Footer />
 
 </BaseLayout>

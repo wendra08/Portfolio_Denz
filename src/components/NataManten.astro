@@ -1,4 +1,5 @@
 ---
+import Photo from "./Photo.astro";
 const services = [
   {
     number: "01",
@@ -73,13 +74,13 @@ const behindScenes = [
 
       <div class="nata-reveal">
         <p
-          class="text-[9px] font-semibold tracking-[0.22em] text-charcoal/35 uppercase"
+          class="text-[10px] font-semibold tracking-[0.22em] text-charcoal/70 uppercase"
         >
           Wedding Planner & Wedding Coordination
         </p>
 
         <h2
-          class="mt-5 max-w-5xl font-serif text-[clamp(3.5rem,7vw,7rem)] leading-[0.86] tracking-[-0.05em]"
+          class="mt-5 max-w-5xl font-serif text-[clamp(2.75rem,7vw,7rem)] leading-[0.86] tracking-[-0.05em]"
         >
           Behind every beautiful wedding <span class="text-gold">
             is a thoughtful plan.
@@ -105,7 +106,7 @@ const behindScenes = [
           class="mt-8 border-t border-charcoal/10 pt-6"
         >
           <p
-            class="text-[8px] font-semibold tracking-[0.22em] text-gold uppercase"
+            class="text-[10px] font-semibold tracking-[0.22em] text-gold uppercase"
           >
             Owner / Founder
           </p>
@@ -131,7 +132,7 @@ const behindScenes = [
       <div
         class="relative aspect-[4/5] overflow-hidden bg-charcoal sm:aspect-[16/10] lg:aspect-[16/7]"
       >
-        <img
+        <Photo
           src="/images/nata-manten/nata-main.jpeg"
           alt="Nata Manten Wedding Planner"
           class="nata-main-image h-full w-full object-cover"
@@ -158,7 +159,7 @@ const behindScenes = [
           >
             <div>
               <p
-                class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+                class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
               >
                 Nata Manten
               </p>
@@ -172,7 +173,7 @@ const behindScenes = [
             </div>
 
             <p
-              class="text-[8px] tracking-[0.22em] text-white/50 uppercase"
+              class="text-[10px] tracking-[0.22em] text-white/50 uppercase"
             >
               Wedding Planning · Coordination
             </p>
@@ -193,7 +194,7 @@ const behindScenes = [
       class="nata-reveal grid gap-8 border-b border-charcoal/10 pb-10 lg:grid-cols-[0.55fr_1.45fr]"
     >
       <p
-        class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+        class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
       >
         What We Do
       </p>
@@ -227,7 +228,7 @@ const behindScenes = [
             >
               <div>
                 <p
-                  class="text-[8px] font-semibold tracking-[0.2em] text-gold"
+                  class="text-[10px] font-semibold tracking-[0.2em] text-gold"
                 >
                   {service.number}
                 </p>
@@ -240,7 +241,7 @@ const behindScenes = [
               </div>
 
               <span
-                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-charcoal/10 text-sm text-charcoal/30 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ivory"
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-charcoal/10 text-sm text-charcoal/70 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ivory"
               >
                 +
               </span>
@@ -262,7 +263,7 @@ const behindScenes = [
       >
         <div>
           <p
-            class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+            class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
           >
             Behind The Scene
           </p>
@@ -295,7 +296,7 @@ const behindScenes = [
             <div
               class="relative aspect-[4/5] overflow-hidden bg-charcoal"
             >
-              <img
+              <Photo
                 src={item.image}
                 alt={`Nata Manten ${item.title}`}
                 class="nata-bts-image h-full w-full object-cover"
@@ -310,7 +311,7 @@ const behindScenes = [
               <!-- NUMBER -->
 
               <p
-                class="absolute top-5 left-5 text-[8px] font-semibold tracking-[0.2em] text-white/60"
+                class="absolute top-5 left-5 text-[10px] font-semibold tracking-[0.2em] text-white/60"
               >
                 {item.number}
               </p>
@@ -341,7 +342,7 @@ const behindScenes = [
     >
       <div>
         <p
-          class="text-[8px] font-semibold tracking-[0.25em] text-gold uppercase"
+          class="text-[10px] font-semibold tracking-[0.25em] text-gold uppercase"
         >
           Nata Manten
         </p>
@@ -357,7 +358,7 @@ const behindScenes = [
 
       <div>
         <p
-          class="max-w-md text-sm leading-7 text-charcoal/55 md:text-base"
+          class="max-w-md text-sm leading-7 text-charcoal/70 md:text-base"
         >
           Setiap detail dipersiapkan agar pasangan
           dapat lebih menikmati perjalanan menuju
@@ -366,7 +367,7 @@ const behindScenes = [
 
         <a
           href="#booking"
-          class="group mt-8 inline-flex min-w-[260px] items-center justify-center gap-4 bg-[#11110f] px-8 py-4 text-[9px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:bg-[#b79b62]"
+          class="group mt-8 inline-flex min-w-[260px] items-center justify-center gap-4 bg-[#11110f] px-8 py-4 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:bg-[#b79b62]"
         >
           <span
             style="color: #f4f0e7;"

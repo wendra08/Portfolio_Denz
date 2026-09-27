@@ -1,40 +1,92 @@
----
+﻿---
 import "../styles/global.css";
 import { Font } from "astro:assets";
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  imageAlt?: string;
+  type?: "website" | "article";
+  publishedAt?: Date;
+  updatedAt?: Date;
+  noindex?: boolean;
 }
 
 const {
   title = "Kang Denz — Professional Wedding MC",
   description = "Muhamad Denny Hidayat, S.Pd — Professional Wedding MC, Wedding Planner, Photography Management, and Private MC Mentor.",
+  image = "/images/og-kang-denz.jpg",
+  imageAlt = "Kang Denz — Professional Wedding MC",
+  type = "website",
+  publishedAt,
+  updatedAt,
+  noindex = false,
 } = Astro.props;
+
+// Publish absolute SEO URLs only after configuring the production domain.
+const canonical = Astro.site && !noindex ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const socialImage = Astro.site ? new URL(image, Astro.site).href : image;
+const structuredData = Astro.site && Astro.url.pathname === "/" ? {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", name: "Kang Denz", url: Astro.site.href, inLanguage: "id-ID" },
+    {
+      "@type": "Person", name: "Muhamad Denny Hidayat", alternateName: "Kang Denz",
+      jobTitle: "Professional Wedding MC", url: Astro.site.href,
+      telephone: "+6281313216466", image: new URL("/images/about-kang-denz.jpeg", Astro.site).href,
+    },
+  ],
+} : undefined;
 ---
 
 <!doctype html>
-
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-
     <meta name="theme-color" content="#11110f" />
-
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta property="og:site_name" content="Kang Denz" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    {image === "/images/og-kang-denz.jpg" && <>
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+    </>}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    {publishedAt && <meta property="article:published_time" content={publishedAt.toISOString()} />}
+    {updatedAt && <meta property="article:modified_time" content={updatedAt.toISOString()} />}
+    {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")} />}
     <title>{title}</title>
-
-    <Font cssVariable="--font-display" preload />
+    <Font cssVariable="--font-display" preload={[{ weight: 500, style: "normal", subset: "latin" }]} />
     <Font cssVariable="--font-body" />
   </head>
-
   <body>
+    <a class="skip-link" href="#main-content">Langsung ke konten</a>
     <slot />
+    <noscript>
+      <style is:inline>
+        [class*="-reveal"], .testimonial-card { opacity: 1 !important; transform: none !important; filter: none !important; }
+        #faq .faq-item[hidden] { display: block !important; }
+        #faq .faq-answer { max-height: none !important; opacity: 1 !important; }
+        #booking-form, .faq-category-scroll, .faq-plus, #mobile-menu-button { display: none !important; }
+      </style>
+      <p class="container-luxury py-6 text-sm text-ivory">Untuk booking tanpa JavaScript, silakan <a class="underline" href="https://wa.me/6281313216466">hubungi Kang Denz melalui WhatsApp</a>.</p>
+    </noscript>
   </body>
 </html>

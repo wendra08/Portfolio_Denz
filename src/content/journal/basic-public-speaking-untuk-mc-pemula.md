@@ -3,7 +3,7 @@ title: "Basic Public Speaking untuk MC Pemula"
 excerpt: "Menjadi MC tidak dimulai dari menghafal banyak kata. Dasarnya adalah bagaimana berbicara dengan jelas, memahami audiens, dan membangun rasa percaya diri."
 category: "MC Class"
 publishedAt: 2026-09-22
-cover: "/images/mc-class/mc-class-main.png"
+cover: "/images/mc-class/mc-class-main.jpeg"
 featured: false
 draft: false
 readTime: "5 Min Read"

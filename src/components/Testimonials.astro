@@ -93,15 +93,15 @@ const filters = [
       >
         <div>
           <h2
-            class="max-w-5xl font-serif text-[clamp(3.8rem,7vw,7.5rem)] leading-[0.84] tracking-[-0.05em]"
+            class="max-w-5xl font-serif text-[clamp(2.75rem,7vw,7.5rem)] leading-[0.84] tracking-[-0.05em]"
           >
-            What&nbsp;<span class="text-gold">they say.</span>
+            What{" "}<span class="text-gold">they say.</span>
           </h2>
         </div>
 
         <div>
           <p
-            class="max-w-md text-sm leading-7 text-charcoal/55 md:text-base md:leading-8"
+            class="max-w-md text-sm leading-7 text-charcoal/70 md:text-base md:leading-8"
           >
             Setiap acara memiliki cerita yang berbeda.
             Beberapa di antaranya meninggalkan kata-kata
@@ -123,8 +123,9 @@ const filters = [
         filters.map((filter, index) => (
           <button
             type="button"
-            class="testimonial-filter shrink-0 rounded-full border border-charcoal/15 px-5 py-3 text-[8px] font-bold tracking-[0.18em] uppercase transition-all duration-300"
+            class="testimonial-filter shrink-0 rounded-full border border-charcoal/15 px-5 py-3 text-[10px] font-bold tracking-[0.18em] uppercase transition-all duration-300"
             data-filter={filter.value}
+            aria-pressed={index === 0}
             data-active={index === 0 ? "true" : "false"}
           >
             {filter.label}
@@ -185,7 +186,7 @@ const filters = [
                     class="flex items-start justify-between gap-6"
                   >
                     <p
-                      class="text-[8px] font-semibold tracking-[0.22em] text-gold uppercase"
+                      class="text-[10px] font-semibold tracking-[0.22em] text-gold uppercase"
                     >
                       {testimonial.categoryLabel}
                     </p>
@@ -216,14 +217,14 @@ const filters = [
                     </p>
 
                     <p
-                      class="mt-1 text-[8px] font-semibold tracking-[0.18em] text-charcoal/35 uppercase"
+                      class="mt-1 text-[10px] font-semibold tracking-[0.18em] text-charcoal/70 uppercase"
                     >
                       {testimonial.detail}
                     </p>
                   </div>
 
                   <p
-                    class="text-[8px] font-semibold tracking-[0.18em] text-charcoal/20"
+                    class="text-[10px] font-semibold tracking-[0.18em] text-charcoal/70"
                   >
                     {String(index + 1).padStart(2, "0")}
                   </p>
@@ -243,7 +244,7 @@ const filters = [
       class="testimonial-reveal mt-16 grid gap-8 border-t border-charcoal/10 pt-10 md:grid-cols-[0.6fr_1.4fr] md:items-start"
     >
       <p
-        class="text-[8px] font-semibold tracking-[0.22em] text-gold uppercase"
+        class="text-[10px] font-semibold tracking-[0.22em] text-gold uppercase"
       >
         Real Stories
       </p>
@@ -251,7 +252,7 @@ const filters = [
       <p
         class="max-w-3xl font-serif text-[clamp(2.2rem,4vw,4.5rem)] leading-[0.96] tracking-[-0.035em]"
       >
-        The best stories are told&nbsp;<span class="text-gold">
+        The best stories are told{" "}<span class="text-gold">
           by the people who lived them.
         </span>
       </p>
@@ -345,6 +346,7 @@ const filters = [
 
           filterButtons.forEach(
             (filterButton) => {
+              filterButton.setAttribute("aria-pressed", String(filterButton === button));
               filterButton.dataset.active =
                 filterButton === button
                   ? "true"

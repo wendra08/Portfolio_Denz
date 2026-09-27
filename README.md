@@ -1,46 +1,48 @@
-# Astro Starter Kit: Basics
+﻿# Kang Denz Portfolio
+
+Website Astro untuk Wedding MC, Nata Manten, Natsume Photo, MC Class, booking WhatsApp, dan journal.
+
+## Development
+
+Gunakan Node.js sesuai `engines` di package.json. Pada PowerShell yang membatasi script, gunakan `npm.cmd`.
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev -- --background
+npm run astro -- dev status
+npm run astro -- dev logs
+npm run astro -- dev stop
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Build dan pemeriksaan
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run build
+npm run audit:build
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Audit membutuhkan Python 3 dan memeriksa HTML hasil build: heading utama, metadata, gambar beserta dimensi, ID duplikat, tautan internal, anchor, dan 404. Audit ini tidak menggantikan pemeriksaan browser desktop/mobile.
 
-## 🧞 Commands
+## Domain dan SEO
 
-All commands are run from the root of the project, from a terminal:
+Salin `.env.example` ke `.env` dan isi `SITE_URL` dengan domain HTTPS final tanpa path. Environment variable `SITE_URL` pada hosting juga didukung. Jalankan build ulang setelah mengganti domain.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Tanpa `SITE_URL`, canonical dan URL schema tidak diterbitkan, gambar Open Graph memakai path relatif, serta sitemap belum berisi URL. Isi domain sebelum publikasi agar preview sosial dan sitemap lengkap. Jangan memakai domain contoh pada build produksi.
 
-## 👀 Want to learn more?
+Metadata bersama ada di `src/layouts/BaseLayout.astro`. Artikel journal memakai judul, excerpt, cover, dan tanggalnya sendiri. Halaman `404.astro` menggunakan `noindex`; hosting perlu menyajikan `dist/404.html` dengan status HTTP 404, bukan fallback HTTP 200.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Gambar dan identitas
+
+```sh
+npm run assets:prepare
+```
+
+Perintah ini memakai Sharp yang tersedia pada instalasi Astro untuk membuat WebP gambar utama, versi mobile, favicon PNG/ICO, kartu Open Graph JPG dari SVG, dan `src/data/image-sizes.json`. Foto sumber tetap disimpan. Jalankan lagi saat mengganti atau menambah gambar lokal yang dipakai komponen `Photo.astro`.
+
+- Favicon: `public/favicon.svg`.
+- Kartu berbagi: `public/images/og-kang-denz.svg` dan `.jpg` (1200 x 630).
+- Gambar konten: `public/images/`.
+- Video: `public/videos/`, dimuat setelah interaksi.
+- Artikel: `src/content/journal/`.
+
+Lihat `docs/final-polish.md` untuk hasil pemeriksaan dan pekerjaan yang masih memerlukan data atau browser.
