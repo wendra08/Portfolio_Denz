@@ -202,16 +202,16 @@ video {
 
 #site-header {
   border-bottom:
-    1px solid rgba(244, 240, 231, 0.08);
+    1px solid rgba(244, 240, 231, 0.04);
 
   background:
-    rgba(17, 17, 15, 0.82);
+    rgba(17, 17, 15, 0.18);
 
   backdrop-filter:
-    blur(18px);
+    blur(10px);
 
   -webkit-backdrop-filter:
-    blur(18px);
+    blur(10px);
 
   transition:
     background-color 0.4s ease,
@@ -220,7 +220,7 @@ video {
 }
 
 #site-header .nav-link {
-  color: rgba(244, 240, 231, 0.9);
+  color: rgba(244, 240, 231, 0.72);
 }
 
 #site-header .nav-link:hover,
@@ -1467,5 +1467,539 @@ video {
     opacity: 1;
 
     transform: none;
+  }
+}
+
+/* =========================================
+   BOOKING
+========================================= */
+
+
+/* =========================================
+   BOOKING REVEAL
+========================================= */
+
+.booking-reveal {
+  opacity: 0;
+
+  transform: translateY(40px);
+
+  transition:
+    opacity 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.booking-reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   SERVICE CARD
+========================================= */
+
+.booking-service {
+  display: block;
+}
+
+.booking-service
+input:checked
++
+span
+.booking-check {
+  border-color: #b79b62;
+
+  background: #b79b62;
+
+  color: #11110f;
+}
+
+.booking-service
+input:focus-visible
++
+span {
+  outline:
+    2px solid #b79b62;
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================
+   FORM FIELD
+========================================= */
+
+.booking-field {
+  position: relative;
+}
+
+.booking-label {
+  display: block;
+
+  margin-bottom: 0.75rem;
+
+  font-family:
+    var(--font-body);
+
+  font-size: 0.45rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(244, 240, 231, 0.38);
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.booking-input {
+  width: 100%;
+
+  border: 0;
+  border-bottom:
+    1px solid
+    rgba(244, 240, 231, 0.15);
+
+  border-radius: 0;
+
+  background:
+    transparent;
+
+  padding:
+    0.4rem 0 1rem;
+
+  font-family:
+    var(--font-body);
+
+  font-size: 0.95rem;
+
+  line-height: 1.6;
+
+  color: #f4f0e7;
+
+  outline: none;
+
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.booking-input::placeholder {
+  color:
+    rgba(244, 240, 231, 0.22);
+}
+
+.booking-input:hover {
+  border-color:
+    rgba(183, 155, 98, 0.5);
+}
+
+.booking-input:focus {
+  border-color:
+    #b79b62;
+}
+
+
+/* =========================================
+   DATE / TIME
+========================================= */
+
+.booking-input[type="date"],
+.booking-input[type="time"] {
+  color-scheme: dark;
+}
+
+
+/* =========================================
+   SELECT
+========================================= */
+
+.booking-select {
+  cursor: pointer;
+}
+
+.booking-select option {
+  background:
+    #11110f;
+
+  color:
+    #f4f0e7;
+}
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+.booking-textarea {
+  min-height: 130px;
+
+  resize: vertical;
+}
+
+
+/* =========================================
+   AUTOFILL
+========================================= */
+
+.booking-input:-webkit-autofill,
+.booking-input:-webkit-autofill:hover,
+.booking-input:-webkit-autofill:focus {
+  -webkit-text-fill-color:
+    #f4f0e7;
+
+  transition:
+    background-color 9999s ease-in-out
+    0s;
+
+  caret-color:
+    #f4f0e7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (
+  max-width: 767px
+) {
+  .booking-input {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .booking-reveal {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+}
+
+/* =========================================
+   FAQ
+========================================= */
+
+
+/* =========================================
+   REVEAL
+========================================= */
+
+.faq-reveal {
+  opacity: 0;
+
+  transform: translateY(40px);
+
+  transition:
+    opacity 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.faq-category {
+  color:
+    rgba(17, 17, 15, 0.42);
+}
+
+.faq-category:hover {
+  color: #11110f;
+}
+
+.faq-category[data-active="true"] {
+  border-color: #b79b62;
+
+  color: #11110f;
+}
+
+@media (min-width: 1024px) {
+  .faq-category[
+    data-active="true"
+  ] {
+    padding-left: 1rem;
+
+    border-bottom-color:
+      #b79b62;
+
+    background:
+      transparent;
+  }
+}
+
+
+/* =========================================
+   MOBILE CATEGORY SCROLL
+========================================= */
+
+.faq-category-scroll {
+  scrollbar-width: none;
+}
+
+.faq-category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================
+   ANSWER
+========================================= */
+
+.faq-answer {
+  max-height: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transition:
+    max-height 0.55s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease;
+}
+
+.faq-item[data-open="true"]
+.faq-answer {
+  opacity: 1;
+}
+
+
+/* =========================================
+   PLUS ICON
+========================================= */
+
+.faq-item[data-open="true"]
+.faq-plus {
+  border-color: #b79b62;
+
+  background:
+    #b79b62;
+}
+
+.faq-item[data-open="true"]
+.faq-plus-vertical {
+  transform:
+    rotate(90deg);
+
+  opacity: 0;
+}
+
+
+/* =========================================
+   FAQ QUESTION
+========================================= */
+
+.faq-question {
+  transition:
+    padding-left 0.35s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 768px) {
+  .faq-question:hover {
+    padding-left: 0.4rem;
+  }
+}
+
+
+/* =========================================
+   HIDDEN FILTER ITEM
+========================================= */
+
+.faq-item[hidden] {
+  display: none;
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .faq-reveal,
+  .faq-answer,
+  .faq-question,
+  .faq-plus,
+  .faq-plus-vertical {
+    transition: none;
+  }
+
+  .faq-reveal {
+    opacity: 1;
+
+    transform: none;
+  }
+}
+
+/* =========================================
+   CONTACT
+========================================= */
+
+
+/* =========================================
+   CONTACT REVEAL
+========================================= */
+
+.contact-reveal {
+  opacity: 0;
+
+  transform: translateY(40px);
+
+  transition:
+    opacity 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   PRIMARY CONTACT CTA
+========================================= */
+
+.contact-primary {
+  background:
+    rgba(183, 155, 98, 0.035);
+}
+
+.contact-primary::before {
+  position: absolute;
+
+  inset: 0;
+
+  background: #b79b62;
+
+  content: "";
+
+  transform: translateY(101%);
+
+  transition:
+    transform 0.7s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-primary:hover::before {
+  transform: translateY(0);
+}
+
+.contact-primary:hover
+p {
+  color: #11110f;
+}
+
+.contact-primary:hover
+span {
+  border-color:
+    rgba(17, 17, 15, 0.3);
+}
+
+
+/* =========================================
+   CONTACT CHANNEL
+========================================= */
+
+.contact-channel::after {
+  position: absolute;
+
+  right: 0;
+  bottom: -1px;
+  left: 0;
+
+  height: 1px;
+
+  background:
+    #b79b62;
+
+  content: "";
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition:
+    transform 0.55s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-channel:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (
+  max-width: 767px
+) {
+  .contact-primary {
+    min-height: 180px;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .contact-reveal,
+  .contact-primary::before,
+  .contact-channel::after {
+    transition: none;
+  }
+
+  .contact-reveal {
+    opacity: 1;
+
+    transform: none;
+  }
+
+  .contact-primary::before {
+    display: none;
   }
 }

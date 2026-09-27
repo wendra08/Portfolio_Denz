@@ -1,0 +1,831 @@
+---
+const categories = [
+  {
+    id: "wedding",
+    number: "01",
+    label: "Wedding MC",
+  },
+  {
+    id: "nata",
+    number: "02",
+    label: "Nata Manten",
+  },
+  {
+    id: "natsume",
+    number: "03",
+    label: "Natsume Photo",
+  },
+  {
+    id: "class",
+    number: "04",
+    label: "MC Class",
+  },
+];
+
+const faqs = [
+  // =========================================
+  // WEDDING MC
+  // =========================================
+
+  {
+    category: "wedding",
+    question:
+      "Apakah Kang Denz menerima MC lamaran?",
+    answer:
+      "Ya. MC Lamaran merupakan salah satu layanan Kang Denz dengan pendekatan yang hangat, elegan, dan komunikatif.",
+  },
+
+  {
+    category: "wedding",
+    question:
+      "Apakah menerima MC akad dan resepsi?",
+    answer:
+      "Ya. Kang Denz melayani MC Akad, Resepsi, dan Wedding sesuai kebutuhan serta konsep acara pasangan.",
+  },
+
+  {
+    category: "wedding",
+    question:
+      "Apakah bisa request konsep pembawaan?",
+    answer:
+      "Bisa. Konsep pembawaan dapat didiskusikan terlebih dahulu agar gaya komunikasi, suasana, dan alur acara sesuai dengan karakter wedding yang diinginkan.",
+  },
+
+  {
+    category: "wedding",
+    question:
+      "Apakah tersedia technical meeting?",
+    answer:
+      "Ya. Persiapan seperti briefing, pembahasan rundown, dan technical meeting menjadi bagian penting untuk memahami alur serta kebutuhan acara sebelum hari pelaksanaan.",
+  },
+
+  {
+    category: "wedding",
+    question:
+      "Apakah menerima wedding luar kota?",
+    answer:
+      "Untuk wedding luar kota, silakan konfirmasi terlebih dahulu dengan Kang Denz melalui WhatsApp dengan menyampaikan tanggal dan lokasi acara.",
+  },
+
+  {
+    category: "wedding",
+    question:
+      "Bagaimana sistem booking?",
+    answer:
+      "Pilih layanan melalui Booking Form, lengkapi informasi acara seperti tanggal, jenis acara, lokasi, jam, dan detail kebutuhan. Setelah dikirim, data akan diteruskan melalui WhatsApp untuk pengecekan availability dan pembahasan berikutnya.",
+  },
+
+  // =========================================
+  // NATA MANTEN
+  // =========================================
+
+  {
+    category: "nata",
+    question:
+      "Apa saja layanan Nata Manten?",
+    answer:
+      "Layanan Nata Manten meliputi Wedding Planning, Wedding Coordination, Wedding Day Management, Vendor Coordination, Rundown & Timeline, serta Custom Wedding Package.",
+  },
+
+  {
+    category: "nata",
+    question:
+      "Apakah bisa custom package?",
+    answer:
+      "Ya. Nata Manten menyediakan Custom Wedding Package yang dapat disesuaikan dengan kebutuhan pernikahan pasangan.",
+  },
+
+  {
+    category: "nata",
+    question:
+      "Apakah tersedia wedding coordination?",
+    answer:
+      "Ya. Wedding Coordination merupakan salah satu layanan utama Nata Manten untuk membantu mengatur dan mengoordinasikan kebutuhan wedding.",
+  },
+
+  {
+    category: "nata",
+    question:
+      "Apakah melayani luar kota?",
+    answer:
+      "Ketersediaan layanan luar kota perlu dikonfirmasi berdasarkan tanggal, lokasi, dan kebutuhan wedding. Silakan kirim detail melalui Booking Form atau WhatsApp.",
+  },
+
+  // =========================================
+  // NATSUME PHOTO
+  // =========================================
+
+  {
+    category: "natsume",
+    question:
+      "Apa saja layanan photography?",
+    answer:
+      "Natsume Photo Studio menyediakan Wedding Photography, Prewedding, Studio Photography, Family Photography, Portrait, dan Event Documentation.",
+  },
+
+  {
+    category: "natsume",
+    question:
+      "Apakah tersedia prewedding?",
+    answer:
+      "Ya. Prewedding termasuk dalam layanan photography Natsume Photo Studio.",
+  },
+
+  {
+    category: "natsume",
+    question:
+      "Apakah tersedia studio photography?",
+    answer:
+      "Ya. Natsume menyediakan layanan Studio Photography untuk berbagai kebutuhan portrait dan dokumentasi.",
+  },
+
+  {
+    category: "natsume",
+    question:
+      "Bagaimana cara booking?",
+    answer:
+      "Pilih Natsume Photo pada Booking Form, lengkapi kebutuhan photography dan detail acara, kemudian kirim permintaan untuk dilanjutkan melalui WhatsApp.",
+  },
+
+  // =========================================
+  // MC CLASS
+  // =========================================
+
+  {
+    category: "class",
+    question:
+      "Apakah private atau group?",
+    answer:
+      "Kang Denz MC Class menggunakan konsep Private 1-on-1 Mentoring agar pembelajaran dapat lebih personal dan terarah.",
+  },
+
+  {
+    category: "class",
+    question:
+      "Apa saja materi yang dipelajari?",
+    answer:
+      "Materi mencakup Basic Public Speaking, teknik menjadi MC, artikulasi dan intonasi, vocal delivery, memahami rundown, opening dan closing, bridging, improvisation, guest engagement, Wedding & Lamaran MC, hingga handling unexpected situations.",
+  },
+
+  {
+    category: "class",
+    question:
+      "Berapa lama mentoring?",
+    answer:
+      "Durasi mentoring belum ditentukan pada informasi paket saat ini. Silakan hubungi Kang Denz untuk mendapatkan informasi mengenai durasi, jadwal, dan konsep mentoring yang tersedia.",
+  },
+
+  {
+    category: "class",
+    question:
+      "Apakah ada praktik?",
+    answer:
+      "Ya. Praktik merupakan bagian dari pembelajaran agar peserta tidak hanya memahami teori tetapi juga mencoba menerapkannya secara langsung.",
+  },
+
+  {
+    category: "class",
+    question:
+      "Apakah mendapatkan evaluasi?",
+    answer:
+      "Ya. Praktik dan evaluasi termasuk dalam materi Private MC Mentoring.",
+  },
+];
+
+const whatsappUrl =
+  "https://wa.me/6281313216466?text=Halo%20Kang%20Denz%2C%20saya%20ingin%20bertanya%20lebih%20lanjut%20mengenai%20layanan%20Kang%20Denz.";
+---
+
+<section
+  id="faq"
+  class="relative overflow-hidden bg-ivory text-charcoal"
+>
+  <div
+    class="container-luxury py-20 md:py-28 lg:py-32"
+  >
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <div
+      class="faq-reveal border-b border-charcoal/10 pb-14 md:pb-20"
+    >
+      <div
+        class="flex items-center gap-4"
+      >
+        <span
+          class="h-px w-10 bg-gold"
+        ></span>
+
+        <p class="gold-label">
+          Frequently Asked Questions
+        </p>
+      </div>
+
+      <div
+        class="mt-8 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-20"
+      >
+        <div>
+          <h2
+            class="max-w-5xl font-serif text-[clamp(3.8rem,7vw,7.5rem)] leading-[0.84] tracking-[-0.05em]"
+          >
+            Questions?&nbsp;<span class="text-gold">Let's make it clear.</span>
+          </h2>
+        </div>
+
+        <div>
+          <p
+            class="max-w-md text-sm leading-7 text-charcoal/55 md:text-base md:leading-8"
+          >
+            Beberapa pertanyaan yang sering muncul
+            mengenai Wedding MC, Nata Manten,
+            Natsume Photo Studio, dan Private MC Mentoring.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================
+         FAQ CONTENT
+    ====================================== -->
+
+    <div
+      class="mt-14 grid gap-12 lg:grid-cols-[0.42fr_1.58fr] lg:gap-20"
+    >
+      <!-- =====================================
+           CATEGORY
+      ====================================== -->
+
+      <div
+        class="faq-reveal"
+      >
+        <p
+          class="text-[8px] font-bold tracking-[0.22em] text-gold uppercase"
+        >
+          Category
+        </p>
+
+        <!-- DESKTOP / MOBILE CATEGORY -->
+
+        <div
+          class="faq-category-scroll mt-6 flex gap-3 overflow-x-auto pb-3 lg:flex-col lg:overflow-visible"
+        >
+          {
+            categories.map(
+              (category, index) => (
+                <button
+                  type="button"
+                  class="faq-category group flex shrink-0 items-center justify-between gap-8 border border-charcoal/10 px-5 py-4 text-left transition-all duration-300 lg:w-full lg:border-x-0 lg:border-t-0 lg:px-0 lg:py-5"
+                  data-category={
+                    category.id
+                  }
+                  data-active={
+                    index === 0
+                      ? "true"
+                      : "false"
+                  }
+                >
+                  <span
+                    class="flex items-center gap-4"
+                  >
+                    <span
+                      class="text-[8px] font-bold tracking-[0.16em] text-gold"
+                    >
+                      {category.number}
+                    </span>
+
+                    <span
+                      class="text-[9px] font-bold tracking-[0.16em] uppercase"
+                    >
+                      {category.label}
+                    </span>
+                  </span>
+
+                  <span
+                    class="hidden text-sm text-charcoal/25 transition-transform duration-300 group-hover:translate-x-1 lg:block"
+                  >
+                    →
+                  </span>
+                </button>
+              )
+            )
+          }
+        </div>
+
+        <!-- SUPPORT CTA -->
+
+        <div
+          class="mt-10 hidden border-t border-charcoal/10 pt-7 lg:block"
+        >
+          <p
+            class="text-[7px] font-bold tracking-[0.18em] text-charcoal/30 uppercase"
+          >
+            Still have a question?
+          </p>
+
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group mt-4 inline-flex items-center gap-4"
+          >
+            <span
+              class="flex h-10 w-10 items-center justify-center rounded-full border border-charcoal/15 text-[8px] font-bold transition-all duration-300 group-hover:border-gold group-hover:bg-gold"
+            >
+              WA
+            </span>
+
+            <span>
+              <span
+                class="block font-serif text-xl transition-colors duration-300 group-hover:text-gold"
+              >
+                Ask Kang Denz
+              </span>
+
+              <span
+                class="mt-1 block text-[7px] tracking-[0.14em] text-charcoal/30"
+              >
+                +62 813-1321-6466
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- =====================================
+           QUESTIONS
+      ====================================== -->
+
+      <div
+        id="faq-list"
+        class="faq-reveal"
+      >
+        {
+          faqs.map((faq, index) => (
+            <article
+              class="faq-item border-b border-charcoal/10"
+              data-faq-category={
+                faq.category
+              }
+              hidden={
+                faq.category !== "wedding"
+              }
+            >
+              <button
+                type="button"
+                class="faq-question group flex w-full items-start justify-between gap-8 py-7 text-left md:py-8"
+                aria-expanded="false"
+              >
+                <div
+                  class="flex gap-5 md:gap-8"
+                >
+                  <span
+                    class="mt-2 shrink-0 text-[7px] font-bold tracking-[0.15em] text-gold"
+                  >
+                    {
+                      String(
+                        index + 1
+                      ).padStart(
+                        2,
+                        "0"
+                      )
+                    }
+                  </span>
+
+                  <h3
+                    class="max-w-3xl font-serif text-[clamp(1.8rem,3vw,3.2rem)] leading-[1] tracking-[-0.03em] transition-colors duration-300 group-hover:text-gold"
+                  >
+                    {faq.question}
+                  </h3>
+                </div>
+
+                <!-- PLUS -->
+
+                <span
+                  class="faq-plus relative mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-charcoal/10 transition-all duration-300 group-hover:border-gold"
+                  aria-hidden="true"
+                >
+                  <span
+                    class="absolute h-px w-3 bg-charcoal"
+                  ></span>
+
+                  <span
+                    class="faq-plus-vertical absolute h-3 w-px bg-charcoal transition-transform duration-300"
+                  ></span>
+                </span>
+              </button>
+
+              <!-- ANSWER -->
+
+              <div
+                class="faq-answer"
+                aria-hidden="true"
+              >
+                <div
+                  class="pb-8 pl-10 pr-12 md:pb-10 md:pl-[60px] md:pr-20"
+                >
+                  <p
+                    class="max-w-3xl text-sm leading-7 text-charcoal/55 md:text-base md:leading-8"
+                  >
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- =====================================
+         MOBILE WHATSAPP
+    ====================================== -->
+
+    <div
+      class="faq-reveal mt-12 border-t border-charcoal/10 pt-8 lg:hidden"
+    >
+      <p
+        class="text-[7px] font-bold tracking-[0.18em] text-charcoal/30 uppercase"
+      >
+        Still have a question?
+      </p>
+
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group mt-5 inline-flex items-center gap-4"
+      >
+        <span
+          class="flex h-10 w-10 items-center justify-center rounded-full border border-charcoal/15 text-[8px] font-bold transition-all duration-300 group-hover:bg-gold"
+        >
+          WA
+        </span>
+
+        <span>
+          <span
+            class="block font-serif text-xl"
+          >
+            Ask Kang Denz
+          </span>
+
+          <span
+            class="mt-1 block text-[7px] tracking-[0.14em] text-charcoal/30"
+          >
+            +62 813-1321-6466
+          </span>
+        </span>
+      </a>
+    </div>
+
+    <!-- =====================================
+         CLOSING
+    ====================================== -->
+
+    <div
+      class="faq-reveal mt-20 grid gap-8 border-t border-charcoal/10 pt-12 md:mt-28 lg:grid-cols-[0.55fr_1.45fr] lg:items-end"
+    >
+      <div>
+        <p
+          class="text-[8px] font-bold tracking-[0.24em] text-gold uppercase"
+        >
+          Need More Information?
+        </p>
+      </div>
+
+      <div>
+        <p
+          class="max-w-5xl font-serif text-[clamp(2.8rem,5vw,5.7rem)] leading-[0.94] tracking-[-0.04em]"
+        >
+          Every plan is different.&nbsp;<span class="text-gold">Let's talk about yours.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initializeFAQ() {
+    const section =
+      document.querySelector<HTMLElement>(
+        "#faq"
+      );
+
+    if (!section) {
+      return;
+    }
+
+    if (
+      section.dataset.initialized ===
+      "true"
+    ) {
+      return;
+    }
+
+    section.dataset.initialized =
+      "true";
+
+    /* =====================================
+       REVEAL
+    ====================================== */
+
+    const revealElements =
+      section.querySelectorAll<HTMLElement>(
+        ".faq-reveal"
+      );
+
+    if (
+      "IntersectionObserver" in
+      window
+    ) {
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach(
+              (entry) => {
+                if (
+                  !entry.isIntersecting
+                ) {
+                  return;
+                }
+
+                if (
+                  entry.target instanceof
+                  HTMLElement
+                ) {
+                  entry.target.classList.add(
+                    "is-visible"
+                  );
+                }
+
+                observer.unobserve(
+                  entry.target
+                );
+              }
+            );
+          },
+          {
+            threshold: 0.08,
+            rootMargin:
+              "0px 0px -40px 0px",
+          }
+        );
+
+      revealElements.forEach(
+        (element) => {
+          observer.observe(
+            element
+          );
+        }
+      );
+    } else {
+      revealElements.forEach(
+        (element) => {
+          element.classList.add(
+            "is-visible"
+          );
+        }
+      );
+    }
+
+    /* =====================================
+       ELEMENTS
+    ====================================== */
+
+    const categories =
+      section.querySelectorAll<HTMLButtonElement>(
+        ".faq-category"
+      );
+
+    const items =
+      section.querySelectorAll<HTMLElement>(
+        ".faq-item"
+      );
+
+    /* =====================================
+       CLOSE ITEM
+    ====================================== */
+
+    function closeItem(
+      item: HTMLElement
+    ) {
+      const button =
+        item.querySelector<HTMLButtonElement>(
+          ".faq-question"
+        );
+
+      const answer =
+        item.querySelector<HTMLElement>(
+          ".faq-answer"
+        );
+
+      if (!button || !answer) {
+        return;
+      }
+
+      button.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      answer.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      answer.style.maxHeight =
+        "0px";
+
+      item.dataset.open =
+        "false";
+    }
+
+    /* =====================================
+       OPEN ITEM
+    ====================================== */
+
+    function openItem(
+      item: HTMLElement
+    ) {
+      const button =
+        item.querySelector<HTMLButtonElement>(
+          ".faq-question"
+        );
+
+      const answer =
+        item.querySelector<HTMLElement>(
+          ".faq-answer"
+        );
+
+      if (!button || !answer) {
+        return;
+      }
+
+      /* only one open */
+
+      items.forEach(
+        (currentItem) => {
+          if (
+            currentItem !== item &&
+            !currentItem.hidden
+          ) {
+            closeItem(
+              currentItem
+            );
+          }
+        }
+      );
+
+      button.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+      answer.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      answer.style.maxHeight =
+        `${answer.scrollHeight}px`;
+
+      item.dataset.open =
+        "true";
+    }
+
+    /* =====================================
+       QUESTION CLICK
+    ====================================== */
+
+    items.forEach((item) => {
+      const button =
+        item.querySelector<HTMLButtonElement>(
+          ".faq-question"
+        );
+
+      if (!button) {
+        return;
+      }
+
+      closeItem(item);
+
+      button.addEventListener(
+        "click",
+        () => {
+          const isOpen =
+            item.dataset.open ===
+            "true";
+
+          if (isOpen) {
+            closeItem(item);
+
+            return;
+          }
+
+          openItem(item);
+        }
+      );
+    });
+
+    /* =====================================
+       CATEGORY FILTER
+    ====================================== */
+
+    categories.forEach(
+      (categoryButton) => {
+        categoryButton.addEventListener(
+          "click",
+          () => {
+            const selectedCategory =
+              categoryButton
+                .dataset.category;
+
+            if (
+              !selectedCategory
+            ) {
+              return;
+            }
+
+            categories.forEach(
+              (button) => {
+                button.dataset.active =
+                  button ===
+                  categoryButton
+                    ? "true"
+                    : "false";
+              }
+            );
+
+            const visibleItems:
+              HTMLElement[] = [];
+
+            items.forEach(
+              (item) => {
+                closeItem(item);
+
+                const matches =
+                  item.dataset
+                    .faqCategory ===
+                  selectedCategory;
+
+                item.hidden =
+                  !matches;
+
+                if (matches) {
+                  visibleItems.push(
+                    item
+                  );
+                }
+              }
+            );
+
+            /*
+              Open first FAQ
+              automatically.
+            */
+
+            if (
+              visibleItems.length >
+              0
+            ) {
+              requestAnimationFrame(
+                () => {
+                  openItem(
+                    visibleItems[0]
+                  );
+                }
+              );
+            }
+          }
+        );
+      }
+    );
+
+    /* =====================================
+       OPEN FIRST WEDDING QUESTION
+    ====================================== */
+
+    const firstVisible =
+      Array.from(items).find(
+        (item) =>
+          !item.hidden
+      );
+
+    if (firstVisible) {
+      requestAnimationFrame(
+        () => {
+          openItem(
+            firstVisible
+          );
+        }
+      );
+    }
+  }
+
+  initializeFAQ();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeFAQ
+  );
+</script>

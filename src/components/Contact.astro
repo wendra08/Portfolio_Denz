@@ -1,0 +1,421 @@
+---
+const whatsappUrl =
+  "https://wa.me/6281313216466?text=Halo%20Kang%20Denz%2C%20saya%20ingin%20berdiskusi%20mengenai%20rencana%20acara%20saya.";
+
+const contacts = [
+  {
+    number: "01",
+    name: "WhatsApp",
+    detail: "+62 813-1321-6466",
+    code: "WA",
+    url: whatsappUrl,
+  },
+
+  {
+    number: "02",
+    name: "Email",
+    detail: "Email coming soon",
+    code: "EM",
+    url: "",
+  },
+
+  {
+    number: "03",
+    name: "Instagram",
+    detail: "Instagram Kang Denz",
+    code: "IG",
+    url: "",
+  },
+
+  {
+    number: "04",
+    name: "TikTok",
+    detail: "TikTok Kang Denz",
+    code: "TT",
+    url: "",
+  },
+
+  {
+    number: "05",
+    name: "Facebook",
+    detail: "Facebook Kang Denz",
+    code: "FB",
+    url: "",
+  },
+];
+---
+
+<section
+  id="contact"
+  class="contact-section relative overflow-hidden bg-charcoal text-ivory"
+>
+  <!-- =====================================
+       DECORATIVE BACKGROUND
+  ====================================== -->
+
+  <div
+    class="pointer-events-none absolute top-[-320px] left-1/2 h-[850px] w-[850px] -translate-x-1/2 rounded-full bg-gold/[0.045] blur-[200px]"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="pointer-events-none absolute right-[-300px] bottom-[-400px] h-[800px] w-[800px] rounded-full bg-gold/[0.025] blur-[180px]"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="container-luxury relative z-10 py-20 md:py-28 lg:py-36"
+  >
+    <!-- =====================================
+         LABEL
+    ====================================== -->
+
+    <div
+      class="contact-reveal flex items-center gap-4"
+    >
+      <span
+        class="h-px w-10 bg-gold"
+      ></span>
+
+      <p class="gold-label">
+        Contact
+      </p>
+    </div>
+
+    <!-- =====================================
+         HERO CLOSING
+    ====================================== -->
+
+    <div
+      class="contact-reveal mt-10 border-b border-white/10 pb-16 md:mt-14 md:pb-24"
+    >
+      <p
+        class="text-[8px] font-bold tracking-[0.24em] text-white/30 uppercase"
+      >
+        Ready When You Are
+      </p>
+
+      <h2
+        class="mt-5 max-w-[1200px] font-serif text-[clamp(4rem,9vw,9rem)] leading-[0.8] tracking-[-0.055em]"
+      >
+        Let's create&nbsp;<span class="text-gold">your moment.</span>
+      </h2>
+
+      <div
+        class="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-20"
+      >
+        <p
+          class="max-w-3xl font-serif text-[clamp(2rem,3.8vw,4rem)] leading-[1] tracking-[-0.035em] text-ivory-muted"
+        >
+          Planning a wedding,
+          looking for a Wedding MC,
+          need photography,
+          or want to learn MC?
+        </p>
+
+        <div>
+          <p
+            class="max-w-md text-sm leading-7 text-white/45 md:text-base md:leading-8"
+          >
+            Ceritakan rencanamu, tanggal acara,
+            lokasi, kebutuhan layanan, atau pertanyaan
+            yang ingin didiskusikan.
+          </p>
+
+          <p
+            class="mt-4 font-serif text-2xl text-gold md:text-3xl"
+          >
+            Let's talk about your plan.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================
+         PRIMARY WHATSAPP CTA
+    ====================================== -->
+
+    <div
+      class="contact-reveal py-14 md:py-20"
+    >
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contact-primary group relative block overflow-hidden border border-gold/35 px-7 py-8 transition-all duration-500 md:px-10 md:py-10 lg:px-12"
+      >
+        <div
+          class="relative z-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
+        >
+          <div
+            class="flex items-center gap-6"
+          >
+            <!-- ICON -->
+
+            <span
+              class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-gold/40 text-[9px] font-bold tracking-[0.08em] text-gold transition-all duration-500 group-hover:bg-gold group-hover:text-charcoal md:h-16 md:w-16"
+            >
+              WA
+            </span>
+
+            <div>
+              <p
+                class="text-[7px] font-bold tracking-[0.22em] text-gold uppercase"
+              >
+                Direct Conversation
+              </p>
+
+              <p
+                class="mt-2 font-serif text-3xl leading-none md:text-4xl lg:text-5xl"
+              >
+                Chat Kang Denz
+              </p>
+
+              <p
+                class="mt-3 text-[9px] tracking-[0.14em] text-white/35"
+              >
+                +62 813-1321-6466
+              </p>
+            </div>
+          </div>
+
+          <!-- ARROW -->
+
+          <span
+            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 text-xl text-white/50 transition-all duration-500 group-hover:translate-x-1 group-hover:border-gold group-hover:text-gold"
+            aria-hidden="true"
+          >
+            ↗
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <!-- =====================================
+         CONTACT CHANNELS
+    ====================================== -->
+
+    <div
+      class="contact-reveal border-t border-white/10"
+    >
+      {
+        contacts.map((contact) => (
+          contact.url ? (
+
+            <a
+              href={contact.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-channel group relative grid gap-5 border-b border-white/10 py-7 md:grid-cols-[70px_1fr_1fr_auto] md:items-center md:gap-8 md:py-9"
+            >
+              <p
+                class="text-[8px] font-bold tracking-[0.16em] text-white/25 transition-colors duration-300 group-hover:text-gold"
+              >
+                {contact.number}
+              </p>
+
+              <div
+                class="flex items-center gap-5"
+              >
+                <span
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-[8px] font-bold text-white/40 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal"
+                >
+                  {contact.code}
+                </span>
+
+                <p
+                  class="font-serif text-2xl transition-colors duration-300 group-hover:text-gold md:text-3xl"
+                >
+                  {contact.name}
+                </p>
+              </div>
+
+              <p
+                class="text-sm text-white/35"
+              >
+                {contact.detail}
+              </p>
+
+              <span
+                class="text-xl text-white/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-gold"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            </a>
+
+          ) : (
+
+            <div
+              class="grid gap-5 border-b border-white/10 py-7 opacity-55 md:grid-cols-[70px_1fr_1fr_auto] md:items-center md:gap-8 md:py-9"
+            >
+              <p
+                class="text-[8px] font-bold tracking-[0.16em] text-white/20"
+              >
+                {contact.number}
+              </p>
+
+              <div
+                class="flex items-center gap-5"
+              >
+                <span
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-[8px] font-bold text-white/25"
+                >
+                  {contact.code}
+                </span>
+
+                <p
+                  class="font-serif text-2xl text-white/50 md:text-3xl"
+                >
+                  {contact.name}
+                </p>
+              </div>
+
+              <p
+                class="text-sm text-white/25"
+              >
+                {contact.detail}
+              </p>
+
+              <span
+                class="text-[7px] font-bold tracking-[0.18em] text-white/20 uppercase"
+              >
+                Soon
+              </span>
+            </div>
+
+          )
+        ))
+      }
+    </div>
+
+    <!-- =====================================
+         FINAL BRAND STATEMENT
+    ====================================== -->
+
+    <div
+      class="contact-reveal mt-20 border-t border-white/10 pt-14 md:mt-28 md:pt-20"
+    >
+      <div
+        class="grid gap-10 lg:grid-cols-[0.45fr_1.55fr] lg:items-end"
+      >
+        <div>
+          <p
+            class="text-[8px] font-bold tracking-[0.24em] text-gold uppercase"
+          >
+            Kang Denz
+          </p>
+
+          <p
+            class="mt-3 text-[8px] tracking-[0.15em] text-white/25 uppercase"
+          >
+            Professional Wedding MC
+          </p>
+        </div>
+
+        <div>
+          <p
+            class="max-w-5xl font-serif text-[clamp(3rem,5.5vw,6.5rem)] leading-[0.9] tracking-[-0.045em]"
+          >
+            More than just speaking.&nbsp;<span class="text-gold">It's about understanding the moment.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initializeContact() {
+    const section =
+      document.querySelector<HTMLElement>(
+        "#contact"
+      );
+
+    if (!section) {
+      return;
+    }
+
+    if (
+      section.dataset.initialized ===
+      "true"
+    ) {
+      return;
+    }
+
+    section.dataset.initialized =
+      "true";
+
+    const elements =
+      section.querySelectorAll<HTMLElement>(
+        ".contact-reveal"
+      );
+
+    if (
+      !(
+        "IntersectionObserver" in
+        window
+      )
+    ) {
+      elements.forEach(
+        (element) => {
+          element.classList.add(
+            "is-visible"
+          );
+        }
+      );
+
+      return;
+    }
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach(
+            (entry) => {
+              if (
+                !entry.isIntersecting
+              ) {
+                return;
+              }
+
+              if (
+                entry.target instanceof
+                HTMLElement
+              ) {
+                entry.target.classList.add(
+                  "is-visible"
+                );
+              }
+
+              observer.unobserve(
+                entry.target
+              );
+            }
+          );
+        },
+        {
+          threshold: 0.08,
+          rootMargin:
+            "0px 0px -40px 0px",
+        }
+      );
+
+    elements.forEach(
+      (element) => {
+        observer.observe(
+          element
+        );
+      }
+    );
+  }
+
+  initializeContact();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeContact
+  );
+</script>
+ 
