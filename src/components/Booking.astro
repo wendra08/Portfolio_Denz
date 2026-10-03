@@ -6,7 +6,7 @@ const services = [
     title: "Book Kang Denz",
     subtitle: "Professional Wedding MC",
     description:
-      "Wedding MC / Lamaran / Akad / Resepsi / Event by Request",
+      "MC Lamaran / MC Akad / MC Resepsi / MC Intimate Wedding / MC Event",
   },
 
   {
@@ -39,18 +39,9 @@ const services = [
 
 const eventTypes = [
   "Lamaran",
-  "Akad",
-  "Resepsi",
-  "Wedding",
-  "Wedding Planning",
-  "Wedding Coordination",
-  "Prewedding",
-  "Photography",
-  "Studio Photography",
-  "Event Documentation",
-  "Private MC Mentoring",
-  "Event by Request",
-  "Lainnya",
+  "Akad Only",
+  "Akad & Resepsi",
+  "Intimate Wedding",
 ];
 
 const directWhatsapp =
@@ -376,6 +367,15 @@ const directWhatsapp =
 
           <!-- EVENT TYPE -->
 
+          <div class="booking-field" hidden data-schedule="akad">
+            <label for="booking-akad" class="booking-label">Jam Acara Akad</label>
+            <input id="booking-akad" name="akadTime" type="time" class="booking-input" disabled />
+          </div>
+          <div class="booking-field" hidden data-schedule="resepsi">
+            <label for="booking-resepsi" class="booking-label">Jam Acara Resepsi</label>
+            <input id="booking-resepsi" name="receptionTime" type="time" class="booking-input" disabled />
+          </div>
+
           <div class="booking-field">
             <label
               for="booking-event"
@@ -502,6 +502,7 @@ const directWhatsapp =
               <!-- DIRECT WHATSAPP -->
 
               <a
+                id="booking-direct-whatsapp"
                 href={directWhatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -697,6 +698,87 @@ const directWhatsapp =
       return;
     }
 
+    const directChat = section.querySelector<HTMLAnchorElement>("#booking-direct-whatsapp");
+    const eventSelect = section.querySelector<HTMLSelectElement>("#booking-event")!;
+    const timeInput = section.querySelector<HTMLInputElement>("#booking-time")!;
+    const akadInput = section.querySelector<HTMLInputElement>("#booking-akad")!;
+    const receptionInput = section.querySelector<HTMLInputElement>("#booking-resepsi")!;
+    const guestsInput = section.querySelector<HTMLInputElement>("#booking-guests")!;
+    const locationInput = section.querySelector<HTMLInputElement>("#booking-location")!;
+    const messageInput = section.querySelector<HTMLTextAreaElement>("#booking-message")!;
+    const choices: Record<string, string[]> = {
+      "Book Kang Denz": ["Lamaran", "Akad Only", "Akad & Resepsi", "Intimate Wedding"],
+      "Nata Manten": ["Lamaran", "Akad Only", "Akad & Resepsi", "Intimate Wedding"],
+      "Natsume Photo": ["Prewedding", "Wedding", "Studio Photography"],
+      "MC Class": ["Private MC Mentoring"],
+    };
+    let previousService = "";
+    function setField(input: HTMLInputElement, visible: boolean, required = false) {
+      input.closest<HTMLElement>(".booking-field")!.hidden = !visible;
+      input.disabled = !visible;
+      input.required = visible && required;
+    }
+    function labelFor(id: string, text: string) {
+      section!.querySelector<HTMLLabelElement>(`label[for="${id}"]`)!.textContent = text;
+    }
+    function updateFields() {
+      const service = String(new FormData(form!).get("service") ?? "");
+      const photo = service === "Natsume Photo";
+      const mentoring = service === "MC Class";
+      const wedding = service === "Book Kang Denz" || service === "Nata Manten";
+      if (previousService !== service || !eventSelect.dataset.ready) {
+        eventSelect.replaceChildren(new Option(photo ? "Pilih jenis sesi" : mentoring ? "Pilih kelas" : "Pilih jenis acara", ""),
+          ...(choices[service] ?? []).map((value) => new Option(value, value)));
+        if (mentoring) eventSelect.value = "Private MC Mentoring";
+        for (const input of [timeInput, akadInput, receptionInput, guestsInput]) input.value = "";
+        previousService = service;
+        eventSelect.dataset.ready = "true";
+      }
+      const akad = wedding && ["Akad Only", "Akad & Resepsi"].includes(eventSelect.value);
+      const reception = wedding && eventSelect.value === "Akad & Resepsi";
+      setField(timeInput, !akad, true);
+      setField(akadInput, akad, true);
+      setField(receptionInput, reception, true);
+      setField(guestsInput, wedding || photo);
+      setField(locationInput, wedding, true);
+      labelFor("booking-event", photo ? "Jenis Sesi Foto" : mentoring ? "Pilihan Kelas" : "Jenis Acara");
+      labelFor("booking-date", photo ? "Tanggal Sesi Foto" : mentoring ? "Tanggal Kelas yang Diinginkan" : "Tanggal Acara");
+      labelFor("booking-time", photo ? "Jam Sesi Foto" : mentoring ? "Jam Kelas yang Diinginkan" : "Jam Acara");
+      labelFor("booking-guests", photo ? "Jumlah Orang yang Difoto" : "Jumlah Tamu");
+      guestsInput.placeholder = photo ? "Contoh: 2" : "Contoh: 500";
+      labelFor("booking-location", "Lokasi Acara");
+      locationInput.placeholder = "Venue / Kota / Lokasi acara";
+      labelFor("booking-message", mentoring ? "Pengalaman & Target Belajar" : photo ? "Konsep / Detail Sesi Foto" : "Pesan / Detail Acara");
+      messageInput.placeholder = mentoring ? "Ceritakan pengalaman dan kemampuan MC yang ingin dipelajari..." : photo ? "Ceritakan konsep foto dan kebutuhan sesi, misalnya family, graduation, atau maternity..." : "Ceritakan konsep acara dan kebutuhan khusus. Untuk intimate wedding, jelaskan rangkaian acara yang direncanakan...";
+    }
+    function buildWhatsappUrl() {
+      const data = new FormData(form!);
+      const service = String(data.get("service") ?? "");
+      const phone = service === "Natsume Photo" ? "6282116428887" : "6281313216466";
+      const lines = ["*BOOKING REQUEST*"];
+      if (service) lines.push(`Penyedia: ${service === "Book Kang Denz" ? "Kang Denz" : service}`);
+      const fieldIds = ["event", "name", "date", "time", "akad", "resepsi", "guests", "location", "message"];
+      for (const id of fieldIds) {
+        const input = section!.querySelector<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(`#booking-${id}`)!;
+        if (input.disabled) continue;
+        let value = String(data.get(input.name) ?? "").trim();
+        if (!value) continue;
+        const label = id === "event" ? "Layanan" : section!.querySelector<HTMLLabelElement>(`label[for="${input.id}"]`)!.textContent!.trim();
+        if (id === "date") {
+          value = new Intl.DateTimeFormat("id-ID", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${value}T00:00:00`));
+        }
+        lines.push(`${label}: ${value}`);
+      }
+      return `https://wa.me/${phone}?text=${encodeURIComponent(lines.join("\n"))}`;
+    }
+    function updateDirectChat() {
+      if (directChat) directChat.href = buildWhatsappUrl();
+    }
+    form.addEventListener("input", updateDirectChat);
+    section.addEventListener("change", () => { updateFields(); updateDirectChat(); });
+    updateFields();
+    updateDirectChat();
+
     form.addEventListener(
       "submit",
       (event) => {
@@ -714,41 +796,6 @@ const directWhatsapp =
             data.get("service") ?? ""
           );
 
-        const name =
-          String(
-            data.get("name") ?? ""
-          );
-
-        const date =
-          String(
-            data.get("date") ?? ""
-          );
-
-        const time =
-          String(
-            data.get("time") ?? ""
-          );
-
-        const eventType =
-          String(
-            data.get("event") ?? ""
-          );
-
-        const guests =
-          String(
-            data.get("guests") ?? ""
-          );
-
-        const location =
-          String(
-            data.get("location") ?? ""
-          );
-
-        const message =
-          String(
-            data.get("message") ?? ""
-          );
-
         if (!service) {
           status?.classList.remove(
             "hidden"
@@ -762,61 +809,7 @@ const directWhatsapp =
           return;
         }
 
-        /* =====================================
-           HUMAN READABLE DATE
-        ====================================== */
-
-        let formattedDate = date;
-
-        if (date) {
-          const dateObject =
-            new Date(
-              `${date}T00:00:00`
-            );
-
-          formattedDate =
-            new Intl.DateTimeFormat(
-              "id-ID",
-              {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              }
-            ).format(dateObject);
-        }
-
-        /* =====================================
-           WHATSAPP MESSAGE
-        ====================================== */
-
-        const lines = [
-          "Halo Kang Denz, saya ingin melakukan booking melalui website.",
-          "",
-          "*BOOKING REQUEST*",
-          "",
-          `Layanan: ${service}`,
-          `Nama: ${name}`,
-          `Tanggal Acara: ${formattedDate}`,
-          `Jenis Acara: ${eventType}`,
-          `Lokasi: ${location}`,
-          `Jam Acara: ${time}`,
-          `Jumlah Tamu: ${
-            guests || "-"
-          }`,
-          "",
-          "*Detail Acara:*",
-          message || "-",
-          "",
-          "Mohon informasinya mengenai availability dan detail layanan. Terima kasih.",
-        ];
-
-        const whatsappMessage =
-          lines.join("\n");
-
-        const whatsappUrl =
-          `https://wa.me/6281313216466?text=${encodeURIComponent(
-            whatsappMessage
-          )}`;
+        const whatsappUrl = buildWhatsappUrl();
 
         if (status) {
           status.textContent =

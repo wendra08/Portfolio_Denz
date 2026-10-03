@@ -1,12 +1,35 @@
 ---
 import Photo from "./Photo.astro";
 const services = [
-  "Wedding Photography",
-  "Prewedding",
-  "Studio Photography",
-  "Family Photography",
-  "Portrait",
-  "Event Documentation",
+  {
+    title: "Wedding Photography",
+    description: "Mengabadikan perjalanan hari pernikahan, dari prosesi yang khidmat hingga kebersamaan bersama keluarga dan tamu. Fokus pada ekspresi, detail, dan momen bermakna agar cerita hari bahagia dapat dikenang kembali.",
+    sessions: [],
+  },
+  {
+    title: "Prewedding",
+    description: "Sesi foto untuk menceritakan kedekatan dan karakter pasangan sebelum hari pernikahan. Konsep, suasana, dan lokasi dibicarakan bersama agar hasil foto terasa personal dan sesuai dengan cerita kalian.",
+    sessions: [],
+  },
+  {
+    title: "Studio Photography",
+    description: "Pilihan sesi foto di studio untuk merayakan berbagai fase kehidupan. Konsep dan gaya foto dapat disesuaikan dengan kebutuhan, dari potret personal hingga kebersamaan dengan orang terdekat.",
+    sessions: [
+      { title: "Prewedding Studio", description: "Mengabadikan kedekatan pasangan sebelum pernikahan dengan konsep dan suasana studio yang sesuai karakter kalian." },
+      { title: "Family Photography", description: "Merekam kehangatan dan kebersamaan keluarga dalam potret yang dapat dikenang lintas generasi." },
+      { title: "Graduation", description: "Merayakan pencapaian kelulusan melalui potret wisuda, sendiri maupun bersama orang-orang yang mendukung perjalananmu." },
+      { title: "Birthday", description: "Menandai pertambahan usia dengan sesi foto yang mencerminkan kepribadian dan suasana perayaanmu." },
+      { title: "Maternity", description: "Mengabadikan masa kehamilan dan hangatnya penantian menyambut anggota keluarga baru." },
+      { title: "Personal", description: "Potret individu untuk mengekspresikan karakter diri, melengkapi profil, atau menyimpan kenangan personal." },
+      { title: "Post Wedding", description: "Sesi foto setelah pernikahan untuk merayakan awal perjalanan bersama dalam suasana yang lebih santai." },
+      { title: "Group", description: "Mengabadikan kekompakan bersama sahabat, komunitas, atau rekan kerja dalam satu bingkai." },
+    ],
+  },
+  {
+    title: "Event Documentation",
+    description: "Mendokumentasikan rangkaian acara, interaksi peserta, dan momen penting agar cerita kegiatan tersimpan dengan utuh. Kebutuhan dokumentasi disesuaikan dengan jenis acara dan susunan kegiatannya.",
+    sessions: [],
+  },
 ];
 
 const gallery = [
@@ -112,6 +135,15 @@ const gallery = [
           >
             Kang Denz
           </p>
+          <a
+            href="https://wa.me/6282116428887"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 inline-flex min-h-12 items-center justify-center gap-4 border border-gold bg-gold px-6 py-3 text-xs font-semibold text-charcoal transition-colors hover:bg-gold-light focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+          >
+            Chat Admin Natsume
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
     </div>
@@ -209,9 +241,10 @@ const gallery = [
     <div>
       {
         services.map((service, index) => (
-          <div
-            class="natsume-service natsume-reveal group relative grid grid-cols-[50px_1fr_auto] items-center gap-4 border-b border-white/10 py-7 md:grid-cols-[80px_1fr_auto] md:py-9"
+          <details
+            class="natsume-service natsume-reveal group relative border-b border-white/10"
           >
+            <summary class="natsume-service-toggle grid cursor-pointer grid-cols-[32px_1fr_auto] items-center gap-3 py-7 md:grid-cols-[80px_1fr_auto] md:gap-4 md:py-9">
             <p
               class="text-[10px] font-semibold tracking-[0.2em] text-white/60 transition-colors duration-300 group-hover:text-gold"
             >
@@ -221,16 +254,33 @@ const gallery = [
             <h4
               class="font-serif text-2xl tracking-[-0.025em] transition-colors duration-300 group-hover:text-gold md:text-4xl lg:text-5xl"
             >
-              {service}
+              {service.title}
             </h4>
 
             <span
               class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-xs text-white/60 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal md:h-10 md:w-10"
               aria-hidden="true"
             >
-              +
+              <span class="natsume-plus">+</span>
+              <span class="natsume-minus">−</span>
             </span>
-          </div>
+            </summary>
+            <div class="pb-8 pl-11 md:pb-10 md:pl-24">
+              <p class="max-w-3xl text-sm leading-7 text-white/70 md:text-base md:leading-8">
+                {service.description}
+              </p>
+              {service.sessions.length > 0 && (
+                <dl class="mt-7 grid gap-x-8 gap-y-6 md:grid-cols-2">
+                  {service.sessions.map((session) => (
+                    <div class="border-l border-gold/30 pl-4">
+                      <dt class="font-serif text-xl text-ivory md:text-2xl">{session.title}</dt>
+                      <dd class="mt-2 text-sm leading-7 text-white/60">{session.description}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+            </div>
+          </details>
         ))
       }
     </div>
@@ -367,6 +417,15 @@ const gallery = [
 
   </div>
 </section>
+
+<style>
+  .natsume-service-toggle { list-style: none; }
+  .natsume-service-toggle::-webkit-details-marker { display: none; }
+  .natsume-service-toggle:focus-visible { outline: 2px solid #b79b62; outline-offset: 4px; }
+  .natsume-minus { display: none; }
+  details[open] .natsume-plus { display: none; }
+  details[open] .natsume-minus { display: inline; }
+</style>
 
 <script>
   function initializeNatsumePhoto() {
