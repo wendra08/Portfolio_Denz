@@ -1,34 +1,6 @@
 ---
 import Photo from "./Photo.astro";
-const projects = [
-  {
-    number: "01",
-    couple: "Nama Pasangan",
-    type: "Wedding Reception",
-    location: "Balikpapan",
-    year: "2026",
-    image: "/images/portfolio/wedding-01.jpeg",
-    category: "Wedding MC",
-  },
-  {
-    number: "02",
-    couple: "Nama Pasangan",
-    type: "Akad & Reception",
-    location: "Balikpapan",
-    year: "2026",
-    image: "/images/portfolio/wedding-02.jpeg",
-    category: "Wedding MC",
-  },
-  {
-    number: "03",
-    couple: "Nama Pasangan",
-    type: "Wedding Celebration",
-    location: "Balikpapan",
-    year: "2026",
-    image: "/images/portfolio/wedding-03.jpeg",
-    category: "Wedding MC",
-  },
-];
+import { projects } from "../data/portfolio";
 ---
 
 <section
@@ -95,7 +67,9 @@ const projects = [
         >
           <!-- IMAGE -->
 
-          <div
+          <a
+            href={`/portfolio/${project.slug}`}
+            aria-label={`View Wedding Story: ${project.title}`}
             class:list={[
               "group relative overflow-hidden bg-charcoal",
               index % 2 !== 0 && "lg:order-2"
@@ -106,7 +80,7 @@ const projects = [
             >
               <Photo
                 src={project.image}
-                alt={`${project.couple} — ${project.type}`}
+                alt={`${project.title} — ${project.location}`}
                 class="portfolio-image h-full w-full object-cover"
                 loading="lazy"
               />
@@ -162,7 +136,7 @@ const projects = [
                 </span>
               </div>
             </div>
-          </div>
+          </a>
 
           <!-- INFO -->
 
@@ -180,13 +154,13 @@ const projects = [
             <h3
               class="mt-5 font-serif text-[clamp(2.8rem,5vw,5rem)] leading-[0.9] tracking-[-0.04em]"
             >
-              {project.couple}
+              {project.title}
             </h3>
 
             <p
               class="mt-5 font-serif text-2xl text-charcoal/75 md:text-3xl"
             >
-              {project.type}
+              {project.category}
             </p>
 
             <!-- META -->
@@ -226,16 +200,13 @@ const projects = [
             <p
               class="mt-8 max-w-lg text-sm leading-7 text-charcoal/70 md:text-base md:leading-8"
             >
-              Sebuah wedding dengan karakter dan suasana
-              tersendiri, dibawakan dengan pendekatan yang
-              menyesuaikan alur acara, pasangan, dan tamu
-              yang hadir.
+              {project.description}
             </p>
 
-            <!-- TEMP LINK -->
+            <!-- STORY LINK -->
 
-            <button
-              type="button"
+            <a
+              href={`/portfolio/${project.slug}`}
               class="group mt-8 inline-flex items-center gap-5 text-[10px] font-bold tracking-[0.22em] text-charcoal uppercase"
             >
               View Wedding Story <span
@@ -243,7 +214,7 @@ const projects = [
               >
                 →
               </span>
-            </button>
+            </a>
           </div>
         </article>
       ))
@@ -275,8 +246,8 @@ const projects = [
         </p>
       </div>
 
-      <button
-        type="button"
+      <a
+        href="/portfolio"
         class="group inline-flex w-fit items-center gap-6 border border-charcoal/20 px-7 py-4 text-[10px] font-bold tracking-[0.2em] text-charcoal uppercase transition-all duration-300 hover:border-gold hover:bg-gold hover:text-ivory"
       >
         View All Portfolio <span
@@ -284,7 +255,7 @@ const projects = [
         >
           →
         </span>
-      </button>
+      </a>
     </div>
   </div>
 </section>

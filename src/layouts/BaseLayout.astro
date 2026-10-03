@@ -1,5 +1,6 @@
 ﻿---
 import "../styles/global.css";
+import FloatingActions from "../components/FloatingActions.astro";
 import { Font } from "astro:assets";
 
 interface Props {
@@ -79,6 +80,7 @@ const structuredData = Astro.site && Astro.url.pathname === "/" ? {
   <body>
     <a class="skip-link" href="#main-content">Langsung ke konten</a>
     <slot />
+    <FloatingActions />
     <noscript>
       <style is:inline>
         [class*="-reveal"], .testimonial-card { opacity: 1 !important; transform: none !important; filter: none !important; }

@@ -44,5 +44,6 @@ Perintah ini memakai Sharp yang tersedia pada instalasi Astro untuk membuat WebP
 - Gambar konten: `public/images/`.
 - Video: `public/videos/`, dimuat setelah interaksi.
 - Artikel: `src/content/journal/`.
+- Portfolio: `src/data/portfolio.ts`. Data yang sama dipakai pada homepage, `/portfolio`, dan halaman detail `/portfolio/[slug]`. Ubah judul, foto, metadata, dan narasi di file ini; gunakan slug yang unik untuk setiap acara.
 
 Lihat `docs/final-polish.md` untuk hasil pemeriksaan dan pekerjaan yang masih memerlukan data atau browser.

@@ -1,4 +1,27 @@
 ---
+const expertise = [
+  {
+    title: "Public Speaking",
+    description:
+      "Memandu acara dengan artikulasi yang jelas, pembawaan yang percaya diri, serta tutur kata yang santun dan sesuai suasana.",
+  },
+  {
+    title: "Tilawah Al-Qur’an",
+    description:
+      "Berbekal pendidikan pesantren, fasih membaca Al-Qur’an dengan memperhatikan kaidah tajwid, makhraj huruf, dan adab tilawah untuk menghadirkan suasana yang khidmat.",
+  },
+  {
+    title: "Manajemen Acara",
+    description:
+      "Menjaga alur dan ritme acara melalui persiapan rundown, koordinasi dengan vendor, serta kesiapan menghadapi perubahan di lapangan.",
+  },
+  {
+    title: "Engagement dengan Tamu",
+    description:
+      "Membangun interaksi yang hangat dan natural agar tamu merasa dilibatkan, dengan tetap menjaga kesopanan dan kenyamanan bersama.",
+  },
+];
+
 const reasons = [
   {
     number: "01",
@@ -90,11 +113,39 @@ const reasons = [
         <p
           class="max-w-md text-sm leading-7 text-charcoal/60 md:text-base md:leading-8"
         >
-          Wedding membutuhkan lebih dari seseorang yang mampu
-          berbicara. Seorang MC perlu memahami suasana, pasangan,
-          tamu, rundown, serta momen yang sedang berlangsung.
+          Kang Denz adalah MC jebolan pesantren yang memadukan
+          kemampuan public speaking dengan kefasihan membaca Al-Qur’an.
+          Bekal tajwid, makhraj huruf, dan adab menjadi bagian dari
+          pembawaan yang santun, hangat, dan peka terhadap setiap momen.
         </p>
 
+      </div>
+    </div>
+
+    <div
+      class="why-reveal mt-12 rounded-2xl border border-gold/30 bg-white/40 p-6 md:mt-16 md:p-10 lg:p-12"
+      aria-labelledby="core-expertise-heading"
+    >
+      <p class="gold-label">Core Expertise</p>
+      <h3
+        id="core-expertise-heading"
+        class="mt-5 max-w-3xl font-serif text-[clamp(2.2rem,4vw,4rem)] leading-[1.05] tracking-[-0.035em]"
+      >
+        MC jebolan pesantren.<br />
+        <span class="text-gold">Fasih bertutur, fasih melantunkan ayat.</span>
+      </h3>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-2 md:gap-5">
+        {expertise.map((item) => (
+          <div class="rounded-xl border border-charcoal/10 bg-ivory p-6 md:p-7">
+            <h4 class="font-serif text-2xl leading-tight tracking-[-0.02em] md:text-3xl">
+              {item.title}
+            </h4>
+            <p class="mt-3 text-sm leading-7 text-charcoal/70 md:text-base md:leading-8">
+              {item.description}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
 
