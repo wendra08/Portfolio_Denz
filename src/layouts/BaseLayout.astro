@@ -1,6 +1,7 @@
 ﻿---
 import "../styles/global.css";
 import FloatingActions from "../components/FloatingActions.astro";
+import LanguagePicker from "../components/LanguagePicker.astro";
 import { Font } from "astro:assets";
 
 interface Props {
@@ -44,6 +45,12 @@ const structuredData = Astro.site && Astro.url.pathname === "/" ? {
 <!doctype html>
 <html lang="id">
   <head>
+    <script is:inline>
+      try {
+        const language = localStorage.getItem('kang-denz-language');
+        if (language === 'id' || language === 'en') document.documentElement.lang = language;
+      } catch {}
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
@@ -81,12 +88,13 @@ const structuredData = Astro.site && Astro.url.pathname === "/" ? {
     <a class="skip-link" href="#main-content">Langsung ke konten</a>
     <slot />
     <FloatingActions />
+    <LanguagePicker />
     <noscript>
       <style is:inline>
         [class*="-reveal"], .testimonial-card { opacity: 1 !important; transform: none !important; filter: none !important; }
         #faq .faq-item[hidden] { display: block !important; }
         #faq .faq-answer { max-height: none !important; opacity: 1 !important; }
-        #booking-form, .faq-category-scroll, .faq-plus, #mobile-menu-button { display: none !important; }
+        #booking-form, .faq-category-scroll, .faq-plus, #mobile-menu-button, #language-switch { display: none !important; }
       </style>
       <p class="container-luxury py-6 text-sm text-ivory">Untuk booking tanpa JavaScript, silakan <a class="underline" href="https://wa.me/6281313216466">hubungi Kang Denz melalui WhatsApp</a>.</p>
     </noscript>

@@ -31,9 +31,9 @@ const services = [
     number: "04",
     value: "MC Class",
     title: "MC Class",
-    subtitle: "Private MC Mentoring",
+    subtitle: "Private Mentoring & Small Class",
     description:
-      "Private 1-on-1 Mentoring / Public Speaking / MC Practice",
+      "Private Mentoring / Private Intensive / Small Class",
   },
 ];
 
@@ -531,6 +531,8 @@ const directWhatsapp =
               pesan WhatsApp dan tidak disimpan di website.
             </p>
 
+            <p id="booking-recipient" class="mt-3 text-xs leading-6 text-gold" aria-live="polite"></p>
+
             <!-- FORM STATUS -->
 
             <p
@@ -573,6 +575,7 @@ const directWhatsapp =
 </section>
 
 <script>
+  import { translate, currentLanguage } from '../i18n/client';
   function initializeBooking() {
     const section =
       document.querySelector<HTMLElement>(
@@ -710,7 +713,7 @@ const directWhatsapp =
       "Book Kang Denz": ["Lamaran", "Akad Only", "Akad & Resepsi", "Intimate Wedding"],
       "Nata Manten": ["Lamaran", "Akad Only", "Akad & Resepsi", "Intimate Wedding"],
       "Natsume Photo": ["Prewedding", "Wedding", "Studio Photography"],
-      "MC Class": ["Private MC Mentoring"],
+      "MC Class": ["Private Mentoring", "Private Intensive", "Small Class"],
     };
     let previousService = "";
     function setField(input: HTMLInputElement, visible: boolean, required = false) {
@@ -729,7 +732,6 @@ const directWhatsapp =
       if (previousService !== service || !eventSelect.dataset.ready) {
         eventSelect.replaceChildren(new Option(photo ? "Pilih jenis sesi" : mentoring ? "Pilih kelas" : "Pilih jenis acara", ""),
           ...(choices[service] ?? []).map((value) => new Option(value, value)));
-        if (mentoring) eventSelect.value = "Private MC Mentoring";
         for (const input of [timeInput, akadInput, receptionInput, guestsInput]) input.value = "";
         previousService = service;
         eventSelect.dataset.ready = "true";
@@ -755,17 +757,18 @@ const directWhatsapp =
       const data = new FormData(form!);
       const service = String(data.get("service") ?? "");
       const phone = service === "Natsume Photo" ? "6282116428887" : "6281313216466";
-      const lines = ["*BOOKING REQUEST*"];
-      if (service) lines.push(`Penyedia: ${service === "Book Kang Denz" ? "Kang Denz" : service}`);
+      const lines = [translate("*BOOKING REQUEST*")];
+      if (service) lines.push(`${translate("Penyedia")}: ${translate(service === "Book Kang Denz" ? "Kang Denz" : service)}`);
       const fieldIds = ["event", "name", "date", "time", "akad", "resepsi", "guests", "location", "message"];
       for (const id of fieldIds) {
         const input = section!.querySelector<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(`#booking-${id}`)!;
         if (input.disabled) continue;
         let value = String(data.get(input.name) ?? "").trim();
         if (!value) continue;
-        const label = id === "event" ? "Layanan" : section!.querySelector<HTMLLabelElement>(`label[for="${input.id}"]`)!.textContent!.trim();
+        const label = translate(id === "event" ? "Layanan" : section!.querySelector<HTMLLabelElement>(`label[for="${input.id}"]`)!.textContent!.trim());
+        if (id === "event") value = translate(value);
         if (id === "date") {
-          value = new Intl.DateTimeFormat("id-ID", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${value}T00:00:00`));
+          value = new Intl.DateTimeFormat(currentLanguage() === 'en' ? 'en-GB' : 'id-ID', { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${value}T00:00:00`));
         }
         lines.push(`${label}: ${value}`);
       }
@@ -773,8 +776,16 @@ const directWhatsapp =
     }
     function updateDirectChat() {
       if (directChat) directChat.href = buildWhatsappUrl();
+      const recipient = section!.querySelector<HTMLElement>("#booking-recipient");
+      const service = new FormData(form!).get("service");
+      if (recipient) {
+        recipient.textContent = !service ? "" : service === "Natsume Photo"
+          ? "Booking dikirim ke WhatsApp Admin Natsume: +62 821-1642-8887."
+          : "Booking dikirim ke WhatsApp Kang Denz: +62 813-1321-6466.";
+      }
     }
     form.addEventListener("input", updateDirectChat);
+    document.addEventListener('site:language-change', updateDirectChat);
     section.addEventListener("change", () => { updateFields(); updateDirectChat(); });
     updateFields();
     updateDirectChat();

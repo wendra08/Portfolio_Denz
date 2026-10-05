@@ -156,7 +156,7 @@ const faqs = [
     question:
       "Apakah private atau group?",
     answer:
-      "Kang Denz MC Class menggunakan konsep Private 1-on-1 Mentoring agar pembelajaran dapat lebih personal dan terarah.",
+      "Tersedia Private Mentoring dan Private Intensive untuk 1 peserta, serta Small Class untuk grup kecil dengan maksimal 5 peserta. Kelas dapat berlangsung offline atau online, menyesuaikan.",
   },
 
   {
@@ -172,7 +172,7 @@ const faqs = [
     question:
       "Berapa lama mentoring?",
     answer:
-      "Durasi mentoring belum ditentukan pada informasi paket saat ini. Silakan hubungi Kang Denz untuk mendapatkan informasi mengenai durasi, jadwal, dan konsep mentoring yang tersedia.",
+      "Private Mentoring berdurasi total 2 jam, dibagi 1 jam per hari selama 2 hari atau selesai dalam 1 hari. Private Intensive berdurasi total 4 jam, dibagi 2 jam per hari selama 2 hari. Small Class berdurasi 4 jam.",
   },
 
   {
@@ -604,6 +604,15 @@ const whatsappUrl =
       section.querySelectorAll<HTMLElement>(
         ".faq-item"
       );
+
+    document.addEventListener('site:language-change', () => {
+      requestAnimationFrame(() => {
+        items.forEach((item) => {
+          const answer = item.querySelector<HTMLElement>('.faq-answer');
+          if (item.dataset.open === 'true' && answer) answer.style.maxHeight = `${answer.scrollHeight}px`;
+        });
+      });
+    });
 
     /* =====================================
        CLOSE ITEM

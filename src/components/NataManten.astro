@@ -4,26 +4,32 @@ const services = [
   {
     number: "01",
     title: "Wedding Planning",
+    description: "Mendampingi persiapan pernikahan sejak awal, mulai dari menyusun konsep, menentukan prioritas, hingga merencanakan kebutuhan acara sesuai keinginan pasangan.",
   },
   {
     number: "02",
     title: "Wedding Coordination",
+    description: "Menyelaraskan komunikasi antara pasangan, keluarga, dan pihak yang terlibat agar setiap persiapan memiliki arah dan pembagian tugas yang jelas.",
   },
   {
     number: "03",
     title: "Wedding Day Management",
+    description: "Mengatur pelaksanaan pada hari pernikahan, memantau kesiapan tim dan jalannya prosesi, serta membantu menangani penyesuaian di lapangan.",
   },
   {
     number: "04",
     title: "Vendor Coordination",
+    description: "Menghubungkan kebutuhan acara dengan vendor terkait, menyamakan informasi teknis, dan memastikan setiap pihak memahami waktu serta perannya.",
   },
   {
     number: "05",
     title: "Rundown & Timeline",
+    description: "Menyusun urutan prosesi dan alokasi waktu sebagai panduan bersama bagi keluarga, MC, dan vendor agar acara berjalan tertata.",
   },
   {
     number: "06",
     title: "Custom Wedding Package",
+    description: "Membicarakan kombinasi layanan berdasarkan konsep, skala acara, dan kebutuhan pasangan. Cakupan pendampingan disepakati bersama saat konsultasi.",
   },
 ];
 
@@ -215,7 +221,7 @@ const behindScenes = [
     >
       {
         services.map((service, index) => (
-          <article
+          <details
             class:list={[
               "nata-service nata-reveal group relative border-b border-charcoal/10 py-8 md:py-10",
               index % 2 === 0
@@ -223,8 +229,8 @@ const behindScenes = [
                 : "md:pl-10 lg:pl-14"
             ]}
           >
-            <div
-              class="flex items-start justify-between gap-6"
+            <summary
+              class="service-toggle flex cursor-pointer items-start justify-between gap-6"
             >
               <div>
                 <p
@@ -243,10 +249,12 @@ const behindScenes = [
               <span
                 class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-charcoal/10 text-sm text-charcoal/70 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ivory"
               >
-                +
+                <span class="expand-icon" aria-hidden="true">+</span>
+                <span class="collapse-icon" aria-hidden="true">&minus;</span>
               </span>
-            </div>
-          </article>
+            </summary>
+            <p class="mt-5 max-w-xl text-sm leading-7 text-charcoal/70 md:text-base md:leading-8">{service.description}</p>
+          </details>
         ))
       }
     </div>
@@ -371,6 +379,15 @@ const behindScenes = [
 
   </div>
 </section>
+
+<style>
+  .service-toggle { list-style: none; }
+  .service-toggle::-webkit-details-marker { display: none; }
+  .service-toggle:focus-visible { outline: 2px solid #b79b62; outline-offset: 6px; }
+  .collapse-icon { display: none; }
+  details[open] .expand-icon { display: none; }
+  details[open] .collapse-icon { display: inline; }
+</style>
 
 <script>
   function initializeNataManten() {

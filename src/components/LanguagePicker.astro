@@ -1,0 +1,70 @@
+<button id="language-switch" type="button" aria-label="Ubah bahasa" data-no-translate>
+  <span lang="id">ID</span><span aria-hidden="true"> / </span><span lang="en">EN</span>
+</button>
+
+<dialog id="language-picker" aria-labelledby="language-title" data-no-translate>
+  <div class="language-card">
+    <p class="language-brand">KANG DENZ</p>
+    <span class="language-line" aria-hidden="true"></span>
+    <h2 id="language-title"><span lang="id">Selamat datang.</span><br /><span lang="en">Welcome.</span></h2>
+    <p class="language-description"><span lang="id">Pilih bahasa untuk melanjutkan.</span><br /><span lang="en">Choose your language to continue.</span></p>
+    <div class="language-options">
+      <button type="button" data-language="id" lang="id"><span>Bahasa Indonesia</span><span aria-hidden="true">→</span></button>
+      <button type="button" data-language="en" lang="en"><span>English</span><span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+</dialog>
+
+<style>
+  #language-switch { position: fixed; z-index: 125; right: max(1rem, env(safe-area-inset-right)); top: 5.4rem; border: 1px solid #b79b6280; border-radius: 999px; min-height: 44px; padding: 0.65rem 1rem; background: #11110f; color: #f4f0e7; font-size: 11px; letter-spacing: 0.08em; cursor: pointer; }
+  #language-switch:hover { border-color: #b79b62; }
+  :global(html[lang="id"]) #language-switch [lang="id"], :global(html[lang="en"]) #language-switch [lang="en"] { color: #c9b27e; font-weight: 700; }
+  #language-picker { position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 1.5rem; border: 0; background: #11110f; color: #f4f0e7; overflow-y: auto; }
+  #language-picker[open] { display: grid; place-items: center; }
+  #language-picker::backdrop { background: #11110f; }
+  .language-card { width: 100%; max-width: 480px; padding-block: 2rem; }
+  .language-brand { color: #b79b62; font-size: 12px; letter-spacing: 0.3em; }
+  .language-line { display: block; width: 40px; height: 1px; background: #b79b62; margin-block: 2rem; }
+  h2 { font-family: var(--font-serif); font-size: clamp(2.8rem, 8vw, 4.5rem); line-height: 1.05; }
+  h2 [lang="en"] { color: #b79b62; }
+  .language-description { margin-top: 1.5rem; font-size: 14px; line-height: 1.9; color: #d8d2c6; }
+  .language-options { display: grid; gap: 1rem; margin-top: 2rem; }
+  .language-options button { display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem 1.4rem; border: 1px solid #b79b6266; background: #191916; color: #f4f0e7; text-align: left; cursor: pointer; }
+  .language-options button:hover { background: #b79b62; color: #11110f; }
+  button:focus-visible { outline: 2px solid #c9b27e; outline-offset: 4px; }
+  :global(html:has(#language-picker[open])) { overflow: hidden; }
+  :global(body:has(#mobile-menu[data-open="true"])) #language-switch { visibility: hidden; }
+  @media (min-width: 768px) { #language-switch { right: 2rem; top: 6.4rem; } }
+  @media print { #language-switch, #language-picker { display: none !important; } }
+</style>
+
+<script>
+  import { setLanguage, translate, watchTranslations, type Language } from '../i18n/client';
+  function initializeLanguage() {
+    const dialog = document.querySelector<HTMLDialogElement>('#language-picker');
+    const switcher = document.querySelector<HTMLButtonElement>('#language-switch');
+    if (!dialog || !switcher || dialog.dataset.ready) return;
+    dialog.dataset.ready = 'true';
+    let saved: string | null = null;
+    try { saved = localStorage.getItem('kang-denz-language'); } catch { /* Offer a session-only choice. */ }
+    let chosen = saved === 'id' || saved === 'en';
+    watchTranslations();
+    if (chosen) setLanguage(saved as Language);
+    else dialog.showModal();
+    dialog.addEventListener('cancel', (event) => { if (!chosen) event.preventDefault(); });
+    switcher.addEventListener('click', () => dialog.showModal());
+    dialog.querySelectorAll<HTMLButtonElement>('[data-language]').forEach((button) => {
+      button.addEventListener('click', () => {
+        chosen = true;
+        setLanguage(button.dataset.language as Language);
+        dialog.close();
+        switcher.focus({ preventScroll: true });
+      });
+    });
+    const label = () => switcher.setAttribute('aria-label', translate('Ubah bahasa'));
+    document.addEventListener('site:language-change', label);
+    label();
+  }
+  initializeLanguage();
+  document.addEventListener('astro:page-load', initializeLanguage);
+</script>

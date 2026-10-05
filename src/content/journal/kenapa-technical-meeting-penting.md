@@ -1,6 +1,6 @@
 ---
 title: "Kenapa Technical Meeting Penting?"
-excerpt: "Technical meeting membantu seluruh pihak memahami timeline, tanggung jawab, cue, dan kemungkinan perubahan sebelum wedding berlangsung."
+excerpt: "Technical meeting membantu seluruh pihak memahami timeline, tanggung jawab, konsep, dan kemungkinan perubahan sebelum wedding berlangsung."
 category: "Behind The Scene"
 publishedAt: 2026-09-25
 cover: "/images/nata-manten/nata-bts-01.jpeg"
@@ -24,9 +24,9 @@ Rundown perlu diperiksa tidak hanya berdasarkan urutan, tetapi juga berdasarkan 
 
 Beberapa sesi mungkin membutuhkan waktu perpindahan, persiapan teknis, atau koordinasi khusus.
 
-## Menentukan Cue
+## Menentukan Konsep
 
-Entrance, music, lighting, video, speech, dan berbagai momentum lainnya biasanya membutuhkan cue yang jelas.
+Entrance, music, lighting, video, speech, dan berbagai momentum lainnya biasanya membutuhkan konsep yang jelas.
 
 Technical meeting membantu setiap pihak memahami kapan harus mulai bergerak.
 

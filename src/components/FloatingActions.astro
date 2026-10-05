@@ -51,7 +51,8 @@
   .floating-action:hover { transform: translateY(-2px); }
   .floating-action:focus-visible { outline: 3px solid #f4f0e7; outline-offset: 3px; box-shadow: 0 0 0 6px #11110f; }
 
-  :global(body) { padding-bottom: calc(136px + env(safe-area-inset-bottom)); }
+  :global(html), :global(body) { overscroll-behavior-y: none; }
+  .floating-actions[hidden] { display: none; }
   :global(body:has(#mobile-menu[data-open="true"])) .floating-actions,
   :global(body:has(#booking-form :focus)) .floating-actions { visibility: hidden; }
 
@@ -68,3 +69,16 @@
     :global(body) { padding-bottom: 0; }
   }
 </style>
+
+<script>
+  function watchFooter() {
+    const actions = document.querySelector<HTMLElement>('.floating-actions');
+    const footer = document.querySelector('footer');
+    if (!actions || !footer || actions.dataset.footerReady) return;
+    actions.dataset.footerReady = 'true';
+    const observer = new IntersectionObserver(([entry]) => { actions.hidden = entry.isIntersecting; });
+    observer.observe(footer);
+  }
+  watchFooter();
+  document.addEventListener('astro:page-load', watchFooter);
+</script>
