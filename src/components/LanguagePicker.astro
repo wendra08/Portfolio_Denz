@@ -11,6 +11,9 @@
     <aside class="language-booking-note">
       <p lang="id"><strong>Membuka dari TikTok?</strong> Untuk booking melalui WhatsApp, buka website ini lewat Chrome, Safari, atau browser lainnya. Ketuk menu di pojok kanan atas TikTok, lalu pilih <strong>Buka di browser</strong> sebelum mengisi form. Browser TikTok dapat meminta instalasi WhatsApp meskipun WhatsApp biasa atau Business sudah terpasang.</p>
       <p lang="en"><strong>Visiting from TikTok?</strong> To book via WhatsApp, open this website in Chrome, Safari, or another browser. Tap TikTok’s top-right menu and choose <strong>Open in browser</strong> before filling in the form. TikTok’s browser may ask you to install WhatsApp even if WhatsApp or WhatsApp Business is already installed.</p>
+      <button id="copy-website-link" type="button"><span lang="id">Salin Link Website</span><span lang="en">Copy Website Link</span></button>
+      <p id="copy-website-status" role="status" aria-live="polite"></p>
+      <input id="website-link-fallback" type="text" value="https://kangdenz.my.id/" readonly hidden aria-label="Link website / Website link" />
     </aside>
     <div class="language-options">
       <button type="button" data-language="id" lang="id"><span>Bahasa Indonesia</span><span aria-hidden="true">→</span></button>
@@ -36,6 +39,12 @@
   .language-booking-note { margin-top: 1.5rem; padding: 1rem; border-left: 2px solid #b79b62; background: #191916; color: #d8d2c6; font-size: 12px; line-height: 1.7; }
   .language-booking-note strong { color: #c9b27e; font-weight: 600; }
   .language-booking-note p + p { margin-top: 0.75rem; }
+  #copy-website-link { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 0.75rem; width: 100%; min-height: 44px; margin-top: 1rem; padding: 0.75rem; border: 1px solid #b79b6280; border-radius: 4px; color: #c9b27e; cursor: pointer; }
+  #copy-website-link:hover { background: #b79b621a; }
+  #copy-website-link [lang="en"] { color: #d8d2c6; }
+  #copy-website-status:empty { display: none; }
+  #copy-website-status { margin-top: 0.75rem; }
+  #website-link-fallback { width: 100%; margin-top: 0.75rem; padding: 0.75rem; border: 1px solid #b79b6280; background: #11110f; color: #f4f0e7; font-size: 16px; }
   .language-options button { display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem 1.4rem; border: 1px solid #b79b6266; background: #191916; color: #f4f0e7; text-align: left; cursor: pointer; }
   .language-options button:hover { background: #b79b62; color: #11110f; }
   button:focus-visible { outline: 2px solid #c9b27e; outline-offset: 4px; }
@@ -52,6 +61,23 @@
     const switcher = document.querySelector<HTMLButtonElement>('#language-switch');
     if (!dialog || !switcher || dialog.dataset.ready) return;
     dialog.dataset.ready = 'true';
+    const copyLink = dialog.querySelector<HTMLButtonElement>('#copy-website-link');
+    const copyStatus = dialog.querySelector<HTMLParagraphElement>('#copy-website-status');
+    const linkFallback = dialog.querySelector<HTMLInputElement>('#website-link-fallback');
+    copyLink?.addEventListener('click', async () => {
+      if (!copyStatus || !linkFallback) return;
+      try {
+        await navigator.clipboard.writeText(linkFallback.value);
+        copyStatus.textContent = 'Link berhasil disalin. Tempel di Chrome atau Safari. / Link copied. Paste it into Chrome or Safari.';
+        linkFallback.hidden = true;
+      } catch {
+        linkFallback.hidden = false;
+        linkFallback.focus();
+        linkFallback.select();
+        linkFallback.setSelectionRange(0, linkFallback.value.length);
+        copyStatus.textContent = 'Tekan lama link di bawah lalu pilih Salin. / Press and hold the link below, then choose Copy.';
+      }
+    });
     let chosen = false;
     watchTranslations();
     dialog.showModal();
