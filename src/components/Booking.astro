@@ -702,74 +702,43 @@ const directWhatsapp =
     }
 
     const directChat = section.querySelector<HTMLAnchorElement>("#booking-direct-whatsapp");
-    let pendingWhatsappUrl = "";
-    function openWhatsappChooser(url: string) {
-      if (!/Android/i.test(navigator.userAgent)) {
-        window.open(url, "_blank", "noopener,noreferrer");
-        return;
-      }
-      pendingWhatsappUrl = url;
-      let dialog = document.querySelector<HTMLDialogElement>("#whatsapp-app-chooser");
-      if (!dialog) {
-        dialog = document.createElement("dialog");
-        dialog.id = "whatsapp-app-chooser";
-        dialog.setAttribute("aria-labelledby", "whatsapp-chooser-title");
-        dialog.style.cssText = "width:min(92vw,420px);padding:0;border:1px solid #b79b62;border-radius:8px;background:#191916;color:#f4f0e7;box-shadow:0 24px 80px #0009";
-        dialog.innerHTML = `<div style="padding:28px"><p style="margin:0 0 12px;color:#b79b62;font-size:10px;font-weight:700;letter-spacing:.2em">PILIH APLIKASI</p><h2 id="whatsapp-chooser-title" style="margin:0;font-family:var(--font-display,serif);font-size:30px;font-weight:400">Buka dengan WhatsApp</h2><p style="margin:12px 0 22px;color:#c7c3ba;font-size:14px;line-height:1.6">Pilih aplikasi untuk mengirim detail booking kamu.</p><div style="display:grid;gap:10px"><button type="button" data-whatsapp-app="regular" style="min-height:50px;padding:12px 16px;border:1px solid #ffffff30;background:#ffffff08;color:inherit;text-align:left;font:inherit;cursor:pointer">WhatsApp Messenger <span style="float:right;color:#b79b62">↗</span></button><button type="button" data-whatsapp-app="business" style="min-height:50px;padding:12px 16px;border:1px solid #ffffff30;background:#ffffff08;color:inherit;text-align:left;font:inherit;cursor:pointer">WhatsApp Business <span style="float:right;color:#b79b62">↗</span></button></div><button type="button" data-whatsapp-cancel style="margin-top:18px;padding:8px 0;border:0;background:none;color:#c7c3ba;font:inherit;cursor:pointer">Batal</button></div>`;
-        document.body.append(dialog);
-        const recovery = document.createElement("div");
-        recovery.style.cssText = "padding:0 28px 28px;display:grid;gap:12px;font-size:13px";
-        const fallbackLink = document.createElement("a");
-        fallbackLink.textContent = "Coba lewat tautan WhatsApp";
-        fallbackLink.dataset.whatsappFallback = "true";
-        fallbackLink.style.cssText = "color:#b79b62;text-decoration:underline;padding:8px 0";
-        const copyButton = document.createElement("button");
-        copyButton.type = "button";
-        copyButton.textContent = "Salin pesan booking";
-        copyButton.style.cssText = "text-align:left;padding:8px 0;color:#f4f0e7";
-        const copyStatus = document.createElement("p");
-        copyStatus.setAttribute("role", "status");
-        copyButton.addEventListener("click", async () => {
-          const destination = new URL(pendingWhatsappUrl);
-          const message = destination.searchParams.get("text") ?? "";
-          try {
-            await navigator.clipboard.writeText(message);
-            copyStatus.textContent = `Pesan disalin. Buka WhatsApp Business dan tempel ke chat +${destination.pathname.slice(1)}.`;
-          } catch {
-            copyStatus.textContent = "Salin pesan berikut secara manual:";
-            let manualCopy = recovery.querySelector("textarea");
-            if (!manualCopy) {
-              manualCopy = document.createElement("textarea");
-              manualCopy.readOnly = true;
-              manualCopy.setAttribute("aria-label", "Pesan booking untuk disalin");
-              manualCopy.style.cssText = "width:100%;min-height:160px;color:#f4f0e7;background:#191916;padding:12px;border:1px solid #b79b62";
-              recovery.append(manualCopy);
-            }
-            manualCopy.value = message;
-            manualCopy.focus();
-            manualCopy.select();
-          }
-        });
-        recovery.append(fallbackLink, copyButton, copyStatus);
-        dialog.append(recovery);
-        dialog.addEventListener("click", (event) => {
-          const target = event.target as HTMLElement;
-          const choice = target.closest<HTMLButtonElement>("[data-whatsapp-app]");
-          if (choice) {
-            const destination = new URL(pendingWhatsappUrl);
-            const phone = destination.pathname.slice(1);
-            const params = new URLSearchParams(destination.search);
-            const packageId = choice.dataset.whatsappApp === "business" ? "com.whatsapp.w4b" : "com.whatsapp";
-            const intent = `intent://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(params.get("text") ?? "")}#Intent;scheme=https;action=android.intent.action.VIEW;package=${packageId};S.browser_fallback_url=${encodeURIComponent(pendingWhatsappUrl)};end`;
-            window.location.href = intent;
-          } else if (target.closest("[data-whatsapp-cancel]") || target === dialog) {
-            dialog!.close();
-          }
-        });
-      }
-      dialog.querySelector<HTMLAnchorElement>("[data-whatsapp-fallback]")!.href = pendingWhatsappUrl;
-      if (!dialog.open) dialog.showModal();
+    function openWhatsapp(url: string) {
+      // Let the HTTPS link be handled by the user's installed app/browser.
+      window.location.assign(url);
     }
+    const copyButton = document.createElement("button");
+    copyButton.type = "button";
+    copyButton.className = "min-h-12 px-4 py-3 text-xs text-gold underline";
+    copyButton.textContent = currentLanguage() === "en" ? "Copy booking message" : "Salin pesan booking";
+    directChat?.after(copyButton);
+    copyButton.addEventListener("click", async () => {
+      if (!form.reportValidity()) return;
+      const destination = new URL(buildWhatsappUrl());
+      const message = destination.searchParams.get("text") ?? "";
+      const english = currentLanguage() === "en";
+      try {
+        await navigator.clipboard.writeText(message);
+        if (status) status.textContent = english
+          ? `Message copied. Paste it into your WhatsApp chat with +${destination.pathname.slice(1)}.`
+          : `Pesan disalin. Tempel di chat WhatsApp ke +${destination.pathname.slice(1)}.`;
+      } catch {
+        let manualCopy = section!.querySelector<HTMLTextAreaElement>("#booking-copy-message");
+        if (!manualCopy) {
+          manualCopy = document.createElement("textarea");
+          manualCopy.id = "booking-copy-message";
+          manualCopy.readOnly = true;
+          manualCopy.className = "booking-input mt-4";
+          manualCopy.rows = 8;
+          manualCopy.setAttribute("aria-label", english ? "Booking message to copy" : "Pesan booking untuk disalin");
+          status?.after(manualCopy);
+        }
+        manualCopy.value = message;
+        manualCopy.focus();
+        manualCopy.select();
+        if (status) status.textContent = english ? "Copy the message below manually." : "Salin pesan berikut secara manual.";
+      }
+      status?.classList.remove("hidden");
+    });
     const eventSelect = section.querySelector<HTMLSelectElement>("#booking-event")!;
     const timeInput = section.querySelector<HTMLInputElement>("#booking-time")!;
     const akadInput = section.querySelector<HTMLInputElement>("#booking-akad")!;
@@ -860,7 +829,7 @@ const directWhatsapp =
 
     directChat?.addEventListener("click", (event) => {
       event.preventDefault();
-      openWhatsappChooser(buildWhatsappUrl());
+      openWhatsapp(buildWhatsappUrl());
     });
 
     form.addEventListener(
@@ -897,14 +866,14 @@ const directWhatsapp =
 
         if (status) {
           status.textContent =
-            /Android/i.test(navigator.userAgent) ? "Pilih aplikasi WhatsApp yang ingin digunakan." : "Membuka WhatsApp...";
+            currentLanguage() === "en" ? "Opening WhatsApp..." : "Membuka WhatsApp...";
 
           status.classList.remove(
             "hidden"
           );
         }
 
-        openWhatsappChooser(whatsappUrl);
+        openWhatsapp(whatsappUrl);
       }
     );
   }
