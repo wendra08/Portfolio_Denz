@@ -6,7 +6,11 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 import { loadEnv } from 'vite';
 
-const siteUrl = process.env.SITE_URL || loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), 'SITE_').SITE_URL;
+const localEnv = loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), 'SITE_');
+const configuredSiteUrl = process.env.SITE_URL || localEnv.SITE_URL;
+const vercelProductionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+  (process.env.VERCEL_ENV === 'production' ? process.env.VERCEL_URL : undefined);
+const siteUrl = configuredSiteUrl || (vercelProductionHost ? `https://${vercelProductionHost}` : undefined);
 
 
 // https://astro.build/config

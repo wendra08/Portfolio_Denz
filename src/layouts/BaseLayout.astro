@@ -69,6 +69,8 @@ const structuredData = Astro.site && Astro.url.pathname === "/" ? {
     <meta property="og:image" content={socialImage} />
     <meta property="og:image:alt" content={imageAlt} />
     {image === "/images/og-kang-denz.jpg" && <>
+      <meta property="og:image:secure_url" content={socialImage} />
+      <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
     </>}
