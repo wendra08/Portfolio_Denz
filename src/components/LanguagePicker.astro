@@ -11,6 +11,8 @@
     <aside class="language-booking-note">
       <p lang="id"><strong>Membuka dari TikTok?</strong> Untuk booking melalui WhatsApp, buka website ini lewat Chrome, Safari, atau browser lainnya. Ketuk menu di pojok kanan atas TikTok, lalu pilih <strong>Buka di browser</strong> sebelum mengisi form. Browser TikTok dapat meminta instalasi WhatsApp meskipun WhatsApp biasa atau Business sudah terpasang.</p>
       <p lang="en"><strong>Visiting from TikTok?</strong> To book via WhatsApp, open this website in Chrome, Safari, or another browser. Tap TikTok’s top-right menu and choose <strong>Open in browser</strong> before filling in the form. TikTok’s browser may ask you to install WhatsApp even if WhatsApp or WhatsApp Business is already installed.</p>
+      <button id="open-website-browser" type="button" aria-describedby="open-browser-status"><span lang="id">Buka di Browser</span><span lang="en">Open in Browser</span></button>
+      <p id="open-browser-status" role="status" aria-live="polite"></p>
       <button id="copy-website-link" type="button"><span lang="id">Salin Link Website</span><span lang="en">Copy Website Link</span></button>
       <p id="copy-website-status" role="status" aria-live="polite"></p>
       <input id="website-link-fallback" type="text" value="https://kangdenz.my.id/" readonly hidden aria-label="Link website / Website link" />
@@ -41,6 +43,10 @@
   .language-booking-note p + p { margin-top: 0.75rem; }
   #copy-website-link { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 0.75rem; width: 100%; min-height: 44px; margin-top: 1rem; padding: 0.75rem; border: 1px solid #b79b6280; border-radius: 4px; color: #c9b27e; cursor: pointer; }
   #copy-website-link:hover { background: #b79b621a; }
+  #open-website-browser { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 0.75rem; width: 100%; min-height: 48px; margin-top: 1rem; padding: 0.75rem; border-radius: 4px; background: #b79b62; color: #11110f; font-weight: 600; cursor: pointer; }
+  #open-website-browser:hover { background: #c9b27e; }
+  #open-browser-status:empty { display: none; }
+  #open-browser-status { margin-top: 0.75rem; }
   #copy-website-link [lang="en"] { color: #d8d2c6; }
   #copy-website-status:empty { display: none; }
   #copy-website-status { margin-top: 0.75rem; }
@@ -64,6 +70,21 @@
     const copyLink = dialog.querySelector<HTMLButtonElement>('#copy-website-link');
     const copyStatus = dialog.querySelector<HTMLParagraphElement>('#copy-website-status');
     const linkFallback = dialog.querySelector<HTMLInputElement>('#website-link-fallback');
+    const openBrowser = dialog.querySelector<HTMLButtonElement>('#open-website-browser');
+    const browserStatus = dialog.querySelector<HTMLParagraphElement>('#open-browser-status');
+    openBrowser?.addEventListener('click', () => {
+      if (!browserStatus || !linkFallback) return;
+      const website = new URL(linkFallback.value);
+      const android = /Android/i.test(navigator.userAgent);
+      const ios = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      browserStatus.textContent = 'Jika browser tidak terbuka, ketuk menu di pojok kanan atas TikTok lalu pilih Buka di browser, atau salin link di bawah. / If the browser does not open, use TikTok’s top-right menu and choose Open in browser, or copy the link below.';
+      if (android) {
+        // Launch from this click; timers may lose the required user gesture.
+        window.location.assign(`intent://${website.host}${website.pathname}#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=${encodeURIComponent(website.href)};end`);
+      } else if (!ios) {
+        window.open(website.href, '_blank', 'noopener,noreferrer');
+      }
+    });
     copyLink?.addEventListener('click', async () => {
       if (!copyStatus || !linkFallback) return;
       try {
