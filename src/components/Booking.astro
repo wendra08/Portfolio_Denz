@@ -576,6 +576,7 @@ const directWhatsapp =
 
 <script>
   import { translate, currentLanguage } from '../i18n/client';
+  import { openWhatsApp } from '../scripts/whatsapp';
   function initializeBooking() {
     const section =
       document.querySelector<HTMLElement>(
@@ -702,43 +703,6 @@ const directWhatsapp =
     }
 
     const directChat = section.querySelector<HTMLAnchorElement>("#booking-direct-whatsapp");
-    function openWhatsapp(url: string) {
-      // Let the HTTPS link be handled by the user's installed app/browser.
-      window.location.assign(url);
-    }
-    const copyButton = document.createElement("button");
-    copyButton.type = "button";
-    copyButton.className = "min-h-12 px-4 py-3 text-xs text-gold underline";
-    copyButton.textContent = currentLanguage() === "en" ? "Copy booking message" : "Salin pesan booking";
-    directChat?.after(copyButton);
-    copyButton.addEventListener("click", async () => {
-      if (!form.reportValidity()) return;
-      const destination = new URL(buildWhatsappUrl());
-      const message = destination.searchParams.get("text") ?? "";
-      const english = currentLanguage() === "en";
-      try {
-        await navigator.clipboard.writeText(message);
-        if (status) status.textContent = english
-          ? `Message copied. Paste it into your WhatsApp chat with +${destination.pathname.slice(1)}.`
-          : `Pesan disalin. Tempel di chat WhatsApp ke +${destination.pathname.slice(1)}.`;
-      } catch {
-        let manualCopy = section!.querySelector<HTMLTextAreaElement>("#booking-copy-message");
-        if (!manualCopy) {
-          manualCopy = document.createElement("textarea");
-          manualCopy.id = "booking-copy-message";
-          manualCopy.readOnly = true;
-          manualCopy.className = "booking-input mt-4";
-          manualCopy.rows = 8;
-          manualCopy.setAttribute("aria-label", english ? "Booking message to copy" : "Pesan booking untuk disalin");
-          status?.after(manualCopy);
-        }
-        manualCopy.value = message;
-        manualCopy.focus();
-        manualCopy.select();
-        if (status) status.textContent = english ? "Copy the message below manually." : "Salin pesan berikut secara manual.";
-      }
-      status?.classList.remove("hidden");
-    });
     const eventSelect = section.querySelector<HTMLSelectElement>("#booking-event")!;
     const timeInput = section.querySelector<HTMLInputElement>("#booking-time")!;
     const akadInput = section.querySelector<HTMLInputElement>("#booking-akad")!;
@@ -829,7 +793,7 @@ const directWhatsapp =
 
     directChat?.addEventListener("click", (event) => {
       event.preventDefault();
-      openWhatsapp(buildWhatsappUrl());
+      openWhatsApp(buildWhatsappUrl());
     });
 
     form.addEventListener(
@@ -873,7 +837,7 @@ const directWhatsapp =
           );
         }
 
-        openWhatsapp(whatsappUrl);
+        openWhatsApp(whatsappUrl);
       }
     );
   }

@@ -91,6 +91,10 @@ const structuredData = Astro.site && Astro.url.pathname === "/" ? {
     <slot />
     <FloatingActions />
     <LanguagePicker />
+    <script>
+      import { initializeWhatsAppLinks } from '../scripts/whatsapp';
+      initializeWhatsAppLinks();
+    </script>
     <noscript>
       <style is:inline>
         [class*="-reveal"], .testimonial-card { opacity: 1 !important; transform: none !important; filter: none !important; }
