@@ -8,6 +8,10 @@
     <span class="language-line" aria-hidden="true"></span>
     <h2 id="language-title"><span lang="id">Selamat datang.</span><br /><span lang="en">Welcome.</span></h2>
     <p class="language-description"><span lang="id">Pilih bahasa untuk melanjutkan.</span><br /><span lang="en">Choose your language to continue.</span></p>
+    <aside class="language-booking-note">
+      <p lang="id"><strong>Membuka dari TikTok?</strong> Untuk booking melalui WhatsApp, buka website ini lewat Chrome, Safari, atau browser lainnya. Ketuk menu di pojok kanan atas TikTok, lalu pilih <strong>Buka di browser</strong> sebelum mengisi form. Browser TikTok dapat meminta instalasi WhatsApp meskipun WhatsApp biasa atau Business sudah terpasang.</p>
+      <p lang="en"><strong>Visiting from TikTok?</strong> To book via WhatsApp, open this website in Chrome, Safari, or another browser. Tap TikTok’s top-right menu and choose <strong>Open in browser</strong> before filling in the form. TikTok’s browser may ask you to install WhatsApp even if WhatsApp or WhatsApp Business is already installed.</p>
+    </aside>
     <div class="language-options">
       <button type="button" data-language="id" lang="id"><span>Bahasa Indonesia</span><span aria-hidden="true">→</span></button>
       <button type="button" data-language="en" lang="en"><span>English</span><span aria-hidden="true">→</span></button>
@@ -29,6 +33,9 @@
   h2 [lang="en"] { color: #b79b62; }
   .language-description { margin-top: 1.5rem; font-size: 14px; line-height: 1.9; color: #d8d2c6; }
   .language-options { display: grid; gap: 1rem; margin-top: 2rem; }
+  .language-booking-note { margin-top: 1.5rem; padding: 1rem; border-left: 2px solid #b79b62; background: #191916; color: #d8d2c6; font-size: 12px; line-height: 1.7; }
+  .language-booking-note strong { color: #c9b27e; font-weight: 600; }
+  .language-booking-note p + p { margin-top: 0.75rem; }
   .language-options button { display: flex; justify-content: space-between; gap: 1rem; padding: 1.2rem 1.4rem; border: 1px solid #b79b6266; background: #191916; color: #f4f0e7; text-align: left; cursor: pointer; }
   .language-options button:hover { background: #b79b62; color: #11110f; }
   button:focus-visible { outline: 2px solid #c9b27e; outline-offset: 4px; }
