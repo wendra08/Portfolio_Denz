@@ -52,12 +52,15 @@
     const switcher = document.querySelector<HTMLButtonElement>('#language-switch');
     if (!dialog || !switcher || dialog.dataset.ready) return;
     dialog.dataset.ready = 'true';
-    let saved: string | null = null;
-    try { saved = localStorage.getItem('kang-denz-language'); } catch { /* Offer a session-only choice. */ }
-    let chosen = saved === 'id' || saved === 'en';
+    let chosen = false;
     watchTranslations();
-    if (chosen) setLanguage(saved as Language);
-    else dialog.showModal();
+    dialog.showModal();
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) {
+        chosen = false;
+        if (!dialog.open) dialog.showModal();
+      }
+    });
     dialog.addEventListener('cancel', (event) => { if (!chosen) event.preventDefault(); });
     switcher.addEventListener('click', () => dialog.showModal());
     dialog.querySelectorAll<HTMLButtonElement>('[data-language]').forEach((button) => {
