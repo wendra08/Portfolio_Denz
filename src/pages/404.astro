@@ -4,16 +4,37 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<BaseLayout title="Halaman Tidak Ditemukan — Kang Denz" description="Halaman yang kamu cari tidak ditemukan. Kembali ke beranda atau hubungi Kang Denz untuk membicarakan rencana acaramu." noindex>
+<BaseLayout
+  title="Halaman Tidak Ditemukan — Kang Denz"
+  description="Halaman yang kamu cari tidak ditemukan. Kembali ke beranda atau hubungi Kang Denz untuk membicarakan rencana acaramu."
+  noindex
+>
   <Navbar />
   <main id="main-content" tabindex="-1" class="bg-charcoal text-ivory">
-    <section class="container-luxury flex min-h-[75svh] flex-col items-start justify-center pt-36 pb-20 md:pt-44 md:pb-28">
-      <p class="gold-label">404 · Halaman tidak ditemukan</p>
-      <h1 class="mt-8 max-w-4xl font-serif text-[clamp(2.75rem,7vw,7rem)] leading-[0.95] tracking-[-0.04em]">Mari kembali ke{" "}<span class="text-gold">cerita utama.</span></h1>
-      <p class="mt-8 max-w-lg text-base leading-7 text-ivory-muted">Halaman ini mungkin sudah dipindahkan atau alamatnya kurang tepat. Kamu bisa kembali ke beranda atau langsung membicarakan rencana acaramu.</p>
-      <div class="mt-10 flex flex-wrap gap-4">
-        <a href="/" class="inline-flex min-h-12 items-center justify-center bg-gold px-7 py-3 text-sm font-semibold text-charcoal hover:bg-gold-light">Kembali ke beranda</a>
+    <section class="container-luxury relative flex min-h-[78svh] flex-col justify-center overflow-hidden pt-36 pb-24 md:min-h-[82svh] md:pt-44">
+      <span class="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 font-serif text-[clamp(16rem,40vw,38rem)] leading-none tracking-[-0.08em] text-ivory/[0.025]" aria-hidden="true">404</span>
 
+      <div class="relative z-10 max-w-4xl">
+        <p class="gold-label">404 <span class="mx-2 text-ivory/30">/</span> Halaman tidak ditemukan</p>
+        <h1 class="mt-8 font-serif text-[clamp(3rem,8vw,7.5rem)] leading-[0.92] tracking-[-0.045em]">
+          Sepertinya kita <span class="text-gold">keluar rundown.</span>
+        </h1>
+        <p class="mt-7 max-w-xl text-sm leading-7 text-ivory-muted md:text-base md:leading-8">
+          Halaman yang kamu cari tidak ditemukan atau mungkin sudah berpindah. Yuk, kembali ke cerita utama atau cari layanan yang kamu butuhkan.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-3 md:gap-4">
+          <a href="/" class="inline-flex min-h-12 items-center justify-center gap-3 bg-gold px-6 py-3 text-sm font-semibold text-charcoal transition-colors hover:bg-gold-light focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ivory">
+            Kembali ke beranda <span aria-hidden="true">↗</span>
+          </a>
+          <a href="/#booking" class="inline-flex min-h-12 items-center justify-center border border-ivory/25 px-6 py-3 text-sm font-semibold text-ivory transition-colors hover:border-gold hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">
+            Lihat pilihan layanan
+          </a>
+        </div>
+      </div>
+
+      <div class="relative z-10 mt-16 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-ivory/10 pt-5 text-[10px] font-semibold tracking-[0.2em] text-ivory/45 uppercase md:mt-20">
+        <span>Kang Denz</span><span class="text-gold" aria-hidden="true">✳</span><span>Professional Wedding MC</span>
       </div>
     </section>
   </main>
