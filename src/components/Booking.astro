@@ -171,6 +171,7 @@ const directWhatsapp =
                 value={service.value}
                 class="peer sr-only"
                 form="booking-form"
+                aria-controls="booking-details"
                 required={index === 0}
               />
 
@@ -229,6 +230,8 @@ const directWhatsapp =
     ====================================== -->
 
     <div
+      id="booking-details"
+      hidden
       class="booking-reveal mt-20 border-t border-white/10 pt-14 md:mt-28 md:pt-20"
     >
       <div
@@ -732,6 +735,9 @@ const directWhatsapp =
     }
     function updateFields() {
       const service = String(new FormData(form!).get("service") ?? "");
+      const details = section!.querySelector<HTMLElement>("#booking-details")!;
+      details.hidden = !service;
+      if (!service) return;
       const photo = service === "Natsume Photo";
       const mentoring = service === "MC Class";
       const wedding = service === "Book Kang Denz" || service === "Nata Manten";
