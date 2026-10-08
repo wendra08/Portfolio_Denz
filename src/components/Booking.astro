@@ -798,7 +798,20 @@ const directWhatsapp =
     }
     form.addEventListener("input", updateDirectChat);
     document.addEventListener('site:language-change', updateDirectChat);
-    section.addEventListener("change", () => { updateFields(); updateDirectChat(); });
+    let selectedService = section.querySelector<HTMLInputElement>('input[name="service"]:checked');
+    section.querySelectorAll<HTMLInputElement>('input[name="service"]').forEach((radio) => {
+      radio.addEventListener("click", () => {
+        if (selectedService === radio) {
+          radio.checked = false;
+          radio.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      });
+    });
+    section.addEventListener("change", () => {
+      selectedService = section.querySelector<HTMLInputElement>('input[name="service"]:checked');
+      updateFields();
+      updateDirectChat();
+    });
     updateFields();
     updateDirectChat();
 
