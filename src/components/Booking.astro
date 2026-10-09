@@ -582,6 +582,18 @@ const directWhatsapp =
   </div>
 </section>
 
+<style is:global>
+  .booking-mobile-modal { position: fixed; inset: auto 0 0; margin: 0 auto; width: 100%; max-width: 100%; max-height: 90dvh; padding: 0 20px max(24px, env(safe-area-inset-bottom)); border: 1px solid #b79b6255; border-radius: 20px 20px 0 0; background: #11110f; color: #f4f0e7; overflow-y: auto; overscroll-behavior: contain; }
+  .booking-mobile-modal::backdrop { background: #000b; }
+  .booking-mobile-bar { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; background: #11110f; border-bottom: 1px solid #b79b6244; }
+  .booking-mobile-bar h2 { font-family: var(--font-display), serif; font-size: 28px; }
+  .booking-mobile-bar button { flex-shrink: 0; width: 44px; height: 44px; border: 1px solid #b79b6266; border-radius: 50%; font-size: 28px; cursor: pointer; }
+  .booking-mobile-bar button:focus-visible { outline: 2px solid #b79b62; outline-offset: 2px; }
+  .booking-mobile-modal #booking-details { margin: 0; padding-top: 24px; border: 0; transform: none; opacity: 1; }
+  .booking-mobile-modal #booking-details > div > div:first-child { display: none; }
+  html:has(.booking-mobile-modal[open]) { overflow: hidden; }
+</style>
+
 <script>
   import { translate, currentLanguage } from '../i18n/client';
   import { openWhatsApp } from '../scripts/whatsapp';
@@ -798,7 +810,52 @@ const directWhatsapp =
     }
     form.addEventListener("input", updateDirectChat);
     document.addEventListener('site:language-change', updateDirectChat);
+    const details = section.querySelector<HTMLElement>("#booking-details")!;
+    const panelHome = document.createComment("Booking form position");
+    details.before(panelHome);
+    const mobile = window.matchMedia("(max-width: 767px)");
+    const modal = document.createElement("dialog");
+    modal.className = "booking-mobile-modal";
+    modal.setAttribute("aria-labelledby", "booking-mobile-title");
+    const bar = document.createElement("div");
+    bar.className = "booking-mobile-bar";
+    const title = document.createElement("h2");
+    title.id = "booking-mobile-title";
+    const close = document.createElement("button");
+    close.type = "button";
+    close.textContent = "×";
+    close.setAttribute("aria-label", "Tutup form / Close form");
+    bar.append(title, close);
+    modal.append(bar);
+    section.append(modal);
     let selectedService = section.querySelector<HTMLInputElement>('input[name="service"]:checked');
+    function syncPanel() {
+      if (mobile.matches && selectedService) {
+        title.textContent = translate(selectedService.value);
+        modal.append(details);
+        details.classList.add("is-visible");
+        if (!modal.open) modal.showModal();
+        close.focus({ preventScroll: true });
+      } else {
+        if (modal.open) modal.close();
+        panelHome.after(details);
+      }
+    }
+    close.addEventListener("click", () => modal.close());
+    modal.addEventListener("click", (event) => {
+      if (event.target !== modal) return;
+      const rect = modal.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) modal.close();
+    });
+    modal.addEventListener("close", () => {
+      if (mobile.matches && selectedService) {
+        const previous = selectedService;
+        previous.checked = false;
+        previous.dispatchEvent(new Event("change", { bubbles: true }));
+        previous.focus({ preventScroll: true });
+      }
+    });
+    mobile.addEventListener("change", syncPanel);
     section.querySelectorAll<HTMLInputElement>('input[name="service"]').forEach((radio) => {
       radio.addEventListener("click", () => {
         if (selectedService === radio) {
@@ -811,29 +868,11 @@ const directWhatsapp =
       selectedService = section.querySelector<HTMLInputElement>('input[name="service"]:checked');
       updateFields();
       updateDirectChat();
-      if (
-        event.target instanceof HTMLInputElement &&
-        event.target.name === "service" &&
-        selectedService &&
-        window.matchMedia("(max-width: 767px)").matches
-      ) {
-        const details = section.querySelector<HTMLElement>("#booking-details");
-        requestAnimationFrame(() => {
-          if (!details || details.hidden) return;
-          // Reveal immediately so the form is ready when scrolling reaches it.
-          details.classList.add("is-visible");
-          const header = document.querySelector<HTMLElement>("#site-header");
-          const offset = (header?.getBoundingClientRect().height ?? 80) + 16;
-          const formTop = form.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({
-            top: Math.max(0, formTop),
-            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
-          });
-        });
-      }
+      if (event.target instanceof HTMLInputElement && event.target.name === "service") syncPanel();
     });
     updateFields();
     updateDirectChat();
+    syncPanel();
 
     directChat?.addEventListener("click", (event) => {
       event.preventDefault();
