@@ -7,6 +7,14 @@
     <p class="language-brand">KANG DENZ</p>
     <span class="language-line" aria-hidden="true"></span>
     <h2 id="language-title"><span lang="id">Selamat datang.</span><br /><span lang="en">Welcome.</span></h2>
+    <div class="welcome-support">
+      <a class="welcome-coffee" href="https://sociabuzz.com/kangdenz29/tribe" target="_blank" rel="noopener noreferrer" aria-describedby="welcome-coffee-description">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Zm13 1h2a3 3 0 0 1 0 6h-2M7 3v2m4-2v2m4-2v2M3 22h16" /></svg>
+        <span><span lang="id">Traktir Kopi</span><small lang="en">Buy me a coffee</small></span>
+        <span class="welcome-coffee-arrow" aria-hidden="true">↗</span>
+      </a>
+      <p id="welcome-coffee-description"><span lang="id">Mau sawer? Langsung lewat Sociabuzz — buka tab baru.</span><br /><span lang="en">Send your support via Sociabuzz — opens a new tab.</span></p>
+    </div>
     <p class="language-description"><span lang="id">Pilih bahasa untuk melanjutkan.</span><br /><span lang="en">Choose your language to continue.</span></p>
     <aside class="language-booking-note">
       <p class="tiktok-booking-warning" lang="id"><strong>Booking WhatsApp tidak bisa lewat browser TikTok.</strong><br />Salin link dan buka di <strong>Chrome, Safari, atau browser lain</strong> untuk booking.</p>
@@ -35,6 +43,13 @@
   h2 { font-family: var(--font-serif); font-size: clamp(2.8rem, 8vw, 4.5rem); line-height: 1.05; }
   h2 [lang="en"] { color: #b79b62; }
   .language-description { margin-top: 1.5rem; font-size: 14px; line-height: 1.9; color: #d8d2c6; }
+  .welcome-support { margin-top: 1.5rem; }
+  .welcome-coffee { display: flex; align-items: center; gap: 0.85rem; min-height: 56px; padding: 0.9rem 1.2rem; border-radius: 6px; background: #b79b62; color: #11110f; text-decoration: none; font-size: 16px; font-weight: 700; }
+  .welcome-coffee:hover { background: #c9b27e; }
+  .welcome-coffee:focus-visible { outline: 2px solid #f4f0e7; outline-offset: 4px; }
+  .welcome-coffee small { display: block; font-size: 11px; font-weight: 500; }
+  .welcome-coffee-arrow { margin-left: auto; }
+  #welcome-coffee-description { margin-top: 0.65rem; font-size: 12px; line-height: 1.7; color: #d8d2c6; }
   .language-options { display: grid; gap: 1rem; margin-top: 2rem; }
   .language-booking-note { margin-top: 1.5rem; padding: 1rem; border-left: 2px solid #b79b62; background: #191916; color: #d8d2c6; font-size: 12px; line-height: 1.7; }
   .language-booking-note strong { color: #c9b27e; font-weight: 600; }
